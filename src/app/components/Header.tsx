@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import abomaLogo from "@/app/images/logo.svg";
+import abomaLogo from "@/app/images/aboma-logo.svg";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
