@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/app/images/logo.svg";
+import logo from "@/app/images/aboma-logo.svg";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
