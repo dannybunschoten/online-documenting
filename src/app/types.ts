@@ -62,4 +62,13 @@ export interface AdditionalData {
   catchingDeviceMaxFloorHeight: string;
   catchingDeviceStoppingPlaces: string;
   catchingDeviceSetupDescription: string | null;
+  algemeenChecklist: Checklist[];
+}
+
+export interface Checklist {
+  prefix: string;
+  question: string;
+  status: string;
+  findings: number;
+  pictures: number;
 }

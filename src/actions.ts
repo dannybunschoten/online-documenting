@@ -1,6 +1,6 @@
 "use server";
 
-import { AdditionalData } from "./app/types";
+import { AdditionalData, Checklist } from "./app/types";
 import data from "./data.json";
 import { notAvailableString } from "./lib/utils";
 
@@ -229,7 +229,24 @@ export async function getAdditionalData(): Promise<AdditionalData> {
     catchingDeviceMaxFloorHeight: getCatchingDeviceMaxFloorHeight(),
     catchingDeviceStoppingPlaces: getCatchingDeviceStoppingPlaces(),
     catchingDeviceSetupDescription: getCatchingDeviceSetupDescription(),
+    algemeenChecklist: getAlgemeenChecklist(),
   };
+}
+
+function getAlgemeenChecklist() {
+  return [
+    getResultBookPresent(),
+    getResultTypeApprovalPresent(),
+    getResultECDeclarationPresent(),
+    getResultInstructionBooksPresent(),
+    getResultSetupLocationWithinScope(),
+    getResultElectricalHydraulicSchemaPresent(),
+    getResultLastInspectionReportPresent(),
+    getResultCertificatesPresent(),
+    getResultScaffoldingCalculationPresent(),
+    getResultInspectionAfterModificationsCompleted(),
+    getResultOtherRemarksChapter(),
+  ];
 }
 
 function getStickerNumber() {
@@ -395,6 +412,181 @@ function getCatchingDeviceSetupDescription() {
       (check) =>
         check.Check.Text === "Omschrijving van de opstelling" &&
         check.CheckGroup.Name === "Configuratie vanginrichting",
-    )?.ResultValues[0].DisplayText || null
+    )?.ResultValues[0].DisplayText || notAvailableString
   );
+}
+
+function getResultBookPresent(): Checklist {
+  const book = data.find(
+    (check) =>
+      check.Check.Text === "Liftboek / berekeningsdocumenten aanwezig" &&
+      check.CheckGroup.Name === "Algemeen",
+  );
+  return {
+    prefix: "0101",
+    question: "Liftboek / berekeningsdocumenten aanwezig",
+    status: book?.ResultValues[0]?.DisplayText || notAvailableString,
+    findings: book?.Actions.length || 0,
+    pictures: book?.Photos.length || 0,
+  };
+}
+
+function getResultTypeApprovalPresent(): Checklist {
+  const typeApproval = data.find(
+    (check) =>
+      check.Check.Text ===
+        "Typegoedkeuring NoBo aanwezig (machines voor 1-1-2010)" &&
+      check.CheckGroup.Name === "Algemeen",
+  );
+  return {
+    prefix: "0102",
+    question: "Typegoedkeuring NoBo aanwezig (machines voor 1-1-2010)",
+    status: typeApproval?.ResultValues[0]?.DisplayText || notAvailableString,
+    findings: typeApproval?.Actions.length || 0,
+    pictures: typeApproval?.Photos.length || 0,
+  };
+}
+
+function getResultECDeclarationPresent(): Checklist {
+  const ecDeclaration = data.find(
+    (check) =>
+      check.Check.Text ===
+        "EG-verklaring van overeenstemming aanwezig (machines na 1-1-2010)" &&
+      check.CheckGroup.Name === "Algemeen",
+  );
+  return {
+    prefix: "0103",
+    question:
+      "EG-verklaring van overeenstemming aanwezig (machines na 1-1-2010)",
+    status: ecDeclaration?.ResultValues[0]?.DisplayText || notAvailableString,
+    findings: ecDeclaration?.Actions.length || 0,
+    pictures: ecDeclaration?.Photos.length || 0,
+  };
+}
+
+function getResultInstructionBooksPresent(): Checklist {
+  const instructionBooks = data.find(
+    (check) =>
+      check.Check.Text === "Instructie- / opbouwboeken aanwezig en compleet" &&
+      check.CheckGroup.Name === "Algemeen",
+  );
+  return {
+    prefix: "0104",
+    question: "Instructie- / opbouwboeken aanwezig en compleet",
+    status:
+      instructionBooks?.ResultValues[0]?.DisplayText || notAvailableString,
+    findings: instructionBooks?.Actions.length || 0,
+    pictures: instructionBooks?.Photos.length || 0,
+  };
+}
+
+function getResultSetupLocationWithinScope(): Checklist {
+  const setupLocation = data.find(
+    (check) =>
+      check.Check.Text ===
+        "Opstellingslocatie binnen het toepassingsgebied dat de fabrikant heeft voorzien" &&
+      check.CheckGroup.Name === "Algemeen",
+  );
+  return {
+    prefix: "0106",
+    question:
+      "Opstellingslocatie binnen het toepassingsgebied dat de fabrikant heeft voorzien",
+    status: setupLocation?.ResultValues[0]?.DisplayText || notAvailableString,
+    findings: setupLocation?.Actions.length || 0,
+    pictures: setupLocation?.Photos.length || 0,
+  };
+}
+
+function getResultElectricalHydraulicSchemaPresent(): Checklist {
+  const schema = data.find(
+    (check) =>
+      check.Check.Text === "Elektrisch / hydraulisch schema aanwezig" &&
+      check.CheckGroup.Name === "Algemeen",
+  );
+  return {
+    prefix: "0107",
+    question: "Elektrisch / hydraulisch schema aanwezig",
+    status: schema?.ResultValues[0]?.DisplayText || notAvailableString,
+    findings: schema?.Actions.length || 0,
+    pictures: schema?.Photos.length || 0,
+  };
+}
+
+function getResultLastInspectionReportPresent(): Checklist {
+  const lastReport = data.find(
+    (check) =>
+      check.Check.Text === "Laatste keuringsrapport aanwezig" &&
+      check.CheckGroup.Name === "Algemeen",
+  );
+  return {
+    prefix: "0108",
+    question: "Laatste keuringsrapport aanwezig",
+    status: lastReport?.ResultValues[0]?.DisplayText || notAvailableString,
+    findings: lastReport?.Actions.length || 0,
+    pictures: lastReport?.Photos.length || 0,
+  };
+}
+
+function getResultCertificatesPresent(): Checklist {
+  const certificates = data.find(
+    (check) =>
+      check.Check.Text === "Certificaten (staalkabels, vanginrichting)" &&
+      check.CheckGroup.Name === "Algemeen",
+  );
+  return {
+    prefix: "0109",
+    question: "Certificaten (staalkabels, vanginrichting)",
+    status: certificates?.ResultValues[0]?.DisplayText || notAvailableString,
+    findings: certificates?.Actions.length || 0,
+    pictures: certificates?.Photos.length || 0,
+  };
+}
+
+function getResultScaffoldingCalculationPresent(): Checklist {
+  const scaffoldingCalc = data.find(
+    (check) =>
+      check.Check.Text ===
+        "Bij verankering aan bouwsteiger: berekening aanwezig" &&
+      check.CheckGroup.Name === "Algemeen",
+  );
+  return {
+    prefix: "0110",
+    question: "Bij verankering aan bouwsteiger: berekening aanwezig",
+    status: scaffoldingCalc?.ResultValues[0]?.DisplayText || notAvailableString,
+    findings: scaffoldingCalc?.Actions.length || 0,
+    pictures: scaffoldingCalc?.Photos.length || 0,
+  };
+}
+
+function getResultInspectionAfterModificationsCompleted(): Checklist {
+  const inspectionAfterMods = data.find(
+    (check) =>
+      check.Check.Text ===
+        "Keuring na ingrijpende wijzigingen/herstellingen cfm eisen fabrikant uitgevoerd" &&
+      check.CheckGroup.Name === "Algemeen",
+  );
+  return {
+    prefix: "0111",
+    question:
+      "Keuring na ingrijpende wijzigingen/herstellingen cfm eisen fabrikant uitgevoerd",
+    status:
+      inspectionAfterMods?.ResultValues[0]?.DisplayText || notAvailableString,
+    findings: inspectionAfterMods?.Actions.length || 0,
+    pictures: inspectionAfterMods?.Photos.length || 0,
+  };
+}
+
+function getResultOtherRemarksChapter(): Checklist {
+  const otherRemarks = data.find(
+    (check) =>
+      check.Check.Text === "Overige opmerkingen aangaande dit hoofdstuk" &&
+      check.CheckGroup.Name === "Algemeen",
+  );
+  return {
+    prefix: "0199",
+    question: "Overige opmerkingen aangaande dit hoofdstuk",
+    status: otherRemarks?.ResultValues[0]?.DisplayText || notAvailableString,
+    findings: otherRemarks?.Actions.length || 0,
+    pictures: otherRemarks?.Photos.length || 0,
+  };
 }
