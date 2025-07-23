@@ -1,7 +1,9 @@
-export const apps = [
-  {
-    name: "online-documenting",
-    script: "npm",
-    args: "run start -- -p 3002",
-  },
-];
+module.exports = {
+  apps: [
+    {
+      name: "online-documenting",
+      script: "npm",
+      args: "run start -- -p 3002",
+    },
+  ],
+};
