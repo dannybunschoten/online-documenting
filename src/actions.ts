@@ -1,5 +1,9 @@
 "use server";
 
+import { AdditionalData } from "./app/types";
+import data from "./data.json";
+import { notAvailableString } from "./lib/utils";
+
 // temporarily static, will be from database
 export async function getData() {
   return {
@@ -76,7 +80,7 @@ export async function getData() {
             LiftOrMaterial: "Material",
             SectionWorkorderInfoMaterial: null,
             MaterialStartDate: "2025-06-25",
-            MaterialEmployeeName: "Danny van Bunschoten",
+            MaterialEmployeeName: "Danny Bunschoten",
             MaterialEmployeeCode: "123",
             MaterialActivityDescription: {
               "@DisplayValue":
@@ -202,4 +206,195 @@ export async function getData() {
       },
     ],
   };
+}
+
+export async function getAdditionalData(): Promise<AdditionalData> {
+  return {
+    stickerNumber: getStickerNumber(),
+    endDate: getEndDate(),
+    maxWeight: getMaxWeight(),
+    maxFloorHeight: getMaxFloorHeight(),
+    stoppingPlaces: getStoppingPlaces(),
+    anchorage: getAnchorage(),
+    specialVersion: getSpecialVersion(),
+    mastVersion: getMastVersion(),
+    setupDescription: getSetupDescription(),
+    setupLocation: getSetupLocation(),
+    catchingDeviceManufacturer: getCatchingDeviceManufacturer(),
+    catchingDeviceModel: getCatchingDeviceModel(),
+    catchingDeviceFactoryNumber: getCatchingDeviceFactoryNumber(),
+    catchingDeviceYearOfConstruction: getCatchingDeviceYearOfConstruction(),
+    catchingDeviceEndDate: getCatchingDeviceEndDate(),
+    catchingDeviceMaxWeight: getCatchingDeviceMaxWeight(),
+    catchingDeviceMaxFloorHeight: getCatchingDeviceMaxFloorHeight(),
+    catchingDeviceStoppingPlaces: getCatchingDeviceStoppingPlaces(),
+    catchingDeviceSetupDescription: getCatchingDeviceSetupDescription(),
+  };
+}
+
+function getStickerNumber() {
+  return data.filter((check) => check?.Check?.Text === "Stickernummer")[0]
+    ?.ResultValues[0].Value;
+}
+
+function getEndDate() {
+  return data.filter(
+    (check) =>
+      check?.Check?.Text === "Inzet tot" &&
+      check?.CheckGroup?.Name === "Configuratie aandrijving",
+  )[0].ResultValues[0].Value;
+}
+
+function getMaxWeight() {
+  return data.filter(
+    (check) =>
+      check?.Check?.Text === "Max. werklast" &&
+      check?.CheckGroup?.Name === "Configuratie aandrijving",
+  )[0].ResultValues[0].Value;
+}
+
+function getMaxFloorHeight() {
+  return data.filter(
+    (check) =>
+      check?.Check?.Text === "Max. vloerhoogte in deze opstelling" &&
+      check?.CheckGroup?.Name === "Configuratie aandrijving",
+  )[0].ResultValues[0].Value;
+}
+
+function getStoppingPlaces() {
+  return data.filter(
+    (check) =>
+      check?.Check?.Text === "Aantal stopplaatsen (incl. basisstation)" &&
+      check?.CheckGroup?.Name === "Configuratie aandrijving",
+  )[0].ResultValues[0].Value;
+}
+
+function getAnchorage() {
+  return data.filter(
+    (check) =>
+      check?.Check?.Text === "Aantal verankeringen" &&
+      check?.CheckGroup?.Name === "Configuratie aandrijving",
+  )[0].ResultValues[0].Value;
+}
+
+function getSpecialVersion() {
+  return data.filter(
+    (check) =>
+      check?.Check?.Text === "Bijzondere uitvoering" &&
+      check?.CheckGroup?.Name === "Configuratie aandrijving",
+  )[0].ResultValues[0].Value;
+}
+
+function getMastVersion() {
+  return data.filter(
+    (check) =>
+      check?.Check?.Text === "Mast \/ toren uitvoering" &&
+      check?.CheckGroup?.Name === "Configuratie aandrijving",
+  )[0].ResultValues[0].Value;
+}
+
+function getSetupDescription() {
+  return data.filter(
+    (check) =>
+      check?.Check?.Text === "Omschrijving van de opstelling" &&
+      check?.CheckGroup?.Name === "Configuratie aandrijving",
+  )[0].ResultValues[0].DisplayText;
+}
+
+function getSetupLocation() {
+  return data.filter(
+    (check) =>
+      check?.Check?.Text === "Locatie van de opstelling" &&
+      check?.CheckGroup?.Name === "Configuratie aandrijving",
+  )[0].ResultValues[0].Value;
+}
+
+function getCatchingDeviceManufacturer() {
+  return (
+    data.find(
+      (check) =>
+        check.Check.Text === "Fabrikant" &&
+        check.CheckGroup.Name === "Configuratie vanginrichting",
+    )?.ResultValues[0].Value || notAvailableString
+  );
+}
+
+function getCatchingDeviceModel() {
+  return (
+    data.find(
+      (check) =>
+        check.Check.Text === "Model / type" &&
+        check.CheckGroup.Name === "Configuratie vanginrichting",
+    )?.ResultValues[0].Value || notAvailableString
+  );
+}
+
+function getCatchingDeviceFactoryNumber() {
+  return (
+    data.find(
+      (check) =>
+        check.Check.Text === "Fabrieksnummer" &&
+        check.CheckGroup.Name === "Configuratie vanginrichting",
+    )?.ResultValues[0].Value || notAvailableString
+  );
+}
+
+function getCatchingDeviceYearOfConstruction() {
+  return (
+    data.find(
+      (check) =>
+        check.Check.Text === "Bouwjaar" &&
+        check.CheckGroup.Name === "Configuratie vanginrichting",
+    )?.ResultValues[0].Value || notAvailableString
+  );
+}
+
+function getCatchingDeviceEndDate() {
+  return (
+    data.find(
+      (check) =>
+        check.Check.Text === "Inzet tot" &&
+        check.CheckGroup.Name === "Configuratie vanginrichting",
+    )?.ResultValues[0].Value || notAvailableString
+  );
+}
+
+function getCatchingDeviceMaxWeight() {
+  return (
+    data.find(
+      (check) =>
+        check.Check.Text === "Max. werklast" &&
+        check.CheckGroup.Name === "Configuratie vanginrichting",
+    )?.ResultValues[0].Value || notAvailableString
+  );
+}
+
+function getCatchingDeviceMaxFloorHeight() {
+  return (
+    data.find(
+      (check) =>
+        check.Check.Text === "Max. vloerhoogte in deze opstelling" &&
+        check.CheckGroup.Name === "Configuratie vanginrichting",
+    )?.ResultValues[0].Value || notAvailableString
+  );
+}
+
+function getCatchingDeviceStoppingPlaces() {
+  return (
+    data.find(
+      (check) =>
+        check.Check.Text === "Aantal stopplaatsen (incl. basisstation)" &&
+        check.CheckGroup.Name === "Configuratie vanginrichting",
+    )?.ResultValues[0].Value || notAvailableString
+  );
+}
+
+function getCatchingDeviceSetupDescription() {
+  return (
+    data.find(
+      (check) =>
+        check.Check.Text === "Omschrijving van de opstelling" &&
+        check.CheckGroup.Name === "Configuratie vanginrichting",
+    )?.ResultValues[0].DisplayText || null
+  );
 }
