@@ -86,7 +86,7 @@ export function Overview({
 
       <ConfiguratieVangInrichting additionalData={additionalData} />
 
-      <Resultaten />
+      <Resultaten additionalData={additionalData} />
     </div>
   );
 }
