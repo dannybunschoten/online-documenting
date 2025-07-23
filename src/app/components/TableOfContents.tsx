@@ -1,6 +1,6 @@
 "use client";
 
-import { titleToId } from "@/lib/utils";
+import { cn, titleToId } from "@/lib/utils";
 import { ChevronRight, FileText, Layers } from "lucide-react";
 import { useState } from "react";
 
@@ -40,29 +40,27 @@ export default function TableOfContents() {
         newExpanded.add(title);
       }
       setExpandedSections(newExpanded);
-    }
-
-    // Always attempt to navigate
-    const elementId = titleToId(title);
-    const element = document.getElementById(elementId);
-
-    if (element) {
-      // Calculate offset for sticky header if you have one
-      const offset = 100; // Adjust based on your header height
-      const elementPosition =
-        element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-
-      setActiveSection(title);
     } else {
-      console.warn(
-        `Element with ID "${elementId}" not found. Make sure your sections have matching IDs.`,
-      );
+      const elementId = titleToId(title);
+      const element = document.getElementById(elementId);
+
+      if (element) {
+        const offset = 80; // Adjust based on your header height
+        const elementPosition =
+          element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+
+        setActiveSection(title);
+      } else {
+        console.warn(
+          `Element with ID "${elementId}" not found. Make sure your sections have matching IDs.`,
+        );
+      }
     }
   };
 
@@ -89,27 +87,22 @@ export default function TableOfContents() {
                   onClick={() =>
                     handleNavigation(entry.title, entry.children.length > 0)
                   }
-                  className={`
-                    w-full text-left px-4 py-3 rounded-lg
-                    transition-all duration-300 ease-out
-                    flex items-center gap-3 group cursor-pointer
-                    ${
-                      activeSection === entry.title
-                        ? "bg-aboma-yellow/10 shadow-sm border border-aboma-yellow/20"
-                        : "hover:bg-slate-50 hover:shadow-sm border border-transparent"
-                    }
-                  `}
+                  className={cn(
+                    "w-full text-left px-4 py-3 rounded-lg",
+                    "transition-all duration-300 ease-out",
+                    "flex items-center gap-3 group cursor-pointer",
+                    activeSection === entry.title
+                      ? "bg-aboma-yellow/10 shadow-sm border border-aboma-yellow/20"
+                      : "hover:bg-slate-50 hover:shadow-sm border border-transparent",
+                  )}
                 >
                   <div
-                    className={`
-                    flex items-center justify-center size-8 rounded-lg
-                    transition-all duration-300
-                    ${
+                    className={cn(
+                      "flex items-center justify-center size-8 rounded-lg transition-all duration-300",
                       activeSection === entry.title
                         ? "bg-aboma-yellow text-white shadow-sm"
-                        : "bg-slate-100 text-slate-600 group-hover:bg-aboma-blue/10 group-hover:text-aboma-blue"
-                    }
-                  `}
+                        : "bg-slate-100 text-slate-600 group-hover:bg-aboma-blue/10 group-hover:text-aboma-blue",
+                    )}
                   >
                     {entry.children.length > 0 ? (
                       <Layers className="size-4" />
@@ -120,38 +113,35 @@ export default function TableOfContents() {
 
                   {/* Title */}
                   <span
-                    className={`
-                    flex-1 font-medium transition-colors duration-300
-                    ${
+                    className={cn(
+                      "flex-1 font-medium transition-colors duration-300",
                       activeSection === entry.title
                         ? "text-aboma-blue"
-                        : "text-slate-700 group-hover:text-aboma-blue"
-                    }
-                  `}
+                        : "text-slate-700 group-hover:text-aboma-blue",
+                    )}
                   >
                     {entry.title}
                   </span>
 
                   {entry.children.length > 0 && (
                     <ChevronRight
-                      className={`
-                      w-4 h-4 transition-all duration-300
-                      ${expandedSections.has(entry.title) ? "rotate-90" : ""}
-                      ${activeSection === entry.title ? "text-aboma-yellow" : "text-slate-400"}
-                    `}
+                      className={cn(
+                        "size-4 transition-all duration-300",
+                        expandedSections.has(entry.title) && "rotate-90",
+                        activeSection === entry.title
+                          ? "text-aboma-yellow"
+                          : "text-slate-400",
+                      )}
                     />
                   )}
 
                   <span
-                    className={`
-                    text-xs px-2 py-1 rounded-full
-                    transition-all duration-300
-                    ${
+                    className={cn(
+                      "size-6 flex items-center justify-center text-xs rounded-full transition-all duration-300",
                       activeSection === entry.title
                         ? "bg-aboma-blue text-white"
-                        : "bg-slate-100 text-slate-600 group-hover:bg-aboma-blue/10 group-hover:text-aboma-blue"
-                    }
-                  `}
+                        : "bg-slate-100 text-slate-600 group-hover:bg-aboma-blue/10 group-hover:text-aboma-blue",
+                    )}
                   >
                     {index + 1}
                   </span>
@@ -159,15 +149,12 @@ export default function TableOfContents() {
 
                 {entry.children.length > 0 && (
                   <ul
-                    className={`
-                    mt-2 ml-12 space-y-1 overflow-hidden
-                    transition-all duration-500 ease-in-out
-                    ${
+                    className={cn(
+                      "mt-2 ml-12 space-y-1 overflow-hidden transition-all duration-500 ease-in-out",
                       expandedSections.has(entry.title)
                         ? "max-h-[500px] opacity-100"
-                        : "max-h-0 opacity-0"
-                    }
-                  `}
+                        : "max-h-0 opacity-0",
+                    )}
                   >
                     {entry.children.map((childEntry) => (
                       <li key={childEntry.title}>
@@ -175,15 +162,12 @@ export default function TableOfContents() {
                           onClick={() =>
                             handleNavigation(childEntry.title, false)
                           }
-                          className={`
-                            w-full text-left px-4 py-2.5 rounded-lg
-                            transition-all duration-300 ease-out
-                            flex items-center gap-3 group cursor-pointer
-                            hover:bg-slate-50 hover:pl-6
-                            ${activeSection === childEntry.title ? "bg-slate-50" : ""}
-                          `}
+                          className={cn(
+                            "w-full text-left px-4 py-2.5 rounded-lg transition-all duration-300 ease-out flex items-center gap-3 group cursor-pointer hover:bg-slate-50 hover:pl-6",
+                            activeSection === childEntry.title && "bg-slate-50",
+                          )}
                         >
-                          <div className="w-1.5 h-1.5 bg-aboma-yellow/60 rounded-full group-hover:bg-aboma-yellow transition-colors duration-300" />
+                          <div className="size-1.5 bg-aboma-yellow/60 rounded-full group-hover:bg-aboma-yellow transition-colors duration-300" />
 
                           <span className="text-sm text-slate-600 group-hover:text-aboma-blue transition-colors duration-300">
                             {childEntry.title}
@@ -210,17 +194,15 @@ export default function TableOfContents() {
               {navigationEntries.map((_, idx) => (
                 <div
                   key={idx}
-                  className={`
-                    h-1.5 w-8 rounded-full transition-all duration-300
-                    ${
-                      idx <=
+                  className={cn(
+                    "h-1.5 w-8 rounded-full transition-all duration-300",
+                    idx <=
                       navigationEntries.findIndex(
                         (e) => e.title === activeSection,
                       )
-                        ? "bg-aboma-yellow"
-                        : "bg-slate-200"
-                    }
-                  `}
+                      ? "bg-aboma-yellow"
+                      : "bg-slate-200",
+                  )}
                 />
               ))}
             </div>
