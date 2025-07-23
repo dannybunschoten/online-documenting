@@ -6,6 +6,7 @@ import TableOfContents from "./TableOfContents";
 import ConfiguratieAandrijving from "./ConfiguratieAandrijving";
 import { AdditionalData, InspectionData } from "../types";
 import ConfiguratieVangInrichting from "./ConfiguratieVangInrichting";
+import Resultaten from "./Resultaten";
 
 export function Overview({
   data,
@@ -84,6 +85,8 @@ export function Overview({
       <ConfiguratieAandrijving data={data} additionalData={additionalData} />
 
       <ConfiguratieVangInrichting additionalData={additionalData} />
+
+      <Resultaten />
     </div>
   );
 }

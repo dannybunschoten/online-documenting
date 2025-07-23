@@ -18,12 +18,14 @@ export default function ConfiguratieAandrijving({
       <Table>
         <TableHeader>
           <TableRow className="bg-aboma-blue border-none hover:bg-aboma-blue">
-            <TableHead className="font-semibold text-white/95 py-5 px-8 text-sm uppercase tracking-wider">
-              Specificatie
-            </TableHead>
-            <TableHead className="font-semibold text-white/95 py-5 px-8 text-sm uppercase tracking-wider">
-              Details
-            </TableHead>
+            {["Specificatie", "Details"].map((heading) => (
+              <TableHead
+                key={heading}
+                className="font-semibold text-white/95 py-5 px-8 text-sm uppercase tracking-wider"
+              >
+                {heading}
+              </TableHead>
+            ))}
           </TableRow>
         </TableHeader>
         <TableBody>
