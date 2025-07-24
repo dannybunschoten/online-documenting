@@ -63,6 +63,7 @@ export interface AdditionalData {
   catchingDeviceStoppingPlaces: string;
   catchingDeviceSetupDescription: string | null;
   algemeenChecklist: Checklist[];
+  mastChecklist: Checklist[];
 }
 
 export interface Checklist {

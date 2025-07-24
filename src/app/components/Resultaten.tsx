@@ -1,5 +1,6 @@
 import { AdditionalData } from "../types";
 import Algemeen from "./Resultaten/Algemeen";
+import Mast from "./Resultaten/Mast";
 
 export default function Resultaten({
   additionalData,
@@ -20,6 +21,7 @@ export default function Resultaten({
         </div>
       </div>
       <Algemeen algemeenChecklist={additionalData.algemeenChecklist} />
+      <Mast mastChecklist={additionalData.mastChecklist} />
     </article>
   );
 }
