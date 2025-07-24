@@ -21,7 +21,7 @@ export default function InspectionReport({
   }
 
   return (
-    <div className="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen font-sans">
+    <div className="bg-gray-50 min-h-screen font-sans">
       <div className="container mx-auto px-6 max-w-[1400px] py-8">
         <Overview
           data={data}

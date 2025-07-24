@@ -62,7 +62,7 @@ export default function ResultTable({
             </div>
           )}
         </TableCaption>
-        <TableHeader className="bg-gradient-to-r from-aboma-yellow to-amber-400 hover:from-aboma-yellow hover:to-amber-400 border-none">
+        <TableHeader className="bg-gradient-to-r from-aboma-blue to-aboma-blue/90 text-white py-6">
           <TableRow className="border-none hover:bg-transparent">
             <TableHead className="font-semibold text-white py-4 px-6 text-sm w-[50%]">
               Specificatie
@@ -106,7 +106,7 @@ export default function ResultTable({
                   <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
                     <div
                       className={cn(
-                        "flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-2 rounded-lg border transition-all duration-200",
+                        "flex mx-auto w-fit items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-2 rounded-lg border transition-all duration-200",
                         statusConfig?.bgColor,
                         statusConfig?.borderColor,
                       )}
@@ -123,9 +123,16 @@ export default function ResultTable({
                     </div>
                   </TableCell>
                   <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
-                    <div className="flex items-center justify-center gap-1 sm:gap-2">
+                    <div
+                      className={cn(
+                        "flex w-fit mx-auto items-center justify-center gap-1 sm:gap-2 sm:px-3 py-1 sm:py-2 rounded-lg border",
+                        findings > 0
+                          ? "bg-amber-50 border-amber-200"
+                          : "bg-gray-50 justify-center size-8 border-gray-200",
+                      )}
+                    >
                       {findings > 0 && (
-                        <AlertTriangle className="size-3 text-amber-500" />
+                        <AlertTriangle className="size-4 text-amber-500" />
                       )}
                       <span
                         className={cn(
@@ -138,9 +145,16 @@ export default function ResultTable({
                     </div>
                   </TableCell>
                   <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
-                    <div className="flex items-center justify-center gap-1 sm:gap-2">
+                    <div
+                      className={cn(
+                        "flex w-fit mx-auto items-center justify-center gap-1 sm:gap-2 sm:px-3 py-1 sm:py-2 rounded-lg border",
+                        pictures > 0
+                          ? "bg-blue-50 border-blue-200"
+                          : "size-8 justify-center bg-gray-50 border-gray-200",
+                      )}
+                    >
                       {pictures > 0 && (
-                        <Camera className="size-3 text-blue-500" />
+                        <Camera className="size-4 text-blue-500" />
                       )}
                       <span
                         className={cn(
