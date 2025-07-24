@@ -56,9 +56,35 @@ export default function ResultTable({
       <Table className="w-full">
         <TableCaption className="text-sm text-gray-600 mb-3">
           {showControleCount && (
-            <div className="flex items-center justify-center gap-2">
-              <div className="w-2 h-2 bg-aboma-yellow rounded-full"></div>
-              <span>{tableData.length} controles uitgevoerd</span>
+            <div className="flex flex-wrap items-center justify-center gap-6 px-4">
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 bg-green-500 rounded-full shadow-sm"></div>
+                <span className="font-medium">
+                  {tableData.filter((item) => item.status === "In orde").length}{" "}
+                  geslaagd
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 bg-gray-400 rounded-full shadow-sm"></div>
+                <span className="font-medium">
+                  {tableData.filter((item) => item.status === "N.v.t.").length}{" "}
+                  overgeslagen
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <AlertTriangle className="w-5 h-5 text-amber-500" />
+                <span className="font-medium">
+                  {tableData.reduce((sum, item) => sum + item.findings, 0)}{" "}
+                  bevindingen
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Camera className="w-5 h-5 text-blue-500" />
+                <span className="font-medium">
+                  {tableData.reduce((sum, item) => sum + item.pictures, 0)}{" "}
+                  foto's
+                </span>
+              </div>
             </div>
           )}
         </TableCaption>
