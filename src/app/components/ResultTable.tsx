@@ -82,7 +82,7 @@ export default function ResultTable({
                 <Camera className="w-5 h-5 text-blue-500" />
                 <span className="font-medium">
                   {tableData.reduce((sum, item) => sum + item.pictures, 0)}{" "}
-                  foto's
+                  foto&apos;s
                 </span>
               </div>
             </div>
