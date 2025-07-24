@@ -1,6 +1,7 @@
 import { AdditionalData } from "../types";
 import Algemeen from "./Resultaten/Algemeen";
 import Mast from "./Resultaten/Mast";
+import Basisstation from "./Resultaten/Basisstation";
 
 export default function Resultaten({
   additionalData,
@@ -22,6 +23,9 @@ export default function Resultaten({
       </div>
       <Algemeen algemeenChecklist={additionalData.algemeenChecklist} />
       <Mast mastChecklist={additionalData.mastChecklist} />
+      <Basisstation
+        basisstationChecklist={additionalData.basisstationChecklist}
+      />
     </article>
   );
 }
