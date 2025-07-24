@@ -64,6 +64,7 @@ export interface AdditionalData {
   catchingDeviceSetupDescription: string | null;
   algemeenChecklist: Checklist[];
   mastChecklist: Checklist[];
+  basisstationChecklist: Checklist[];
 }
 
 export interface Checklist {
