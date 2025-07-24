@@ -6,7 +6,6 @@ export default function Resultaten({
 }: {
   additionalData: AdditionalData;
 }) {
-  console.log(JSON.stringify(additionalData.algemeenChecklist));
   return (
     <article className="max-w-[900px] mx-auto px-4 py-8">
       <div className="flex items-center gap-4 mb-8">
