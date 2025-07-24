@@ -230,6 +230,7 @@ export async function getAdditionalData(): Promise<AdditionalData> {
     catchingDeviceStoppingPlaces: getCatchingDeviceStoppingPlaces(),
     catchingDeviceSetupDescription: getCatchingDeviceSetupDescription(),
     algemeenChecklist: getAlgemeenChecklist(),
+    mastChecklist: getMastChecklist(),
   };
 }
 
@@ -246,6 +247,129 @@ function getAlgemeenChecklist() {
     getResultScaffoldingCalculationPresent(),
     getResultInspectionAfterModificationsCompleted(),
     getResultOtherRemarksChapter(),
+  ];
+}
+
+function getResultConstructieMastPGBL() {
+  const result = data.filter(
+    (check) =>
+      check?.Check?.Text === "Constructie mast PGBL" &&
+      check?.CheckGroup?.Name === "Mast",
+  )[0];
+
+  return {
+    prefix: "0201",
+    question: "Constructie mast PGBL",
+    status: result?.ResultValues?.[0]?.DisplayText || "N.v.t.",
+    findings: result?.Actions?.length || 0,
+    pictures: result?.Photos?.length || 0,
+  };
+}
+
+function getResultEindmastAanwezig() {
+  const result = data.filter(
+    (check) =>
+      check?.Check?.Text === "Eindmast aanwezig (eventueel)" &&
+      check?.CheckGroup?.Name === "Mast",
+  )[0];
+
+  return {
+    prefix: "0202",
+    question: "Eindmast aanwezig (eventueel)",
+    status: result?.ResultValues?.[0]?.DisplayText || "N.v.t.",
+    findings: result?.Actions?.length || 0,
+    pictures: result?.Photos?.length || 0,
+  };
+}
+
+function getResultBoutPenverbinding() {
+  const result = data.filter(
+    (check) =>
+      check?.Check?.Text === "Bout- / penverbinding / borging" &&
+      check?.CheckGroup?.Name === "Mast",
+  )[0];
+
+  return {
+    prefix: "0203",
+    question: "Bout- / penverbinding / borging",
+    status: result?.ResultValues?.[0]?.DisplayText || "N.v.t.",
+    findings: result?.Actions?.length || 0,
+    pictures: result?.Photos?.length || 0,
+  };
+}
+
+function getResultGeleidingMastdelen() {
+  const result = data.filter(
+    (check) =>
+      check?.Check?.Text === "Geleiding en mastdelen" &&
+      check?.CheckGroup?.Name === "Mast",
+  )[0];
+
+  return {
+    prefix: "0204",
+    question: "Geleiding en mastdelen",
+    status: result?.ResultValues?.[0]?.DisplayText || "N.v.t.",
+    findings: result?.Actions?.length || 0,
+    pictures: result?.Photos?.length || 0,
+  };
+}
+
+function getResultKabelvangers() {
+  const result = data.filter(
+    (check) =>
+      check?.Check?.Text === "Kabelvangers" &&
+      check?.CheckGroup?.Name === "Mast",
+  )[0];
+
+  return {
+    prefix: "0205",
+    question: "Kabelvangers",
+    status: result?.ResultValues?.[0]?.DisplayText || "N.v.t.",
+    findings: result?.Actions?.length || 0,
+    pictures: result?.Photos?.length || 0,
+  };
+}
+
+function getResultKabelton() {
+  const result = data.filter(
+    (check) =>
+      check?.Check?.Text === "Kabelton" && check?.CheckGroup?.Name === "Mast",
+  )[0];
+
+  return {
+    prefix: "0206",
+    question: "Kabelton",
+    status: result?.ResultValues?.[0]?.DisplayText || "N.v.t.",
+    findings: result?.Actions?.length || 0,
+    pictures: result?.Photos?.length || 0,
+  };
+}
+
+function getResultOverigeOpmerkingenMast() {
+  const result = data.filter(
+    (check) =>
+      check?.Check?.Text === "Overige opmerkingen aangaande dit hoofdstuk" &&
+      check?.CheckGroup?.Name === "Mast",
+  )[0];
+
+  return {
+    prefix: "0299",
+    question: "Overige opmerkingen aangaande dit hoofdstuk",
+    status: result?.ResultValues?.[0]?.DisplayText || "N.v.t.",
+    findings: result?.Actions?.length || 0,
+    pictures: result?.Photos?.length || 0,
+  };
+}
+
+function getMastChecklist() {
+  return [
+    getResultConstructieMastPGBL(),
+    getResultEindmastAanwezig(),
+    getResultBoutPenverbinding(),
+    getResultGeleidingMastdelen(),
+    getResultKabelvangers(),
+    getResultKabelton(),
+    getResultOverigeOpmerkingenMast(),
   ];
 }
 
