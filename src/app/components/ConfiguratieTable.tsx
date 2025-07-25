@@ -14,7 +14,7 @@ export default function ConfiguratieAandrijving({
   tableData: Map<string, string | null>;
 }) {
   return (
-    <div className="bg-gradient-to-br from-white to-slate-50/30 rounded-2xl shadow-xl border border-slate-200/50 overflow-hidden backdrop-blur-sm">
+    <div className="mx-4 bg-gradient-to-br from-white to-slate-50/30 rounded-2xl shadow-xl border border-slate-200/50 overflow-hidden backdrop-blur-sm">
       <Table>
         <TableHeader>
           <TableRow className="bg-aboma-blue border-none hover:bg-aboma-blue">

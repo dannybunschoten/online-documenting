@@ -65,7 +65,7 @@ export default function TableOfContents() {
   };
 
   return (
-    <nav className="max-w-[900px] mx-auto px-4 py-8">
+    <nav className="max-w-[900px] mx-auto">
       <div className="bg-white rounded-2xl shadow-xl border border-slate-200/50 overflow-hidden">
         <div className="bg-gradient-to-r from-aboma-blue to-aboma-blue/95 px-8 py-6">
           <div className="flex items-center gap-3">

@@ -22,7 +22,7 @@ export default function InspectionReport({
 
   return (
     <div className="bg-gray-50 min-h-screen font-sans">
-      <div className="container mx-auto px-6 max-w-[1400px] py-8">
+      <div className="container mx-auto lg:px-6 max-w-[1400px] lg:py-8">
         <Overview
           data={data}
           shortages={false}
