@@ -18,7 +18,7 @@ export function Overview({
   additionalData: AdditionalData;
 }) {
   return (
-    <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 space-y-6">
+    <div className="bg-white lg:rounded-2xl shadow-lg lg:border border-slate-200 p-8 space-y-6">
       <div className="flex items-center justify-between pb-6 border-b border-slate-200">
         <div>
           <div className="flex items-center gap-3 mb-3">

@@ -40,7 +40,7 @@ export default function ConfiguratieAandrijving({
   return (
     <article
       id={titleToId("Configuratie Aandrijving")}
-      className="max-w-[900px] mx-auto px-4 py-8"
+      className="max-w-[900px] mx-auto py-8"
     >
       <div className="flex items-center gap-4 mb-8">
         <div className="w-1.5 bg-aboma-yellow rounded-full h-10 shadow-sm" />
