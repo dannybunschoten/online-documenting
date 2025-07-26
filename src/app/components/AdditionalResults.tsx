@@ -1,4 +1,4 @@
-import { notAvailableString, titleToId } from "@/lib/utils";
+import { cn, notAvailableString, titleToId } from "@/lib/utils";
 import {
   CardHeader,
   Card,
@@ -10,6 +10,12 @@ import { getAdditionalDataTmp, getCheckPrefixTmp, getOrder } from "@/actions";
 import { FileText } from "lucide-react";
 import ResultTable from "./ResultTable";
 import { CheckResult, OrderData } from "../types";
+import { Badge } from "@/components/ui/badge";
+
+const toExclude = new Set([
+  "ea99e2fc-3672-4e47-8963-8e2e94336940",
+  "11b27201-a54f-4f0b-a039-bb19a1f04895",
+]);
 
 export default async function AdditionalResults() {
   const additionalData = await getAdditionalDataTmp();
@@ -44,6 +50,7 @@ export default async function AdditionalResults() {
           const orderB = idToOrder[checkListIdB]?.SortOrder || "999";
           return orderA.localeCompare(orderB);
         })
+        .filter(([checklistId]) => !toExclude.has(checklistId))
         .map(([title, checkList]: [string, CheckResult[]]) => {
           const tableData = checkList
             .map((check: CheckResult) => ({
@@ -67,6 +74,9 @@ export default async function AdditionalResults() {
             .toSorted((checkA, checkB) =>
               checkA.sortOrder.localeCompare(checkB.sortOrder),
             );
+
+          const isCheckListSkipped =
+            checkList.length === 1 && checkList[0].Check.Id === "NA";
           return (
             <section
               className="max-w-[900px] mx-auto px-4 mb-12"
@@ -74,10 +84,22 @@ export default async function AdditionalResults() {
               key={title}
             >
               <Card className="shadow-lg border-0 bg-gradient-to-br from-white to-gray-50/50 overflow-hidden py-0 gap-0">
-                <CardHeader className="bg-gradient-to-r from-aboma-blue to-aboma-blue/90 text-white pt-6">
+                <CardHeader
+                  className={cn(
+                    "bg-gradient-to-r text-white pt-6",
+                    isCheckListSkipped
+                      ? "pb-6 from-gray-400 to-gray-500"
+                      : "from-aboma-blue to-aboma-blue/90",
+                  )}
+                >
                   <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center w-10 h-10 bg-white/20 rounded-lg backdrop-blur-sm">
-                      <FileText className="w-5 h-5 text-white" />
+                    <div
+                      className={cn(
+                        "flex items-center justify-center size-10 shrink-0 rounded-lg backdrop-blur-sm",
+                        isCheckListSkipped ? "bg-white/30" : "bg-white/20",
+                      )}
+                    >
+                      <FileText className="size-5 text-white" />
                     </div>
                     <div>
                       <CardTitle className="text-2xl font-bold tracking-tight text-white">
@@ -85,19 +107,41 @@ export default async function AdditionalResults() {
                           ? idToOrder[title]?.CheckGroupPrefix + " - "
                           : ""}
                         {idToOrder[title]?.Name || notAvailableString}
+                        {isCheckListSkipped && (
+                          <Badge className="ml-2 px-2 py-1 text-sm bg-white/20 rounded-md font-normal inline align-middle">
+                            N.v.t.
+                          </Badge>
+                        )}
                       </CardTitle>
                       <CardDescription className="text-white/80 mt-1 font-medium">
-                        Algemene resultaten van de inspectie
+                        {isCheckListSkipped
+                          ? "Deze checklist is niet van toepassing"
+                          : "Algemene resultaten van de inspectie"}
                       </CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="p-0">
-                  <ResultTable
-                    tableData={tableData}
-                    className="border-0 shadow-none min-w-full"
-                    showControleCount={true}
-                  />
+                  {isCheckListSkipped ? (
+                    <div className="p-8 text-center text-gray-500">
+                      <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4">
+                        <FileText className="w-8 h-8 text-gray-400" />
+                      </div>
+                      <p className="text-lg font-medium text-gray-600 mb-2">
+                        Niet van toepassing
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        Deze checklist is gemarkeerd als niet relevant voor deze
+                        inspectie
+                      </p>
+                    </div>
+                  ) : (
+                    <ResultTable
+                      tableData={tableData}
+                      className="border-0 shadow-none min-w-full"
+                      showControleCount={true}
+                    />
+                  )}
                 </CardContent>
               </Card>
             </section>

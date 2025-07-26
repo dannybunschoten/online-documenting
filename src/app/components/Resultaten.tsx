@@ -1,15 +1,8 @@
-import { AdditionalData } from "../types";
-import Algemeen from "./Resultaten/Algemeen";
-import Mast from "./Resultaten/Mast";
-import Basisstation from "./Resultaten/Basisstation";
+import AdditionalResults from "./AdditionalResults";
 
-export default function Resultaten({
-  additionalData,
-}: {
-  additionalData: AdditionalData;
-}) {
+export default function Resultaten() {
   return (
-    <article className="max-w-[900px] mx-auto px-4 py-8">
+    <article className="max-w-[900px] mx-auto md:px-4 py-8">
       <div className="flex items-center gap-4 mb-8">
         <div className="w-1.5 bg-aboma-yellow rounded-full h-10 shadow-sm" />
         <div>
@@ -21,11 +14,7 @@ export default function Resultaten({
           </p>
         </div>
       </div>
-      <Algemeen algemeenChecklist={additionalData.algemeenChecklist} />
-      <Mast mastChecklist={additionalData.mastChecklist} />
-      <Basisstation
-        basisstationChecklist={additionalData.basisstationChecklist}
-      />
+      <AdditionalResults />
     </article>
   );
 }
