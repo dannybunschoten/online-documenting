@@ -1,4 +1,4 @@
-import data from "@/data.json";
+import data from "@/additionalData.json";
 import { Checklist } from "@/app/types";
 
 /**
