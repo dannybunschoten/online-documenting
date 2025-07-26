@@ -151,14 +151,14 @@ export default function ResultTable({
                   <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
                     <div
                       className={cn(
-                        "flex w-fit mx-auto items-center justify-center gap-1 sm:gap-2 sm:px-3 py-1 sm:py-2 rounded-lg border",
+                        "flex size-8 sm:w-fit mx-auto items-center justify-center gap-1 sm:gap-2 sm:px-3 py-1 sm:py-2 rounded-lg border",
                         findings > 0
                           ? "bg-amber-50 border-amber-200"
                           : "bg-gray-50 justify-center size-8 border-gray-200",
                       )}
                     >
                       {findings > 0 && (
-                        <AlertTriangle className="size-4 text-amber-500" />
+                        <AlertTriangle className="size-4 text-amber-500 hidden sm:inline" />
                       )}
                       <span
                         className={cn(
@@ -173,14 +173,14 @@ export default function ResultTable({
                   <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
                     <div
                       className={cn(
-                        "flex w-fit mx-auto items-center justify-center gap-1 sm:gap-2 sm:px-3 py-1 sm:py-2 rounded-lg border",
+                        "flex size-8 sm:w-fit mx-auto items-center justify-center gap-1 sm:gap-2 sm:px-3 py-1 sm:py-2 rounded-lg border",
                         pictures > 0
                           ? "bg-blue-50 border-blue-200"
                           : "size-8 justify-center bg-gray-50 border-gray-200",
                       )}
                     >
                       {pictures > 0 && (
-                        <Camera className="size-4 text-blue-500" />
+                        <Camera className="size-4 text-blue-500 hidden sm:inline" />
                       )}
                       <span
                         className={cn(

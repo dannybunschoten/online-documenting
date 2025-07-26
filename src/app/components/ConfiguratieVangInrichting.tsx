@@ -34,7 +34,7 @@ export default function ConfiguratieVangInrichting({
   return (
     <article
       id={titleToId("Configuratie Vanginrichting")}
-      className="max-w-[900px] mx-auto px-4 py-8"
+      className="max-w-[900px] mx-auto md:px-4 py-8"
     >
       <div className="flex items-center gap-4 mb-8">
         <div className="w-1.5 bg-aboma-yellow rounded-full h-10 shadow-sm" />
