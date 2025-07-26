@@ -12,9 +12,10 @@ import ResultTable from "./ResultTable";
 import { CheckResult, OrderData } from "../types";
 import { Badge } from "@/components/ui/badge";
 
-const toExclude = new Set([
-  "ea99e2fc-3672-4e47-8963-8e2e94336940",
-  "11b27201-a54f-4f0b-a039-bb19a1f04895",
+export const toExclude = new Set([
+  "ea99e2fc-3672-4e47-8963-8e2e94336940", // Configuratie Aandrijving
+  "11b27201-a54f-4f0b-a039-bb19a1f04895", // Configuratie Vanginrichting
+  "164d9f4e-99e2-4808-87e5-3c249be48ea2", // Conclusie
 ]);
 
 export default async function AdditionalResults() {

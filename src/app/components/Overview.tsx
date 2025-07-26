@@ -7,6 +7,7 @@ import ConfiguratieAandrijving from "./ConfiguratieAandrijving";
 import { AdditionalData, InspectionData } from "../types";
 import ConfiguratieVangInrichting from "./ConfiguratieVangInrichting";
 import Resultaten from "./Resultaten";
+import { getAdditionalDataTmp } from "@/actions";
 
 export async function Overview({
   data,
@@ -17,6 +18,7 @@ export async function Overview({
   shortages: boolean;
   additionalData: AdditionalData;
 }) {
+  const resultChecks = await getAdditionalDataTmp();
   return (
     <div className="bg-white lg:rounded-2xl shadow-lg lg:border border-slate-200 lg:p-8 px-4 py-6 space-y-6">
       <div className="flex items-center justify-between pb-6 border-b border-slate-200">
@@ -80,7 +82,7 @@ export async function Overview({
         />
       </div>
 
-      <TableOfContents />
+      <TableOfContents additionalData={resultChecks} />
 
       <ConfiguratieAandrijving data={data} additionalData={additionalData} />
 

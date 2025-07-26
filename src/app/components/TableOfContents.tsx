@@ -2,34 +2,49 @@
 
 import { cn, titleToId } from "@/lib/utils";
 import { ChevronRight, FileText, Layers } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { CheckResult } from "../types";
+import { toExclude } from "./AdditionalResults";
 
 const navigationEntries = [
   { title: "Configuratie Aandrijving", children: [] },
   { title: "Configuratie Vanginrichting", children: [] },
   {
     title: "Resultaten",
-    children: [
-      { title: "0100 - Algemeen", children: [] },
-      { title: "0200 - Mast", children: [] },
-      { title: "0300 - Basisstation (grondkooi)", children: [] },
-      { title: "Bediening in de kooi", children: [] },
-      { title: "0400 - Liftkooi", children: [] },
-      { title: "0500 - Etagehekken met volledige hoogte", children: [] },
-      { title: "0600 - Etagehekken met beperkte hoogte", children: [] },
-      { title: "0700 - Draagkabels / contragewicht kabels", children: [] },
-      { title: "0800 - Hydraulische unit en cilinder", children: [] },
-    ],
+    children: [],
   },
   { title: "Samenvatting", children: [] },
   { title: "Conclusie", children: [] },
-] as const;
+];
 
-export default function TableOfContents() {
+export default function TableOfContents({
+  additionalData,
+}: {
+  additionalData: CheckResult[];
+}) {
   const [activeSection, setActiveSection] = useState<string>("");
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
     new Set(),
   );
+  const sectionsRef = useRef<Record<string, HTMLUListElement | null>>({});
+
+  const titles = additionalData.reduce((acc, checkResult) => {
+    if (!toExclude.has(checkResult.CheckGroup.Id)) {
+      acc.add(checkResult.CheckGroup.Name);
+    }
+    return acc;
+  }, new Set<string>());
+
+  // Create navigation entries with dynamic children for "Resultaten"
+  const dynamicNavigationEntries = navigationEntries.map((entry) => {
+    if (entry.title === "Resultaten") {
+      return {
+        ...entry,
+        children: Array.from(titles).map((title) => ({ title, children: [] })),
+      };
+    }
+    return entry;
+  });
 
   const handleNavigation = (title: string, hasChildren: boolean) => {
     if (hasChildren) {
@@ -81,7 +96,7 @@ export default function TableOfContents() {
 
         <div className="p-6 bg-gradient-to-br from-white via-white to-slate-50/30">
           <ul className="space-y-2">
-            {navigationEntries.map((entry, index) => (
+            {dynamicNavigationEntries.map((entry, index) => (
               <li key={entry.title}>
                 <button
                   onClick={() =>
@@ -149,12 +164,16 @@ export default function TableOfContents() {
 
                 {entry.children.length > 0 && (
                   <ul
-                    className={cn(
-                      "mt-2 ml-12 space-y-1 overflow-hidden transition-all duration-500 ease-in-out",
-                      expandedSections.has(entry.title)
-                        ? "max-h-[500px] opacity-100"
-                        : "max-h-0 opacity-0",
-                    )}
+                    ref={(el) => {
+                      sectionsRef.current[entry.title] = el;
+                    }}
+                    className="mt-2 ml-12 space-y-1 overflow-hidden transition-all duration-500 ease-in-out"
+                    style={{
+                      maxHeight: expandedSections.has(entry.title)
+                        ? `${sectionsRef.current[entry.title]?.scrollHeight || 0}px`
+                        : "0px",
+                      opacity: expandedSections.has(entry.title) ? 1 : 0,
+                    }}
                   >
                     {entry.children.map((childEntry) => (
                       <li key={childEntry.title}>
@@ -186,18 +205,19 @@ export default function TableOfContents() {
           <div className="flex items-center justify-between">
             <p className="text-xs text-muted-foreground">
               Sectie{" "}
-              {navigationEntries.findIndex((e) => e.title === activeSection) +
-                1}{" "}
-              van {navigationEntries.length}
+              {dynamicNavigationEntries.findIndex(
+                (e) => e.title === activeSection,
+              ) + 1}{" "}
+              van {dynamicNavigationEntries.length}
             </p>
             <div className="flex gap-1">
-              {navigationEntries.map((_, idx) => (
+              {dynamicNavigationEntries.map((_, idx) => (
                 <div
                   key={idx}
                   className={cn(
                     "h-1.5 w-8 rounded-full transition-all duration-300",
                     idx <=
-                      navigationEntries.findIndex(
+                      dynamicNavigationEntries.findIndex(
                         (e) => e.title === activeSection,
                       )
                       ? "bg-aboma-yellow"
