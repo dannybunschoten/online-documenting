@@ -7,8 +7,9 @@ import ConfiguratieAandrijving from "./ConfiguratieAandrijving";
 import { AdditionalData, InspectionData } from "../types";
 import ConfiguratieVangInrichting from "./ConfiguratieVangInrichting";
 import Resultaten from "./Resultaten";
+import AdditionalResults from "./AdditionalResults";
 
-export function Overview({
+export async function Overview({
   data,
   shortages,
   additionalData,
@@ -87,6 +88,8 @@ export function Overview({
       <ConfiguratieVangInrichting additionalData={additionalData} />
 
       <Resultaten additionalData={additionalData} />
+
+      <AdditionalResults />
     </div>
   );
 }
