@@ -3,7 +3,7 @@
 import { cn, titleToId } from "@/lib/utils";
 import { ChevronRight, FileText, Layers } from "lucide-react";
 import { useState, useRef } from "react";
-import { CheckResult } from "../types";
+import { CheckResult, OrderData } from "../types";
 import { toExclude } from "./AdditionalResults";
 
 const navigationEntries = [
@@ -19,8 +19,10 @@ const navigationEntries = [
 
 export default function TableOfContents({
   additionalData,
+  orderData,
 }: {
   additionalData: CheckResult[];
+  orderData: OrderData[];
 }) {
   const [activeSection, setActiveSection] = useState<string>("");
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
@@ -30,17 +32,29 @@ export default function TableOfContents({
 
   const titles = additionalData.reduce((acc, checkResult) => {
     if (!toExclude.has(checkResult.CheckGroup.Id)) {
-      acc.add(checkResult.CheckGroup.Name);
+      if (!acc.has(checkResult.CheckGroup.Name)) {
+        const orderInformation = orderData.find(
+          (order) => order.Code === checkResult.CheckGroup.Id,
+        );
+
+        acc.set(checkResult.CheckGroup.Name, {
+          title: checkResult.CheckGroup.Name,
+          order: orderInformation?.SortOrder || "999",
+          prefix: orderInformation?.CheckGroupPrefix || undefined,
+        });
+      }
     }
     return acc;
-  }, new Set<string>());
+  }, new Map<string, { title: string; order: string; prefix?: string }>());
 
-  // Create navigation entries with dynamic children for "Resultaten"
   const dynamicNavigationEntries = navigationEntries.map((entry) => {
     if (entry.title === "Resultaten") {
       return {
         ...entry,
-        children: Array.from(titles).map((title) => ({ title, children: [] })),
+        children: Array.from(titles.values()).map((title) => ({
+          title,
+          children: [],
+        })),
       };
     }
     return entry;
@@ -60,7 +74,7 @@ export default function TableOfContents({
       const element = document.getElementById(elementId);
 
       if (element) {
-        const offset = 80; // Adjust based on your header height
+        const offset = 80;
         const elementPosition =
           element.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = elementPosition - offset;
@@ -126,7 +140,6 @@ export default function TableOfContents({
                     )}
                   </div>
 
-                  {/* Title */}
                   <span
                     className={cn(
                       "flex-1 font-medium transition-colors duration-300",
@@ -176,20 +189,21 @@ export default function TableOfContents({
                     }}
                   >
                     {entry.children.map((childEntry) => (
-                      <li key={childEntry.title}>
+                      <li key={childEntry.title.title}>
                         <button
                           onClick={() =>
-                            handleNavigation(childEntry.title, false)
+                            handleNavigation(childEntry.title.title, false)
                           }
                           className={cn(
                             "w-full text-left px-4 py-2.5 rounded-lg transition-all duration-300 ease-out flex items-center gap-3 group cursor-pointer hover:bg-slate-50 hover:pl-6",
-                            activeSection === childEntry.title && "bg-slate-50",
+                            activeSection === childEntry.title.title &&
+                              "bg-slate-50",
                           )}
                         >
                           <div className="size-1.5 bg-aboma-yellow/60 rounded-full group-hover:bg-aboma-yellow transition-colors duration-300" />
 
                           <span className="text-sm text-slate-600 group-hover:text-aboma-blue transition-colors duration-300">
-                            {childEntry.title}
+                            {childEntry.title.title}
                           </span>
                         </button>
                       </li>
@@ -206,7 +220,11 @@ export default function TableOfContents({
             <p className="text-xs text-muted-foreground">
               Sectie{" "}
               {dynamicNavigationEntries.findIndex(
-                (e) => e.title === activeSection,
+                (e) =>
+                  e.title === activeSection ||
+                  e.children.some(
+                    (subsection) => subsection.title.title === activeSection,
+                  ),
               ) + 1}{" "}
               van {dynamicNavigationEntries.length}
             </p>
@@ -218,7 +236,12 @@ export default function TableOfContents({
                     "h-1.5 w-8 rounded-full transition-all duration-300",
                     idx <=
                       dynamicNavigationEntries.findIndex(
-                        (e) => e.title === activeSection,
+                        (e) =>
+                          e.title === activeSection ||
+                          e.children.some(
+                            (subsection) =>
+                              subsection.title.title === activeSection,
+                          ),
                       )
                       ? "bg-aboma-yellow"
                       : "bg-slate-200",

@@ -81,7 +81,7 @@ export default async function AdditionalResults() {
           return (
             <section
               className="max-w-[900px] mx-auto px-4 mb-12"
-              id={titleToId(title)}
+              id={titleToId(idToOrder[title]?.Name)}
               key={title}
             >
               <Card className="shadow-lg border-0 bg-gradient-to-br from-white to-gray-50/50 overflow-hidden py-0 gap-0">
