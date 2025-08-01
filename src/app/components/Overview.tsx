@@ -4,19 +4,16 @@ import { InfoCard } from "./InfoCard";
 import { Shortages } from "./Shortages";
 import TableOfContents from "./TableOfContents";
 import ConfiguratieAandrijving from "./ConfiguratieAandrijving";
-import { AdditionalData, InspectionData } from "../types";
 import ConfiguratieVangInrichting from "./ConfiguratieVangInrichting";
 import Resultaten from "./Resultaten";
-import { getAdditionalDataTmp, getOrder } from "@/actions";
+import { CheckList, getAdditionalDataTmp, getOrder } from "@/actions";
 
 export async function Overview({
   data,
   shortages,
-  additionalData,
 }: {
-  data: InspectionData;
+  data: CheckList;
   shortages: boolean;
-  additionalData: AdditionalData;
 }) {
   const resultChecks = await getAdditionalDataTmp();
   const orderData = await getOrder();
@@ -31,15 +28,13 @@ export async function Overview({
             </span>
           </div>
           <h1 className="text-2xl md:text-4xl font-bold text-aboma-blue leading-tight">
-            {data.MaterialActivityDescription?.["@DisplayValue"]
-              .split("-")[1]
-              .trim()}
+            {data.title ?? notAvailableString}
           </h1>
         </div>
-        {data.MaterialActivityCode && (
+        {data.checkCode && (
           <div className="text-right">
             <div className="text-4xl md:text-6xl font-bold text-aboma-yellow mb-2">
-              {data.MaterialActivityCode}
+              {data.checkCode}
             </div>
             <div className="text-sm text-slate-500 font-medium">
               Activiteits Code
@@ -52,29 +47,27 @@ export async function Overview({
         <InfoCard
           icon={Calendar}
           label="Inspectie Datum"
-          value={formatDate(data.MaterialStartDate)}
+          value={formatDate(data.startDate)}
         />
         <InfoCard
           icon={User}
           label="Inspecteur"
-          value={data.MaterialEmployeeName || notAvailableString}
+          value={data.employeeName || notAvailableString}
         />
         <InfoCard
           icon={Building2}
           label="Object Type"
-          value={
-            data.MaterialMachineKind?.["@DisplayValue"] || notAvailableString
-          }
+          value={data.machineKind || notAvailableString}
         />
         <InfoCard
           icon={Users}
           label="Klant"
-          value={data.MaterialOwner1 || notAvailableString}
+          value={data.owner || notAvailableString}
         />
         <InfoCard
           icon={Hash}
           label="Order Nummer"
-          value={data.MaterialCustomerOrderNumber || notAvailableString}
+          value={data.customerOrderNumber || notAvailableString}
         />
         <Shortages
           shortages={shortages}

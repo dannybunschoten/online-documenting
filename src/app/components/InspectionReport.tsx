@@ -1,15 +1,11 @@
-import { AdditionalData, InspectionData } from "@/app/types";
 import { Overview } from "./Overview";
+import { CheckList } from "@/actions";
 
 interface InspectionReportProps {
-  data: InspectionData;
-  additionalData: AdditionalData;
+  data: CheckList;
 }
 
-export default function InspectionReport({
-  data,
-  additionalData,
-}: InspectionReportProps) {
+export default function InspectionReport({ data }: InspectionReportProps) {
   if (!data) {
     return (
       <div className="container mx-auto px-4 max-w-[1400px] py-8">
@@ -23,11 +19,7 @@ export default function InspectionReport({
   return (
     <div className="bg-gray-50 min-h-screen font-sans">
       <div className="container mx-auto lg:px-6 max-w-[1400px] lg:py-8">
-        <Overview
-          data={data}
-          shortages={false}
-          additionalData={additionalData}
-        />
+        <Overview data={data} shortages={false} />
       </div>
     </div>
   );

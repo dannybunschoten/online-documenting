@@ -1,13 +1,12 @@
-import { getIndividualCheckResults, getAdditionalData } from "@/actions";
+import { getCheckList } from "@/actions";
 import InspectionReport from "./components/InspectionReport";
 
 export default async function Home() {
-  const data = await getIndividualCheckResults();
-  const additionalData = await getAdditionalData();
-  return (
-    <InspectionReport
-      data={data.value[0]?.Data?.Main}
-      additionalData={additionalData}
-    />
+  const data = await getCheckList("CE7D28A8-520C-45E8-A13A-BF7B6794FA0F");
+
+  return data == null ? (
+    <div>No inspection could be found</div>
+  ) : (
+    <InspectionReport data={data} />
   );
 }

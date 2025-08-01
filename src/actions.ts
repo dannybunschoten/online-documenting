@@ -4,7 +4,7 @@ import {
   AdditionalData,
   CheckGroupData,
   CheckResult,
-  ExtentedCheckResult,
+  ExtendedCheckResult,
   FormValue,
   OrderData,
   StaticCheckData,
@@ -81,9 +81,24 @@ export async function getStaticCheckGroupData(): Promise<
   return staticCheckGroupData.value.Data;
 }
 
-export async function getCheckList(
-  formId: string,
-): Promise<{ checks: CheckResult[] } & CheckGroupData> {
+export interface CheckList {
+  title?: string;
+  checkCode?: string;
+  startDate?: string;
+  employeeName?: string;
+  machineKind?: string;
+  owner?: string;
+  customerOrderNumber?: string;
+  checks: {
+    checks: ExtendedCheckResult[];
+    prefix: string | null;
+    sortOrder: string;
+    title: string;
+  }[];
+}
+
+export async function getCheckList(formId: string): Promise<CheckList | null> {
+  const document = await getFormData(formId);
   const checks = await getIndividualCheckResults(formId);
   const staticCheckData = await getStaticCheckData();
   const staticCheckGroupData = await getStaticCheckGroupData();
@@ -112,7 +127,7 @@ export async function getCheckList(
     }
 
     return acc;
-  }, new Map<string, ExtentedCheckResult[]>());
+  }, new Map<string, ExtendedCheckResult[]>());
 
   checksByGroup.forEach((checkGroup) =>
     checkGroup.sort((a, b) => a.sortOrder.localeCompare(b.sortOrder)),
@@ -124,19 +139,37 @@ export async function getCheckList(
     return aOrder.localeCompare(bOrder);
   });
 
-  return sortedCheckGroups.map(([checkGroupId, checkByGroup]) => {
-    const checkGroupInformation = checkGroupIdToData.get(checkGroupId)!;
-    return {
-      ...checkGroupInformation,
-      checks: checkByGroup,
-    };
-  });
+  const extendedCheckGroups = sortedCheckGroups.map(
+    ([checkGroupId, checkByGroup]) => {
+      const checkGroupInformation = checkGroupIdToData.get(checkGroupId)!;
+      return {
+        ...checkGroupInformation,
+        checks: checkByGroup,
+      };
+    },
+  );
+
+  return {
+    title:
+      document?.Data.Main.MaterialActivityDescription?.["@DisplayValue"]?.split(
+        "-",
+      )[0],
+    checkCode: document?.Data.Main.MaterialActivityCode ?? undefined,
+    startDate: document?.Data.Main.MaterialStartDate ?? undefined,
+    employeeName: document?.Data.Main.MaterialEmployeeName ?? undefined,
+    machineKind:
+      document?.Data.Main.MaterialMachineKind?.["@DisplayValue"] ?? undefined,
+    owner: document?.Data.Main.MaterialOwner1 ?? undefined,
+    customerOrderNumber:
+      document?.Data.Main.MaterialCustomerOrderNumber ?? undefined,
+    checks: extendedCheckGroups,
+  };
 }
 
 function extendCheckResult(
   staticCheckData: StaticCheckData[],
   checkResult: CheckResult,
-): ExtentedCheckResult {
+): ExtendedCheckResult {
   const staticData = staticCheckData.find(
     (staticCheck) =>
       staticCheck.CheckCode === checkResult.Check.Id &&

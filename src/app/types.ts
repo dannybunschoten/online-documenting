@@ -372,7 +372,7 @@ export interface StaticCheckGroupData {
   SortOrder: string | null;
 }
 
-export interface ExtentedCheckResult extends CheckResult {
+export interface ExtendedCheckResult extends CheckResult {
   prefix: string | null;
   sortOrder: string;
 }

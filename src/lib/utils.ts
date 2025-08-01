@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export const notAvailableString = "-";
 
-export function formatDate(dateString: string | null) {
+export function formatDate(dateString?: string) {
   return dateString
     ? new Date(dateString).toLocaleDateString("nl-NL", {
         day: "numeric",
