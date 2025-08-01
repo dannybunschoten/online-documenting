@@ -1,8 +1,8 @@
-import { getData, getAdditionalData } from "@/actions";
+import { getIndividualCheckResults, getAdditionalData } from "@/actions";
 import InspectionReport from "./components/InspectionReport";
 
 export default async function Home() {
-  const data = await getData();
+  const data = await getIndividualCheckResults();
   const additionalData = await getAdditionalData();
   return (
     <InspectionReport
