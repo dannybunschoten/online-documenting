@@ -3,8 +3,8 @@
 import { cn, titleToId } from "@/lib/utils";
 import { ChevronRight, FileText, Layers } from "lucide-react";
 import { useState, useRef } from "react";
-import { CheckResult, OrderData } from "../types";
 import { toExclude } from "./AdditionalResults";
+import { CheckList } from "@/actions";
 
 const navigationEntries = [
   { title: "Configuratie Aandrijving", children: [] },
@@ -17,42 +17,23 @@ const navigationEntries = [
   { title: "Conclusie", children: [] },
 ];
 
-export default function TableOfContents({
-  additionalData,
-  orderData,
-}: {
-  additionalData: CheckResult[];
-  orderData: OrderData[];
-}) {
+export default function TableOfContents({ data }: { data: CheckList }) {
   const [activeSection, setActiveSection] = useState<string>("");
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
     new Set(),
   );
   const sectionsRef = useRef<Record<string, HTMLUListElement | null>>({});
 
-  const titles = additionalData.reduce((acc, checkResult) => {
-    if (!toExclude.has(checkResult.CheckGroup.Id)) {
-      if (!acc.has(checkResult.CheckGroup.Name)) {
-        const orderInformation = orderData.find(
-          (order) => order.Code === checkResult.CheckGroup.Id,
-        );
-
-        acc.set(checkResult.CheckGroup.Name, {
-          title: checkResult.CheckGroup.Name,
-          order: orderInformation?.SortOrder || "999",
-          prefix: orderInformation?.CheckGroupPrefix || undefined,
-        });
-      }
-    }
-    return acc;
-  }, new Map<string, { title: string; order: string; prefix?: string }>());
+  const resultTitles = data.checks.filter(
+    (checkGroup) => !toExclude.has(checkGroup.id),
+  );
 
   const dynamicNavigationEntries = navigationEntries.map((entry) => {
     if (entry.title === "Resultaten") {
       return {
         ...entry,
-        children: Array.from(titles.values()).map((title) => ({
-          title,
+        children: resultTitles.map((result) => ({
+          title: result.title,
           children: [],
         })),
       };
@@ -189,21 +170,20 @@ export default function TableOfContents({
                     }}
                   >
                     {entry.children.map((childEntry) => (
-                      <li key={childEntry.title.title}>
+                      <li key={childEntry.title}>
                         <button
                           onClick={() =>
-                            handleNavigation(childEntry.title.title, false)
+                            handleNavigation(childEntry.title, false)
                           }
                           className={cn(
                             "w-full text-left px-4 py-2.5 rounded-lg transition-all duration-300 ease-out flex items-center gap-3 group cursor-pointer hover:bg-slate-50 hover:pl-6",
-                            activeSection === childEntry.title.title &&
-                              "bg-slate-50",
+                            activeSection === childEntry.title && "bg-slate-50",
                           )}
                         >
                           <div className="size-1.5 bg-aboma-yellow/60 rounded-full group-hover:bg-aboma-yellow transition-colors duration-300" />
 
                           <span className="text-sm text-slate-600 group-hover:text-aboma-blue transition-colors duration-300">
-                            {childEntry.title.title}
+                            {childEntry.title}
                           </span>
                         </button>
                       </li>
@@ -223,7 +203,7 @@ export default function TableOfContents({
                 (e) =>
                   e.title === activeSection ||
                   e.children.some(
-                    (subsection) => subsection.title.title === activeSection,
+                    (subsection) => subsection.title === activeSection,
                   ),
               ) + 1}{" "}
               van {dynamicNavigationEntries.length}
@@ -239,8 +219,7 @@ export default function TableOfContents({
                         (e) =>
                           e.title === activeSection ||
                           e.children.some(
-                            (subsection) =>
-                              subsection.title.title === activeSection,
+                            (subsection) => subsection.title === activeSection,
                           ),
                       )
                       ? "bg-aboma-yellow"

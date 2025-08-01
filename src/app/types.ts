@@ -378,6 +378,15 @@ export interface ExtendedCheckResult extends CheckResult {
 }
 
 export interface CheckGroupData {
+  id: string;
+  prefix: string | null;
+  sortOrder: string;
+  title: string;
+}
+
+export interface CheckGroup {
+  checks: ExtendedCheckResult[];
+  id: string;
   prefix: string | null;
   sortOrder: string;
   title: string;

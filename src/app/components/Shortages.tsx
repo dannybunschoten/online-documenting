@@ -1,15 +1,22 @@
 import { cn } from "@/lib/utils";
 import { Check, X } from "lucide-react";
+import { CheckGroup } from "../types";
 
 export function Shortages({
-  shortages,
-  stickerNumber,
+  conclusionData,
   className,
 }: {
-  shortages: boolean;
-  stickerNumber?: string;
+  conclusionData?: CheckGroup;
   className?: string;
 }) {
+  const shortages =
+    conclusionData?.checks.find(
+      (check) => check.Check.Id === "58736c8f-95f9-447f-81e1-0e20b1a0f15a",
+    )?.ResultValues[0].Value !== "07f560ea-eaa4-4e1c-bfed-8bd215e19b8a";
+  const stickerNumber = conclusionData?.checks.find(
+    (check) => check.Check.Id === "a17140b6-761c-4504-8836-0bd5a1c756c5",
+  )?.ResultValues[0].Value;
+
   return (
     <div
       className={cn(

@@ -2,7 +2,7 @@ import { Overview } from "./Overview";
 import { CheckList } from "@/actions";
 
 interface InspectionReportProps {
-  data: CheckList;
+  data: CheckList | null;
 }
 
 export default function InspectionReport({ data }: InspectionReportProps) {
@@ -19,7 +19,7 @@ export default function InspectionReport({ data }: InspectionReportProps) {
   return (
     <div className="bg-gray-50 min-h-screen font-sans">
       <div className="container mx-auto lg:px-6 max-w-[1400px] lg:py-8">
-        <Overview data={data} shortages={false} />
+        <Overview data={data} />
       </div>
     </div>
   );

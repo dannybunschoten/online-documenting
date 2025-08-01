@@ -17,7 +17,10 @@ export function formatDate(dateString?: string) {
     : "onbekend";
 }
 
-export function formatKg(toFormat: string) {
+export function formatKg(toFormat?: string) {
+  if (toFormat == null) {
+    return notAvailableString;
+  }
   const number = parseFloat(toFormat);
   if (isNaN(number)) {
     return toFormat + " kg";
@@ -29,7 +32,11 @@ export function formatKg(toFormat: string) {
   }).format(number);
 }
 
-export function formatMeters(toFormat: string) {
+export function formatMeters(toFormat?: string) {
+  if (toFormat == null) {
+    return notAvailableString;
+  }
+
   const number = parseFloat(toFormat);
   if (isNaN(number)) {
     return toFormat + " meters";

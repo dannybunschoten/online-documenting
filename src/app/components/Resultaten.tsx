@@ -1,6 +1,7 @@
+import { CheckList } from "@/actions";
 import AdditionalResults from "./AdditionalResults";
 
-export default function Resultaten() {
+export default function Resultaten({ data }: { data: CheckList }) {
   return (
     <article className="max-w-[900px] mx-auto md:px-4 py-8">
       <div className="flex items-center gap-4 mb-8">
@@ -14,7 +15,7 @@ export default function Resultaten() {
           </p>
         </div>
       </div>
-      <AdditionalResults />
+      <AdditionalResults data={data} />
     </article>
   );
 }

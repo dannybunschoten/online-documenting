@@ -10,7 +10,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { Check, Minus, X, Camera, AlertTriangle } from "lucide-react";
-import { Checklist } from "../types";
+import { ExtendedCheckResult } from "../types";
 
 const statusToConfig = new Map([
   [
@@ -48,7 +48,7 @@ export default function ResultTable({
   showControleCount = false,
 }: {
   className?: string;
-  tableData: Checklist[];
+  tableData: ExtendedCheckResult[];
   showControleCount?: boolean;
 }) {
   return (
@@ -60,28 +60,39 @@ export default function ResultTable({
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 bg-green-500 rounded-full shadow-sm"></div>
                 <span className="font-medium">
-                  {tableData.filter((item) => item.status === "In orde").length}{" "}
+                  {
+                    tableData.filter(
+                      (item) => item.ResultValues[0].DisplayText === "In orde",
+                    ).length
+                  }{" "}
                   geslaagd
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 bg-gray-400 rounded-full shadow-sm"></div>
                 <span className="font-medium">
-                  {tableData.filter((item) => item.status === "N.v.t.").length}{" "}
+                  {
+                    tableData.filter(
+                      (item) => item.ResultValues[0].DisplayText === "N.v.t.",
+                    ).length
+                  }{" "}
                   overgeslagen
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <AlertTriangle className="w-5 h-5 text-amber-500" />
                 <span className="font-medium">
-                  {tableData.reduce((sum, item) => sum + item.findings, 0)}{" "}
+                  {tableData.reduce(
+                    (sum, check) => sum + check.Actions.length,
+                    0,
+                  )}{" "}
                   bevindingen
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <Camera className="w-5 h-5 text-blue-500" />
                 <span className="font-medium">
-                  {tableData.reduce((sum, item) => sum + item.pictures, 0)}{" "}
+                  {tableData.reduce((sum, item) => sum + item.Photos.length, 0)}{" "}
                   foto&apos;s
                 </span>
               </div>
@@ -105,97 +116,100 @@ export default function ResultTable({
           </TableRow>
         </TableHeader>
         <TableBody>
-          {tableData.map(
-            ({ prefix, question, status, findings, pictures }, index) => {
-              const statusConfig = statusToConfig.get(status);
-              return (
-                <TableRow
-                  key={`${prefix}-${question}`}
-                  className={cn(
-                    "border-b border-gray-100 hover:bg-gray-50/50 transition-colors duration-200",
-                    index === tableData.length - 1 && "border-b-0",
-                  )}
-                >
-                  <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-                      <Badge
-                        variant="default"
-                        className="bg-aboma-blue hover:bg-aboma-blue/90 text-white min-w-[3rem] justify-center font-medium shadow-sm transition-colors duration-200 self-start sm:self-auto text-xs"
-                      >
-                        {prefix}
-                      </Badge>
-                      <span className="text-xs sm:text-sm font-medium text-gray-900 leading-relaxed break-words">
-                        {question}
-                      </span>
-                    </div>
-                  </TableCell>
-                  <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
-                    <div
+          {tableData.map((check, index) => {
+            const status = check.ResultValues[0].DisplayText || "N.v.t.";
+            const statusConfig = statusToConfig.get(status);
+            return (
+              <TableRow
+                key={`${check.prefix}-${check.Check.Text}`}
+                className={cn(
+                  "border-b border-gray-100 hover:bg-gray-50/50 transition-colors duration-200",
+                  index === tableData.length - 1 && "border-b-0",
+                )}
+              >
+                <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+                    <Badge
+                      variant="default"
+                      className="bg-aboma-blue hover:bg-aboma-blue/90 text-white min-w-[3rem] justify-center font-medium shadow-sm transition-colors duration-200 self-start sm:self-auto text-xs"
+                    >
+                      {check.prefix}
+                    </Badge>
+                    <span className="text-xs sm:text-sm font-medium text-gray-900 leading-relaxed break-words">
+                      {check.Check.Text}
+                    </span>
+                  </div>
+                </TableCell>
+                <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
+                  <div
+                    className={cn(
+                      "flex mx-auto w-fit items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-2 rounded-lg border transition-all duration-200",
+                      statusConfig?.bgColor,
+                      statusConfig?.borderColor,
+                    )}
+                  >
+                    {statusConfig?.icon}
+                    <span
                       className={cn(
-                        "flex mx-auto w-fit items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-2 rounded-lg border transition-all duration-200",
-                        statusConfig?.bgColor,
-                        statusConfig?.borderColor,
+                        "text-xs sm:text-sm font-medium hidden sm:inline",
+                        statusConfig?.textColor,
                       )}
                     >
-                      {statusConfig?.icon}
-                      <span
-                        className={cn(
-                          "text-xs sm:text-sm font-medium hidden sm:inline",
-                          statusConfig?.textColor,
-                        )}
-                      >
-                        {status}
-                      </span>
-                    </div>
-                  </TableCell>
-                  <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
-                    <div
+                      {status}
+                    </span>
+                  </div>
+                </TableCell>
+                <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
+                  <div
+                    className={cn(
+                      "flex size-8 sm:w-fit mx-auto items-center justify-center gap-1 sm:gap-2 sm:px-3 py-1 sm:py-2 rounded-lg border",
+                      check.Actions.length > 0
+                        ? "bg-amber-50 border-amber-200"
+                        : "bg-gray-50 justify-center size-8 border-gray-200",
+                    )}
+                  >
+                    {check.Actions.length > 0 && (
+                      <AlertTriangle className="size-4 text-amber-500 hidden sm:inline" />
+                    )}
+                    <span
                       className={cn(
-                        "flex size-8 sm:w-fit mx-auto items-center justify-center gap-1 sm:gap-2 sm:px-3 py-1 sm:py-2 rounded-lg border",
-                        findings > 0
-                          ? "bg-amber-50 border-amber-200"
-                          : "bg-gray-50 justify-center size-8 border-gray-200",
+                        "text-xs sm:text-sm font-medium",
+                        check.Actions.length > 0
+                          ? "text-amber-700"
+                          : "text-gray-600",
                       )}
                     >
-                      {findings > 0 && (
-                        <AlertTriangle className="size-4 text-amber-500 hidden sm:inline" />
-                      )}
-                      <span
-                        className={cn(
-                          "text-xs sm:text-sm font-medium",
-                          findings > 0 ? "text-amber-700" : "text-gray-600",
-                        )}
-                      >
-                        {findings}
-                      </span>
-                    </div>
-                  </TableCell>
-                  <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
-                    <div
+                      {check.Actions.length}
+                    </span>
+                  </div>
+                </TableCell>
+                <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
+                  <div
+                    className={cn(
+                      "flex size-8 sm:w-fit mx-auto items-center justify-center gap-1 sm:gap-2 sm:px-3 py-1 sm:py-2 rounded-lg border",
+                      check.Photos.length > 0
+                        ? "bg-blue-50 border-blue-200"
+                        : "size-8 justify-center bg-gray-50 border-gray-200",
+                    )}
+                  >
+                    {check.Photos.length > 0 && (
+                      <Camera className="size-4 text-blue-500 hidden sm:inline" />
+                    )}
+                    <span
                       className={cn(
-                        "flex size-8 sm:w-fit mx-auto items-center justify-center gap-1 sm:gap-2 sm:px-3 py-1 sm:py-2 rounded-lg border",
-                        pictures > 0
-                          ? "bg-blue-50 border-blue-200"
-                          : "size-8 justify-center bg-gray-50 border-gray-200",
+                        "text-xs sm:text-sm font-medium",
+                        check.Photos.length > 0
+                          ? "text-blue-700"
+                          : "text-gray-600",
                       )}
                     >
-                      {pictures > 0 && (
-                        <Camera className="size-4 text-blue-500 hidden sm:inline" />
-                      )}
-                      <span
-                        className={cn(
-                          "text-xs sm:text-sm font-medium",
-                          pictures > 0 ? "text-blue-700" : "text-gray-600",
-                        )}
-                      >
-                        {pictures}
-                      </span>
-                    </div>
-                  </TableCell>
-                </TableRow>
-              );
-            },
-          )}
+                      {check.Photos.length}
+                    </span>
+                  </div>
+                </TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </div>

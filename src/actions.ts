@@ -1,29 +1,17 @@
 "use server";
 
 import {
-  AdditionalData,
+  CheckGroup,
   CheckGroupData,
   CheckResult,
   ExtendedCheckResult,
   FormValue,
-  OrderData,
   StaticCheckData,
   StaticCheckGroupData,
 } from "./app/types";
 import { notAvailableString } from "./lib/utils";
-import {
-  getAlgemeenChecklist,
-  getMastChecklist,
-  getBasisstationChecklist,
-} from "./lib/checklistUtils";
 import clientPromise from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
-
-const checkGroupsToExclude = new Set([
-  "ea99e2fc-3672-4e47-8963-8e2e94336940", // Configuratie Aandrijving
-  "11b27201-a54f-4f0b-a039-bb19a1f04895", // Configuratie Vanginrichting
-  "164d9f4e-99e2-4808-87e5-3c249be48ea2", // Conclusie
-]);
 
 export async function getIndividualCheckResults(
   formId: string,
@@ -89,12 +77,11 @@ export interface CheckList {
   machineKind?: string;
   owner?: string;
   customerOrderNumber?: string;
-  checks: {
-    checks: ExtendedCheckResult[];
-    prefix: string | null;
-    sortOrder: string;
-    title: string;
-  }[];
+  manufacturer?: string;
+  modelType?: string;
+  serialNumber?: string;
+  buildYear?: string;
+  checks: CheckGroup[];
 }
 
 export async function getCheckList(formId: string): Promise<CheckList | null> {
@@ -162,6 +149,10 @@ export async function getCheckList(formId: string): Promise<CheckList | null> {
     owner: document?.Data.Main.MaterialOwner1 ?? undefined,
     customerOrderNumber:
       document?.Data.Main.MaterialCustomerOrderNumber ?? undefined,
+    manufacturer: document?.Data.Main.MaterialManufacturer ?? undefined,
+    modelType: document?.Data.Main.MaterialTypeCode ?? undefined,
+    serialNumber: document?.Data.Main.MaterialSerialNumber ?? undefined,
+    buildYear: document?.Data.Main.MaterialYear ?? undefined,
     checks: extendedCheckGroups,
   };
 }
@@ -186,225 +177,24 @@ function extendCheckResult(
 function findCheckGroupData(
   staticCheckGroupData: StaticCheckGroupData[],
   checkGroupId: string,
-): { prefix: string | null; sortOrder: string; title: string } {
+): { id: string; prefix: string | null; sortOrder: string; title: string } {
   const checkGroupOrder = staticCheckGroupData.find(
     (staticCheckGroup) => staticCheckGroup.Code === checkGroupId,
   );
 
   if (checkGroupOrder == null) {
-    return { prefix: null, sortOrder: "999", title: notAvailableString };
+    return {
+      id: checkGroupId,
+      prefix: null,
+      sortOrder: "999",
+      title: notAvailableString,
+    };
   }
 
   return {
+    id: checkGroupId,
     prefix: checkGroupOrder.CheckGroupPrefix,
     sortOrder: checkGroupOrder.SortOrder || "999",
     title: checkGroupOrder.Name || notAvailableString,
   };
-}
-
-export async function getAdditionalData(): Promise<AdditionalData> {
-  return {
-    stickerNumber: getStickerNumber(),
-    endDate: getEndDate(),
-    maxWeight: getMaxWeight(),
-    maxFloorHeight: getMaxFloorHeight(),
-    stoppingPlaces: getStoppingPlaces(),
-    anchorage: getAnchorage(),
-    specialVersion: getSpecialVersion(),
-    mastVersion: getMastVersion(),
-    setupDescription: getSetupDescription(),
-    setupLocation: getSetupLocation(),
-    catchingDeviceManufacturer: getCatchingDeviceManufacturer(),
-    catchingDeviceModel: getCatchingDeviceModel(),
-    catchingDeviceFactoryNumber: getCatchingDeviceFactoryNumber(),
-    catchingDeviceYearOfConstruction: getCatchingDeviceYearOfConstruction(),
-    catchingDeviceEndDate: getCatchingDeviceEndDate(),
-    catchingDeviceMaxWeight: getCatchingDeviceMaxWeight(),
-    catchingDeviceMaxFloorHeight: getCatchingDeviceMaxFloorHeight(),
-    catchingDeviceStoppingPlaces: getCatchingDeviceStoppingPlaces(),
-    catchingDeviceSetupDescription: getCatchingDeviceSetupDescription(),
-    algemeenChecklist: getAlgemeenChecklist(),
-    mastChecklist: getMastChecklist(),
-    basisstationChecklist: getBasisstationChecklist(),
-  };
-}
-
-function getStickerNumber() {
-  return additionalData.filter(
-    (check) => check?.Check?.Text === "Stickernummer",
-  )[0]?.ResultValues[0].Value;
-}
-
-function getEndDate() {
-  return additionalData.filter(
-    (check) =>
-      check?.Check?.Text === "Inzet tot" &&
-      check?.CheckGroup?.Name === "Configuratie aandrijving",
-  )[0].ResultValues[0].Value;
-}
-
-function getMaxWeight() {
-  return additionalData.filter(
-    (check) =>
-      check?.Check?.Text === "Max. werklast" &&
-      check?.CheckGroup?.Name === "Configuratie aandrijving",
-  )[0].ResultValues[0].Value;
-}
-
-function getMaxFloorHeight() {
-  return additionalData.filter(
-    (check) =>
-      check?.Check?.Text === "Max. vloerhoogte in deze opstelling" &&
-      check?.CheckGroup?.Name === "Configuratie aandrijving",
-  )[0].ResultValues[0].Value;
-}
-
-function getStoppingPlaces() {
-  return additionalData.filter(
-    (check) =>
-      check?.Check?.Text === "Aantal stopplaatsen (incl. basisstation)" &&
-      check?.CheckGroup?.Name === "Configuratie aandrijving",
-  )[0].ResultValues[0].Value;
-}
-
-function getAnchorage() {
-  return additionalData.filter(
-    (check) =>
-      check?.Check?.Text === "Aantal verankeringen" &&
-      check?.CheckGroup?.Name === "Configuratie aandrijving",
-  )[0].ResultValues[0].Value;
-}
-
-function getSpecialVersion() {
-  return additionalData.filter(
-    (check) =>
-      check?.Check?.Text === "Bijzondere uitvoering" &&
-      check?.CheckGroup?.Name === "Configuratie aandrijving",
-  )[0].ResultValues[0].Value;
-}
-
-function getMastVersion() {
-  return additionalData.filter(
-    (check) =>
-      check?.Check?.Text === "Mast \/ toren uitvoering" &&
-      check?.CheckGroup?.Name === "Configuratie aandrijving",
-  )[0].ResultValues[0].Value;
-}
-
-function getSetupDescription() {
-  return additionalData.filter(
-    (check) =>
-      check?.Check?.Text === "Omschrijving van de opstelling" &&
-      check?.CheckGroup?.Name === "Configuratie aandrijving",
-  )[0].ResultValues[0].DisplayText;
-}
-
-function getSetupLocation() {
-  return additionalData.filter(
-    (check) =>
-      check?.Check?.Text === "Locatie van de opstelling" &&
-      check?.CheckGroup?.Name === "Configuratie aandrijving",
-  )[0].ResultValues[0].Value;
-}
-
-function getCatchingDeviceManufacturer() {
-  return (
-    additionalData.find(
-      (check) =>
-        check.Check.Text === "Fabrikant" &&
-        check.CheckGroup.Name === "Configuratie vanginrichting",
-    )?.ResultValues[0].Value || notAvailableString
-  );
-}
-
-function getCatchingDeviceModel() {
-  return (
-    additionalData.find(
-      (check) =>
-        check.Check.Text === "Model / type" &&
-        check.CheckGroup.Name === "Configuratie vanginrichting",
-    )?.ResultValues[0].Value || notAvailableString
-  );
-}
-
-function getCatchingDeviceFactoryNumber() {
-  return (
-    additionalData.find(
-      (check) =>
-        check.Check.Text === "Fabrieksnummer" &&
-        check.CheckGroup.Name === "Configuratie vanginrichting",
-    )?.ResultValues[0].Value || notAvailableString
-  );
-}
-
-function getCatchingDeviceYearOfConstruction() {
-  return (
-    additionalData.find(
-      (check) =>
-        check.Check.Text === "Bouwjaar" &&
-        check.CheckGroup.Name === "Configuratie vanginrichting",
-    )?.ResultValues[0].Value || notAvailableString
-  );
-}
-
-function getCatchingDeviceEndDate() {
-  return (
-    additionalData.find(
-      (check) =>
-        check.Check.Text === "Inzet tot" &&
-        check.CheckGroup.Name === "Configuratie vanginrichting",
-    )?.ResultValues[0].Value || notAvailableString
-  );
-}
-
-function getCatchingDeviceMaxWeight() {
-  return (
-    additionalData.find(
-      (check) =>
-        check.Check.Text === "Max. werklast" &&
-        check.CheckGroup.Name === "Configuratie vanginrichting",
-    )?.ResultValues[0].Value || notAvailableString
-  );
-}
-
-function getCatchingDeviceMaxFloorHeight() {
-  return (
-    additionalData.find(
-      (check) =>
-        check.Check.Text === "Max. vloerhoogte in deze opstelling" &&
-        check.CheckGroup.Name === "Configuratie vanginrichting",
-    )?.ResultValues[0].Value || notAvailableString
-  );
-}
-
-function getCatchingDeviceStoppingPlaces() {
-  return (
-    additionalData.find(
-      (check) =>
-        check.Check.Text === "Aantal stopplaatsen (incl. basisstation)" &&
-        check.CheckGroup.Name === "Configuratie vanginrichting",
-    )?.ResultValues[0].Value || notAvailableString
-  );
-}
-
-function getCatchingDeviceSetupDescription() {
-  return (
-    additionalData.find(
-      (check) =>
-        check.Check.Text === "Omschrijving van de opstelling" &&
-        check.CheckGroup.Name === "Configuratie vanginrichting",
-    )?.ResultValues[0].DisplayText || notAvailableString
-  );
-}
-
-export async function getOrder(): Promise<OrderData[]> {
-  return orderData.Data;
-}
-
-export async function getAdditionalDataTmp(): Promise<CheckResult[]> {
-  return additionalData;
-}
-
-export async function getCheckPrefixTmp() {
-  return checkData;
 }
