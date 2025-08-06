@@ -6,10 +6,10 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { CheckList } from "@/actions";
 import { FileText } from "lucide-react";
 import ResultTable from "./ResultTable";
 import { Badge } from "@/components/ui/badge";
+import { CheckList } from "../types";
 
 export const toExclude = new Set([
   "ea99e2fc-3672-4e47-8963-8e2e94336940", // Configuratie Aandrijving
@@ -18,9 +18,12 @@ export const toExclude = new Set([
 ]);
 
 export default async function AdditionalResults({ data }: { data: CheckList }) {
+  const checkListsToShow = data.checks.filter(
+    (checkList) => !toExclude.has(checkList.checks[0].CheckGroup.Id),
+  );
   return (
     <div>
-      {data.checks.map((checkgroup) => {
+      {checkListsToShow.map((checkgroup) => {
         const isCheckListSkipped =
           checkgroup.checks.length === 1 &&
           checkgroup.checks[0].Check.Id === "NA";

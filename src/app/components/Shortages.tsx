@@ -1,12 +1,14 @@
 import { cn } from "@/lib/utils";
 import { Check, X } from "lucide-react";
-import { CheckGroup } from "../types";
+import { CheckDataOrdered } from "../types";
 
 export function Shortages({
   conclusionData,
   className,
 }: {
-  conclusionData?: CheckGroup;
+  conclusionData?: {
+    checks: CheckDataOrdered[];
+  };
   className?: string;
 }) {
   const shortages =

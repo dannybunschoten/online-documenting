@@ -1,200 +1,141 @@
 "use server";
 
 import {
-  CheckGroup,
-  CheckGroupData,
-  CheckResult,
-  ExtendedCheckResult,
-  FormValue,
-  StaticCheckData,
-  StaticCheckGroupData,
+  DataSnapshot,
+  DataModel,
+  CheckDataOrdered,
+  CheckList,
 } from "./app/types";
-import { notAvailableString } from "./lib/utils";
 import clientPromise from "@/lib/mongodb";
-import { ObjectId } from "mongodb";
+import { notAvailableString } from "./lib/utils";
 
-export async function getIndividualCheckResults(
-  formId: string,
-): Promise<CheckResult[] | null> {
+// TODO uncomment the filter logic
+async function getDataSnapshot(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  id: string,
+): Promise<DataSnapshot | null> {
   const client = await clientPromise;
   const db = client.db("online-documenting");
-  const checkData = await db
-    .collection("checkData")
-    .findOne({ _id: new ObjectId(formId) });
-  if (checkData == null) {
-    return null;
-  }
+  const dataSnapshot = await db
+    .collection("data-snapshot")
+    .findOne<DataSnapshot>();
+  // const dataSnapshot = await db
+  //   .collection("data-snapshot")
+  //   .findOne<DataSnapshot>({
+  //     _id: new ObjectId(id),
+  //   });
 
-  return checkData.value;
+  return dataSnapshot;
 }
 
-export async function getFormData(formId: string): Promise<FormValue | null> {
+async function getDataModel(version: number): Promise<DataModel | null> {
   const client = await clientPromise;
   const db = client.db("online-documenting");
-  const formData = await db
-    .collection("documents")
-    .findOne({ _id: new ObjectId(formId) });
-  if (formData == null) {
-    return null;
-  }
+  const dataModel = await db
+    .collection("data-models")
+    .findOne<DataModel>({ VERSION: version });
 
-  return formData.value[0];
-}
-
-export async function getStaticCheckData(): Promise<StaticCheckData[] | null> {
-  const client = await clientPromise;
-  const db = client.db("online-documenting");
-  const staticCheckData = await db
-    .collection("staticCheckData")
-    .findOne({ _id: new ObjectId("staticCheckInformation") });
-  if (staticCheckData == null) {
-    return null;
-  }
-
-  return staticCheckData.value.Data;
-}
-
-export async function getStaticCheckGroupData(): Promise<
-  StaticCheckGroupData[] | null
-> {
-  const client = await clientPromise;
-  const db = client.db("online-documenting");
-  const staticCheckGroupData = await db
-    .collection("staticCheckGroupData")
-    .findOne({ _id: new ObjectId("staticCheckGroupInformation") });
-  if (staticCheckGroupData == null) {
-    return null;
-  }
-
-  return staticCheckGroupData.value.Data;
-}
-
-export interface CheckList {
-  title?: string;
-  checkCode?: string;
-  startDate?: string;
-  employeeName?: string;
-  machineKind?: string;
-  owner?: string;
-  customerOrderNumber?: string;
-  manufacturer?: string;
-  modelType?: string;
-  serialNumber?: string;
-  buildYear?: string;
-  checks: CheckGroup[];
+  return dataModel;
 }
 
 export async function getCheckList(formId: string): Promise<CheckList | null> {
-  const document = await getFormData(formId);
-  const checks = await getIndividualCheckResults(formId);
-  const staticCheckData = await getStaticCheckData();
-  const staticCheckGroupData = await getStaticCheckGroupData();
+  const dataSnapshot = await getDataSnapshot(formId);
+  const dataModel = await getDataModel(1);
 
-  if (
-    checks == null ||
-    staticCheckData == null ||
-    staticCheckGroupData == null
-  ) {
+  if (dataSnapshot == null || dataModel == null) {
     return null;
   }
 
-  const checkGroupIdToData = new Map<string, CheckGroupData>();
-
-  const checksByGroup = checks.reduce((acc, check) => {
-    const checkGroupId = check.CheckGroup.Id;
-    const entry = acc.get(checkGroupId);
-    if (entry) {
-      entry.push(extendCheckResult(staticCheckData, check));
-    } else {
-      acc.set(checkGroupId, [extendCheckResult(staticCheckData, check)]);
-      checkGroupIdToData.set(
-        checkGroupId,
-        findCheckGroupData(staticCheckGroupData, checkGroupId),
+  const extendedCheckGroups = dataModel.CHECK_GROUPS.map((group) => {
+    const groupChecks = group.Checks.map((modelCheck) => {
+      const snapshotCheck = dataSnapshot.checks.find(
+        (x) =>
+          x.Check.Id === modelCheck.CheckId &&
+          x.CheckGroup.Id === group.CheckGroupId,
       );
+
+      if (!snapshotCheck) {
+        return null;
+      }
+
+      const enhancedCheck: CheckDataOrdered = {
+        ...snapshotCheck,
+        Check: {
+          ...snapshotCheck.Check,
+          Prefix: modelCheck.Prefix || notAvailableString,
+          Order: modelCheck.Order || "999",
+        },
+      };
+
+      return enhancedCheck;
+    })
+      .filter((check): check is CheckDataOrdered => check !== null)
+      .sort((a, b) => a.Check.Order.localeCompare(b.Check.Order));
+
+    // Only include groups that have at least one check
+    if (groupChecks.length === 0) {
+      return null;
     }
 
-    return acc;
-  }, new Map<string, ExtendedCheckResult[]>());
-
-  checksByGroup.forEach((checkGroup) =>
-    checkGroup.sort((a, b) => a.sortOrder.localeCompare(b.sortOrder)),
-  );
-
-  const sortedCheckGroups = Array.from(checksByGroup).sort(([a], [b]) => {
-    const aOrder = checkGroupIdToData.get(a)?.sortOrder || "999";
-    const bOrder = checkGroupIdToData.get(b)?.sortOrder || "999";
-    return aOrder.localeCompare(bOrder);
-  });
-
-  const extendedCheckGroups = sortedCheckGroups.map(
-    ([checkGroupId, checkByGroup]) => {
-      const checkGroupInformation = checkGroupIdToData.get(checkGroupId)!;
-      return {
-        ...checkGroupInformation,
-        checks: checkByGroup,
-      };
-    },
-  );
+    return {
+      prefix: group.CheckGroupPrefix,
+      sortOrder: group.Order || "999",
+      title: group.Name || notAvailableString,
+      checks: groupChecks,
+    };
+  })
+    .filter((group) => group !== null)
+    .sort((a, b) => a!.sortOrder.localeCompare(b!.sortOrder));
 
   return {
-    title:
-      document?.Data.Main.MaterialActivityDescription?.["@DisplayValue"]?.split(
-        "-",
-      )[0],
-    checkCode: document?.Data.Main.MaterialActivityCode ?? undefined,
-    startDate: document?.Data.Main.MaterialStartDate ?? undefined,
-    employeeName: document?.Data.Main.MaterialEmployeeName ?? undefined,
-    machineKind:
-      document?.Data.Main.MaterialMachineKind?.["@DisplayValue"] ?? undefined,
-    owner: document?.Data.Main.MaterialOwner1 ?? undefined,
-    customerOrderNumber:
-      document?.Data.Main.MaterialCustomerOrderNumber ?? undefined,
-    manufacturer: document?.Data.Main.MaterialManufacturer ?? undefined,
-    modelType: document?.Data.Main.MaterialTypeCode ?? undefined,
-    serialNumber: document?.Data.Main.MaterialSerialNumber ?? undefined,
-    buildYear: document?.Data.Main.MaterialYear ?? undefined,
+    title: findTitle(
+      dataModel,
+      dataSnapshot.ChecklistId,
+      findProperty(dataSnapshot, "SfTaskTypeCode"),
+    ),
+    checkCode: findProperty(dataSnapshot, "ACTIVITYCODE"),
+    startDate: findProperty(dataSnapshot, "STARTDATE"),
+    employeeName: findProperty(dataSnapshot, "EMPLOYEENAME"),
+    machineKind: findProperty(dataSnapshot, "MACHINEKIND"),
+    owner: findProperty(dataSnapshot, "OWNER1"),
+    customerOrderNumber: findProperty(dataSnapshot, "CUSTOMERORDERNUMBER"),
+    manufacturer: findProperty(dataSnapshot, "MANUFACTURER"),
+    modelType: findProperty(dataSnapshot, "TYPECODE"),
+    serialNumber: findProperty(dataSnapshot, "MATERIALSERIALNUMBER"),
+    buildYear: findProperty(dataSnapshot, "YEAR"),
     checks: extendedCheckGroups,
   };
 }
 
-function extendCheckResult(
-  staticCheckData: StaticCheckData[],
-  checkResult: CheckResult,
-): ExtendedCheckResult {
-  const staticData = staticCheckData.find(
-    (staticCheck) =>
-      staticCheck.CheckCode === checkResult.Check.Id &&
-      staticCheck.CheckGroupCode === checkResult.CheckGroup.Id,
-  );
-
-  return {
-    ...checkResult,
-    prefix: staticData?.Prefix || null,
-    sortOrder: staticData?.SortOrder || "999",
-  };
+function findProperty(dataSnapshot: DataSnapshot, propertyId: string): string {
+  const result = dataSnapshot.Properties.find(
+    (data) => data.PropertyId === propertyId,
+  )?.Value;
+  return result || notAvailableString;
 }
 
-function findCheckGroupData(
-  staticCheckGroupData: StaticCheckGroupData[],
-  checkGroupId: string,
-): { id: string; prefix: string | null; sortOrder: string; title: string } {
-  const checkGroupOrder = staticCheckGroupData.find(
-    (staticCheckGroup) => staticCheckGroup.Code === checkGroupId,
+function findTitle(
+  dataModel: DataModel,
+  checkListId: string,
+  taskTypeId: string,
+): string {
+  const checkList = dataModel.CHECKLIST.find(
+    (checklist) => checklist.ChecklistId === checkListId,
   );
+  const title = checkList?.TaskTypes.find(
+    (tasktype) => tasktype.TaskTypeId === taskTypeId,
+  )?.Name;
 
-  if (checkGroupOrder == null) {
-    return {
-      id: checkGroupId,
-      prefix: null,
-      sortOrder: "999",
-      title: notAvailableString,
-    };
-  }
+  return title ?? notAvailableString;
+}
 
-  return {
-    id: checkGroupId,
-    prefix: checkGroupOrder.CheckGroupPrefix,
-    sortOrder: checkGroupOrder.SortOrder || "999",
-    title: checkGroupOrder.Name || notAvailableString,
-  };
+export async function getChecklists(): Promise<string[]> {
+  const client = await clientPromise;
+  const db = client.db("online-documenting");
+  const cursor = db
+    .collection("data-snapshot")
+    .find<{ _id: string }>({}, { projection: { _id: 1 } });
+
+  const ids = await cursor.toArray();
+  return ids.map((id) => id._id.toString());
 }

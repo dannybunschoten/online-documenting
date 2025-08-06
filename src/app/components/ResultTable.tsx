@@ -10,7 +10,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { Check, Minus, X, Camera, AlertTriangle } from "lucide-react";
-import { ExtendedCheckResult } from "../types";
+import { CheckDataOrdered } from "../types";
 
 const statusToConfig = new Map([
   [
@@ -48,7 +48,7 @@ export default function ResultTable({
   showControleCount = false,
 }: {
   className?: string;
-  tableData: ExtendedCheckResult[];
+  tableData: CheckDataOrdered[];
   showControleCount?: boolean;
 }) {
   return (
@@ -62,7 +62,7 @@ export default function ResultTable({
                 <span className="font-medium">
                   {
                     tableData.filter(
-                      (item) => item.ResultValues[0].DisplayText === "In orde",
+                      (item) => item.ResultValues[0]?.DisplayText === "In orde",
                     ).length
                   }{" "}
                   geslaagd
@@ -73,7 +73,7 @@ export default function ResultTable({
                 <span className="font-medium">
                   {
                     tableData.filter(
-                      (item) => item.ResultValues[0].DisplayText === "N.v.t.",
+                      (item) => item.ResultValues[0]?.DisplayText === "N.v.t.",
                     ).length
                   }{" "}
                   overgeslagen
@@ -117,11 +117,11 @@ export default function ResultTable({
         </TableHeader>
         <TableBody>
           {tableData.map((check, index) => {
-            const status = check.ResultValues[0].DisplayText || "N.v.t.";
+            const status = check.ResultValues[0]?.DisplayText || "N.v.t.";
             const statusConfig = statusToConfig.get(status);
             return (
               <TableRow
-                key={`${check.prefix}-${check.Check.Text}`}
+                key={`${check.Check.Prefix}-${check.Check.Text}`}
                 className={cn(
                   "border-b border-gray-100 hover:bg-gray-50/50 transition-colors duration-200",
                   index === tableData.length - 1 && "border-b-0",
@@ -133,7 +133,7 @@ export default function ResultTable({
                       variant="default"
                       className="bg-aboma-blue hover:bg-aboma-blue/90 text-white min-w-[3rem] justify-center font-medium shadow-sm transition-colors duration-200 self-start sm:self-auto text-xs"
                     >
-                      {check.prefix}
+                      {check.Check.Prefix}
                     </Badge>
                     <span className="text-xs sm:text-sm font-medium text-gray-900 leading-relaxed break-words">
                       {check.Check.Text}

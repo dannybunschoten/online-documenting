@@ -4,7 +4,7 @@ import { cn, titleToId } from "@/lib/utils";
 import { ChevronRight, FileText, Layers } from "lucide-react";
 import { useState, useRef } from "react";
 import { toExclude } from "./AdditionalResults";
-import { CheckList } from "@/actions";
+import { CheckList } from "../types";
 
 const navigationEntries = [
   { title: "Configuratie Aandrijving", children: [] },
@@ -25,7 +25,7 @@ export default function TableOfContents({ data }: { data: CheckList }) {
   const sectionsRef = useRef<Record<string, HTMLUListElement | null>>({});
 
   const resultTitles = data.checks.filter(
-    (checkGroup) => !toExclude.has(checkGroup.id),
+    (checkGroup) => !toExclude.has(checkGroup.checks[0].CheckGroup.Id),
   );
 
   const dynamicNavigationEntries = navigationEntries.map((entry) => {

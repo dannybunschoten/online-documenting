@@ -1,4 +1,4 @@
-import { CheckList } from "@/actions";
+import { CheckList } from "../types";
 import AdditionalResults from "./AdditionalResults";
 
 export default function Resultaten({ data }: { data: CheckList }) {

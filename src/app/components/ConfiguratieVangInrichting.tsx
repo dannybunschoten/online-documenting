@@ -6,16 +6,23 @@ import {
   titleToId,
 } from "@/lib/utils";
 import ConfiguratieTable from "./ConfiguratieTable";
-import { CheckList } from "@/actions";
-import { CheckResultValue, CheckGroup, ExtendedCheckResult } from "../types";
+import { CheckDataOrdered, CheckList } from "../types";
+
+interface CheckGroup {
+  prefix: string | null;
+  sortOrder: string;
+  title: string;
+  checks: CheckDataOrdered[];
+}
 
 function findCheckInGroup(
   checkGroup: CheckGroup | undefined,
   checkId: string,
-): CheckResultValue | null {
-  const check = checkGroup?.checks.find(
-    (check: ExtendedCheckResult) => check.Check.Id === checkId,
-  );
+): {
+  Value: string;
+  DisplayText: string | null;
+} | null {
+  const check = checkGroup?.checks.find((check) => check.Check.Id === checkId);
   return check?.ResultValues[0] ?? null;
 }
 
@@ -25,7 +32,9 @@ export default function ConfiguratieVangInrichting({
   data: CheckList;
 }) {
   const checkGroupId = "11b27201-a54f-4f0b-a039-bb19a1f04895";
-  const checkGroup = data.checks.find((group) => group.id === checkGroupId);
+  const checkGroup = data.checks.find(
+    (group) => group.checks[0].CheckGroup.Id === checkGroupId,
+  );
 
   const tableData = new Map([
     [

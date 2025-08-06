@@ -6,16 +6,18 @@ import {
   titleToId,
 } from "@/lib/utils";
 import ConfiguratieTable from "./ConfiguratieTable";
-import { CheckList } from "@/actions";
-import { CheckResultValue } from "../types";
+import { CheckList } from "../types";
 
 function findCheckResult(
   data: CheckList,
   checkGroupId: string,
   checkId: string,
-): CheckResultValue | null {
+): {
+  Value: string;
+  DisplayText: string | null;
+} | null {
   const checkGroup = data.checks.find(
-    (checkGroup) => checkGroup.id === checkGroupId,
+    (checkGroup) => checkGroup.checks[0].CheckGroup.Id === checkGroupId,
   );
   const check = checkGroup?.checks.find((check) => check.Check.Id === checkId);
 
