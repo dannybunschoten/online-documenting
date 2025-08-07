@@ -8,34 +8,38 @@ import {
 } from "./app/types";
 import clientPromise from "@/lib/mongodb";
 import { notAvailableString } from "./lib/utils";
+import { ObjectId } from "mongodb";
 
-// TODO uncomment the filter logic
-async function getDataSnapshot(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  id: string,
-): Promise<DataSnapshot | null> {
-  const client = await clientPromise;
-  const db = client.db("online-documenting");
-  const dataSnapshot = await db
-    .collection("data-snapshot")
-    .findOne<DataSnapshot>();
-  // const dataSnapshot = await db
-  //   .collection("data-snapshot")
-  //   .findOne<DataSnapshot>({
-  //     _id: new ObjectId(id),
-  //   });
+async function getDataSnapshot(id: string): Promise<DataSnapshot | null> {
+  try {
+    const client = await clientPromise;
+    const db = client.db("online-documenting");
+    const dataSnapshot = await db
+      .collection("data-snapshot")
+      .findOne<DataSnapshot>({
+        _id: new ObjectId(id),
+      });
 
-  return dataSnapshot;
+    return dataSnapshot;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 }
 
 async function getDataModel(version: number): Promise<DataModel | null> {
-  const client = await clientPromise;
-  const db = client.db("online-documenting");
-  const dataModel = await db
-    .collection("data-models")
-    .findOne<DataModel>({ VERSION: version });
+  try {
+    const client = await clientPromise;
+    const db = client.db("online-documenting");
+    const dataModel = await db
+      .collection("data-models")
+      .findOne<DataModel>({ VERSION: version });
 
-  return dataModel;
+    return dataModel;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 }
 
 export async function getCheckList(formId: string): Promise<CheckList | null> {
@@ -130,12 +134,17 @@ function findTitle(
 }
 
 export async function getChecklists(): Promise<string[]> {
-  const client = await clientPromise;
-  const db = client.db("online-documenting");
-  const cursor = db
-    .collection("data-snapshot")
-    .find<{ _id: string }>({}, { projection: { _id: 1 } });
+  try {
+    const client = await clientPromise;
+    const db = client.db("online-documenting");
+    const cursor = db
+      .collection("data-snapshot")
+      .find<{ _id: string }>({}, { projection: { _id: 1 } });
 
-  const ids = await cursor.toArray();
-  return ids.map((id) => id._id.toString());
+    const ids = await cursor.toArray();
+    return ids.map((id) => id._id.toString());
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 }
