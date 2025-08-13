@@ -1,12 +1,13 @@
 services:
   mongo:
-    image: arm64v8/mongo:4.4.18
+    image: mongo
     container_name: mongo
     restart: always
     ports:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d:ro
 
 volumes:
   mongo-data:

@@ -1,0 +1,13 @@
+{
+  "DataSources": [
+    {
+      "Name": "<DataSourceName>",
+      "Source": "<URL>"
+    }
+  ],
+  "Models": [
+    {
+      "Name": "<ModelName>"
+    }
+  ]
+}

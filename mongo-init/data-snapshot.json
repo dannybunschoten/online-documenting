@@ -1,0 +1,2906 @@
+[
+  {
+    "_id": {
+      "$oid": "6893551e5a4b75a7e6aff045"
+    },
+    "TaskId": "366957f6-f93c-4794-ba8e-8153a14cb694",
+    "ChecklistId": "db05f2a3-81f9-4217-9571-5fc2f123c3c8",
+    "Properties": [
+      {
+        "Id": "3f3f9a81-8c31-4c1f-a368-776f19c3df7d",
+        "PropertyId": "ORDERNUMBER",
+        "Name": "Order Number",
+        "Value": "DemoBasPGBL4"
+      },
+      {
+        "Id": "fa54d182-6f25-41e1-aac2-e9217bb35de3",
+        "PropertyId": "REMARKS1",
+        "Name": "Remarks 1",
+        "Value": ""
+      },
+      {
+        "Id": "8c40a542-f146-426f-91ba-f287a4a2e6ef",
+        "PropertyId": "ACTIVITYCODE",
+        "Name": "Activity Code",
+        "Value": "810"
+      },
+      {
+        "Id": "83a4841c-289d-4056-9799-e36856bbe1b1",
+        "PropertyId": "ACTIVITYDESCRIPTION",
+        "Name": "Activity Description",
+        "Value": "Periodieke keuring"
+      },
+      {
+        "Id": "aeef56aa-1834-4cbe-b76a-f48764bbcbfa",
+        "PropertyId": "STARTDATE",
+        "Name": "Start Date",
+        "Value": ""
+      },
+      {
+        "Id": "4d06c7a2-cf4e-4356-9525-57498c2fcae7",
+        "PropertyId": "CUSTOMERADDRESS",
+        "Name": "Customer Address",
+        "Value": "Postbus 2040"
+      },
+      {
+        "Id": "e12e11fe-a74a-4d64-a427-c823a0c131cf",
+        "PropertyId": "CUSTOMERCONTACTPERSON",
+        "Name": "Customer Contact Person",
+        "Value": ""
+      },
+      {
+        "Id": "c18722d3-80f2-438b-babd-b3e74ce1d939",
+        "PropertyId": "CUSTOMERPHONENUMBER",
+        "Name": "Customer Phone Number",
+        "Value": "0651288424"
+      },
+      {
+        "Id": "eb80b19e-d8b5-4101-916c-9d08599d44c1",
+        "PropertyId": "CUSTOMERCOUNTRY",
+        "Name": "Customer Country",
+        "Value": "Nederland"
+      },
+      {
+        "Id": "f949cb92-b4ce-4fa4-8013-8346ac9137cb",
+        "PropertyId": "CUSTOMERNAME",
+        "Name": "Customer Name",
+        "Value": "Alimak Benelux Group B.V."
+      },
+      {
+        "Id": "12c69efc-3cff-4eaa-a429-e6213f70224b",
+        "PropertyId": "CUSTOMERCODE",
+        "Name": "Customer Code",
+        "Value": ""
+      },
+      {
+        "Id": "2ae3b402-aa25-4a1d-8ff4-dffcc53fb667",
+        "PropertyId": "CUSTOMERCITY",
+        "Name": "Customer City",
+        "Value": "Tilburg"
+      },
+      {
+        "Id": "b1908ee8-d782-4e7a-a90e-5737dd38189a",
+        "PropertyId": "CUSTOMERZIPCODE",
+        "Name": "Customer Zip Code",
+        "Value": ""
+      },
+      {
+        "Id": "4ff2c628-b535-4065-9ce3-d1c13ee0a921",
+        "PropertyId": "CUSTOMERMAIL",
+        "Name": "Customer Mail",
+        "Value": ""
+      },
+      {
+        "Id": "02c3643d-3a17-4c83-b86d-2ab13f3fcb97",
+        "PropertyId": "CUSTOMERORDERNUMBER",
+        "Name": "Customer Order Number",
+        "Value": ""
+      },
+      {
+        "Id": "7f0b8207-6f56-486c-8af2-b5303b8d875a",
+        "PropertyId": "LOCATIONADDRESS",
+        "Name": "Location Address",
+        "Value": ""
+      },
+      {
+        "Id": "68ffa83a-245d-486a-8e87-4c7e4c03fd08",
+        "PropertyId": "LOCATIONCONTACTPERSON",
+        "Name": "Location Contact Person",
+        "Value": ""
+      },
+      {
+        "Id": "5d403d8d-cf6a-4e78-8d9f-76d0e4f1d081",
+        "PropertyId": "LOCATIONCOUNTRY",
+        "Name": "Location Country",
+        "Value": ""
+      },
+      {
+        "Id": "bcc51424-f1d3-41e0-b085-acef333c1d2d",
+        "PropertyId": "LOCATIONNAME1",
+        "Name": "Location Name 1",
+        "Value": ""
+      },
+      {
+        "Id": "62218928-b070-448f-8017-f58f2b9e182a",
+        "PropertyId": "LOCATIONCITY",
+        "Name": "Location City",
+        "Value": ""
+      },
+      {
+        "Id": "7b19d5f7-08ab-4c1c-b451-84d70c914425",
+        "PropertyId": "LOCATIONZIPCODE",
+        "Name": "Location Zip Code",
+        "Value": ""
+      },
+      {
+        "Id": "75e7228d-8b1c-4b40-97f3-75e7f15fca09",
+        "PropertyId": "LOCATIONPHONENUMBER",
+        "Name": "Location Phone Number",
+        "Value": ""
+      },
+      {
+        "Id": "70a084a1-cc3d-4d43-b782-c4134ed25d01",
+        "PropertyId": "EMPLOYEENAME",
+        "Name": "Employee Name",
+        "Value": "Bas van Gruijthuijsen"
+      },
+      {
+        "Id": "de23cff3-8852-422b-94a0-da29aadde0ca",
+        "PropertyId": "EMPLOYEECODE",
+        "Name": "Employee Code",
+        "Value": ""
+      },
+      {
+        "Id": "a34207cf-b901-4db3-a4e2-7a619af44cc4",
+        "PropertyId": "ESTIMATEDURATION",
+        "Name": "Estimate Duration",
+        "Value": ""
+      },
+      {
+        "Id": "82610456-51d2-438c-a076-1e0ee130dd7b",
+        "PropertyId": "YEAR",
+        "Name": "Year",
+        "Value": "2016"
+      },
+      {
+        "Id": "63b86dbf-a818-4bd9-967f-1570bcbafa6d",
+        "PropertyId": "MATERIALCODE",
+        "Name": "Material Code",
+        "Value": ""
+      },
+      {
+        "Id": "ac1a1438-0670-4582-af8d-91f8ea7999fd",
+        "PropertyId": "OWNER1",
+        "Name": "Owner Name",
+        "Value": ""
+      },
+      {
+        "Id": "35a19c84-76f8-42b6-8e41-5e44517d606b",
+        "PropertyId": "OWNERNUMBER",
+        "Name": "Owner Number",
+        "Value": ""
+      },
+      {
+        "Id": "366fcc35-3516-4ddc-ba39-af89ba571258",
+        "PropertyId": "SERIALNUMBER",
+        "Name": "Serial Number",
+        "Value": "N82085248"
+      },
+      {
+        "Id": "ed6c3676-6542-4210-9873-195909fdea17",
+        "PropertyId": "MANUFACTURER",
+        "Name": "Manufacturer",
+        "Value": "Alimak"
+      },
+      {
+        "Id": "eb9cb306-9f2a-4975-850d-a4cbd8cf333e",
+        "PropertyId": "MATERIALNUMBEROWNER",
+        "Name": "Material Number Owner",
+        "Value": ""
+      },
+      {
+        "Id": "75a65ee6-82dc-4d86-a4a4-bbcf33646a1c",
+        "PropertyId": "MATERIALSERIALNUMBER",
+        "Name": "Material Serial Number",
+        "Value": "PL1931"
+      },
+      {
+        "Id": "79d645a3-8a03-42df-ac93-04f22bcdc2ac",
+        "PropertyId": "MACHINEKIND",
+        "Name": "Machine Kind",
+        "Value": "120 - Bouwlift voor personen en/of goederen"
+      },
+      {
+        "Id": "ffc7374c-7424-4b54-a196-dd6da8512876",
+        "PropertyId": "TYPECODE",
+        "Name": "Type Code",
+        "Value": ""
+      },
+      {
+        "Id": "81164d46-ade4-48d2-a5db-04555d55b061",
+        "PropertyId": "MACHINETYPE",
+        "Name": "Machine Type",
+        "Value": "Material"
+      },
+      {
+        "Id": "928275f1-77de-4fd7-b946-ef651934c83a",
+        "PropertyId": "CRANEBRAND",
+        "Name": "Crane brand",
+        "Value": "Alimak"
+      },
+      {
+        "Id": "28eee0c5-df30-47c4-888f-241c31580fe8",
+        "PropertyId": "SfObjectTypeCode",
+        "Name": "SfObjectTypeCode",
+        "Value": "0120"
+      },
+      {
+        "Id": "30efe905-e7fc-4507-9a69-44e1b8fc1fe3",
+        "PropertyId": "SfTaskTypeCode",
+        "Name": "SfTaskTypeCode",
+        "Value": "0027"
+      }
+    ],
+    "checks": [
+      {
+        "Check": {
+          "Id": "b6f4483d-a3e0-4ff3-9039-5c3d38ac433e",
+          "Text": "Bouwjaar"
+        },
+        "CheckGroup": {
+          "Id": "11b27201-a54f-4f0b-a039-bb19a1f04895"
+        },
+        "ResultValues": [
+          {
+            "Value": "2026",
+            "DisplayText": null
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "4eac8275-9f5b-4202-b229-1ee7c692d92b",
+          "Text": "Proeflast benodigd bij herkeuring"
+        },
+        "CheckGroup": {
+          "Id": "164d9f4e-99e2-4808-87e5-3c249be48ea2"
+        },
+        "ResultValues": [
+          {
+            "Value": "6ca478f4-6e66-4fba-be92-920303fe16da",
+            "DisplayText": "Ja"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "58736c8f-95f9-447f-81e1-0e20b1a0f15a",
+          "Text": "Conclusie"
+        },
+        "CheckGroup": {
+          "Id": "164d9f4e-99e2-4808-87e5-3c249be48ea2"
+        },
+        "ResultValues": [
+          {
+            "Value": "07f560ea-eaa4-4e1c-bfed-8bd215e19b8a",
+            "DisplayText": "Geen tekortkomingen waargenomen"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "a17140b6-761c-4504-8836-0bd5a1c756c5",
+          "Text": "Stickernummer"
+        },
+        "CheckGroup": {
+          "Id": "164d9f4e-99e2-4808-87e5-3c249be48ea2"
+        },
+        "ResultValues": [
+          {
+            "Value": "222",
+            "DisplayText": null
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bfc05456-9347-44e1-9f08-96fff580c048",
+          "Text": "Datum inspectie"
+        },
+        "CheckGroup": {
+          "Id": "164d9f4e-99e2-4808-87e5-3c249be48ea2"
+        },
+        "ResultValues": [
+          {
+            "Value": "2025-07-24",
+            "DisplayText": null
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "ecec629d-3463-470f-aff4-0b939927c928",
+          "Text": "Benodigde tijd herkeuring"
+        },
+        "CheckGroup": {
+          "Id": "164d9f4e-99e2-4808-87e5-3c249be48ea2"
+        },
+        "ResultValues": [
+          {
+            "Value": "12",
+            "DisplayText": null
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "NA",
+          "Text": "NVT"
+        },
+        "CheckGroup": {
+          "Id": "1726b6a1-bc04-44f6-b8ae-6f1e5d7b6b26"
+        },
+        "ResultValues": [
+          {
+            "Value": "NOTAPPLICABLE_NA",
+            "DisplayText": "N.V.T."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "18f8e43c-f5bc-4898-9d4c-2708a8d151b0",
+          "Text": "Staat beplating / gaaswerk e.d."
+        },
+        "CheckGroup": {
+          "Id": "1c283721-8ef7-4d3d-9513-031d9f8e9243"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "3cf4c269-e26b-44e8-a4ae-aaf4daec54f7",
+          "Text": "Algemene staat onderhoud"
+        },
+        "CheckGroup": {
+          "Id": "1c283721-8ef7-4d3d-9513-031d9f8e9243"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [
+          {
+            "ActionPrefix": "1501 #1",
+            "ActionText": ""
+          }
+        ],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "7d3dad50-1fbf-4033-b208-d94cb57d1015",
+          "Text": "Conservering (roestvorming)"
+        },
+        "CheckGroup": {
+          "Id": "1c283721-8ef7-4d3d-9513-031d9f8e9243"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "7de2980d-abc0-41c9-848c-150efde357ea",
+          "Text": "Bliksembeveiliging (aarden / aardpen)"
+        },
+        "CheckGroup": {
+          "Id": "1c283721-8ef7-4d3d-9513-031d9f8e9243"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bd2be929-fc93-4c4e-a4ad-d123deb60155",
+          "Text": "Overige opmerkingen aangaande dit hoofdstuk"
+        },
+        "CheckGroup": {
+          "Id": "1c283721-8ef7-4d3d-9513-031d9f8e9243"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "d0d681d8-87be-4a76-a7d1-747e1209fa34",
+          "Text": "Smering"
+        },
+        "CheckGroup": {
+          "Id": "1c283721-8ef7-4d3d-9513-031d9f8e9243"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "9e343975-8007-4d17-9c88-4784a283c388",
+          "Text": "Remmen, remlichter zelfinvallend"
+        },
+        "CheckGroup": {
+          "Id": "41f93eaf-b62b-4409-ad9c-a79f5c87e273"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bd2be929-fc93-4c4e-a4ad-d123deb60155",
+          "Text": "Overige opmerkingen aangaande dit hoofdstuk"
+        },
+        "CheckGroup": {
+          "Id": "41f93eaf-b62b-4409-ad9c-a79f5c87e273"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "d5538240-4b0f-4b41-b971-7e1ce404c629",
+          "Text": "Vanginrichting / snelheidsbegrenzer / geldigheidsduur"
+        },
+        "CheckGroup": {
+          "Id": "41f93eaf-b62b-4409-ad9c-a79f5c87e273"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "d7735cb1-0140-40bd-bfad-ce57a47dec62",
+          "Text": "Oliepeil/ -conditie"
+        },
+        "CheckGroup": {
+          "Id": "41f93eaf-b62b-4409-ad9c-a79f5c87e273"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [
+          {
+            "ActionPrefix": "0902 #1",
+            "ActionText": ""
+          },
+          {
+            "ActionPrefix": "0902 #2",
+            "ActionText": "test"
+          }
+        ],
+        "Photos": [
+          {
+            "Caption": "",
+            "FileName": "1753431714289_Screenshot 2025-02-17 160834.png"
+          }
+        ]
+      },
+      {
+        "Check": {
+          "Id": "ef459309-4ab1-40dc-9ea4-748b17f183bf",
+          "Text": "Reductie / motor"
+        },
+        "CheckGroup": {
+          "Id": "41f93eaf-b62b-4409-ad9c-a79f5c87e273"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "7a0bb5c9-8076-4feb-a3af-2d46e81d3443",
+          "Text": "Maximaal toelaatbare aantal personen"
+        },
+        "CheckGroup": {
+          "Id": "425f0926-7017-474a-87c3-f25d7d75fd85"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "7fbb990a-fcd3-48dd-95f5-2fb48bc668c2",
+          "Text": "opschrift 'Alleen toegang voor deskundige\""
+        },
+        "CheckGroup": {
+          "Id": "425f0926-7017-474a-87c3-f25d7d75fd85"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bd2be929-fc93-4c4e-a4ad-d123deb60155",
+          "Text": "Overige opmerkingen aangaande dit hoofdstuk"
+        },
+        "CheckGroup": {
+          "Id": "425f0926-7017-474a-87c3-f25d7d75fd85"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "c42aba53-979b-4490-8926-df0eaf2cad3a",
+          "Text": "Gegevens mast-bout verbinding"
+        },
+        "CheckGroup": {
+          "Id": "425f0926-7017-474a-87c3-f25d7d75fd85"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "d9b3c98b-1e7c-43de-beb4-41e99ffd480c",
+          "Text": "Maximaal toelaatbare werklast in kg"
+        },
+        "CheckGroup": {
+          "Id": "425f0926-7017-474a-87c3-f25d7d75fd85"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "f695efbc-c278-4094-a0b5-1957a53ef71a",
+          "Text": "Typeplaat vang"
+        },
+        "CheckGroup": {
+          "Id": "425f0926-7017-474a-87c3-f25d7d75fd85"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "f716c557-e73d-4547-8635-3a2c7e416070",
+          "Text": "Fabricaat / type / fabrieksnummer / bouwjaar / CE (vanaf 2010)"
+        },
+        "CheckGroup": {
+          "Id": "425f0926-7017-474a-87c3-f25d7d75fd85"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "fa5420e1-fd0e-4743-a641-f4fbbb61d5c1",
+          "Text": "Opschriften bedieningsorganen buiten de kooi"
+        },
+        "CheckGroup": {
+          "Id": "425f0926-7017-474a-87c3-f25d7d75fd85"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "fba43acd-b9da-425b-aee1-9e62c8b10658",
+          "Text": "Waarschuwingsteksten / pictogrammen"
+        },
+        "CheckGroup": {
+          "Id": "425f0926-7017-474a-87c3-f25d7d75fd85"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "172a9efa-e640-455c-ba89-b5f28e565c34",
+          "Text": "Hoofdschakelaar afsluitbaar/ vergrendelbaar"
+        },
+        "CheckGroup": {
+          "Id": "43da226b-7fe6-466e-9bb4-104ed181b029"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "181597d1-883c-410d-b84f-b8de0a08e54c",
+          "Text": "Staat elektrische componenten"
+        },
+        "CheckGroup": {
+          "Id": "43da226b-7fe6-466e-9bb4-104ed181b029"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "1eb63a46-6ef1-4acc-80a2-5c34b33c81a8",
+          "Text": "(Nood)stopinrichting"
+        },
+        "CheckGroup": {
+          "Id": "43da226b-7fe6-466e-9bb4-104ed181b029"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "230d5270-01af-4d6f-9ef4-81e86c51eb36",
+          "Text": "Voedingskabel/ elektrische leidingen/ aansluiting"
+        },
+        "CheckGroup": {
+          "Id": "43da226b-7fe6-466e-9bb4-104ed181b029"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "848a3a6b-33e0-4c2d-a6eb-1bfdfe0fd46c",
+          "Text": "Elektromotor(en)"
+        },
+        "CheckGroup": {
+          "Id": "43da226b-7fe6-466e-9bb4-104ed181b029"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "941e373b-30d3-40c5-826c-e77371915dd9",
+          "Text": "Thermische beveiliging"
+        },
+        "CheckGroup": {
+          "Id": "43da226b-7fe6-466e-9bb4-104ed181b029"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "9f33691d-0a4c-4d99-beec-cff0d50a4d5c",
+          "Text": "Fasevolgorde bewaking"
+        },
+        "CheckGroup": {
+          "Id": "43da226b-7fe6-466e-9bb4-104ed181b029"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bd2be929-fc93-4c4e-a4ad-d123deb60155",
+          "Text": "Overige opmerkingen aangaande dit hoofdstuk"
+        },
+        "CheckGroup": {
+          "Id": "43da226b-7fe6-466e-9bb4-104ed181b029"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "d7d58997-611e-4f83-ac01-7f32033519f7",
+          "Text": "Vergrendelbare werkschakelaar"
+        },
+        "CheckGroup": {
+          "Id": "43da226b-7fe6-466e-9bb4-104ed181b029"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "f429a408-0f3d-4804-9879-2a36397bdb21",
+          "Text": "Veiligheidsaarding"
+        },
+        "CheckGroup": {
+          "Id": "43da226b-7fe6-466e-9bb4-104ed181b029"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "fc96951b-ddf8-4d28-a61e-e58e1500c53c",
+          "Text": "Trekontlasting voedingskabel"
+        },
+        "CheckGroup": {
+          "Id": "43da226b-7fe6-466e-9bb4-104ed181b029"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "257b4b0b-5dc8-47f3-b0f0-e731966fa856",
+          "Text": "Toestand, bevestiging, borging en uitloopbeveiliging kabelschijven"
+        },
+        "CheckGroup": {
+          "Id": "457f4c85-69d2-4160-813d-f35842fc5356"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "7111bfe9-7216-4ebb-9719-66fb38422694",
+          "Text": "Toestand en bevestiging staalkabels"
+        },
+        "CheckGroup": {
+          "Id": "457f4c85-69d2-4160-813d-f35842fc5356"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bd2be929-fc93-4c4e-a4ad-d123deb60155",
+          "Text": "Overige opmerkingen aangaande dit hoofdstuk"
+        },
+        "CheckGroup": {
+          "Id": "457f4c85-69d2-4160-813d-f35842fc5356"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "cc0060c6-7e17-4c2e-8852-99e9ac07cb84",
+          "Text": "Toestand, bevestiging, borging en uitloopbeveiliging kabeltrommels"
+        },
+        "CheckGroup": {
+          "Id": "457f4c85-69d2-4160-813d-f35842fc5356"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "168046ee-3ac0-4785-9585-24090f747afb",
+          "Text": "Knelgevaar omgeving voorkomen"
+        },
+        "CheckGroup": {
+          "Id": "461514d7-f810-4b9c-92e1-dcb2ab0b9428"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "2e41a2b5-0f53-4711-a240-4c88c1675a3f",
+          "Text": "Verlichting etagestopplaatsen"
+        },
+        "CheckGroup": {
+          "Id": "461514d7-f810-4b9c-92e1-dcb2ab0b9428"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "404d07d7-0852-4468-bb84-c00ee5972ae7",
+          "Text": "Onderstopping conform basisconstructie fabrikant"
+        },
+        "CheckGroup": {
+          "Id": "461514d7-f810-4b9c-92e1-dcb2ab0b9428"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "59a906cc-ddaf-494a-826a-0b355997bbb9",
+          "Text": "Etagehekken/ afscherming bij alle stopplaatsen"
+        },
+        "CheckGroup": {
+          "Id": "461514d7-f810-4b9c-92e1-dcb2ab0b9428"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "641c4e32-73c5-4ee7-99dd-79194d816cc9",
+          "Text": "Stabiele / harde en vlakke ondergrond"
+        },
+        "CheckGroup": {
+          "Id": "461514d7-f810-4b9c-92e1-dcb2ab0b9428"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "6db3b247-e551-4d73-b53c-30b94a9bc7f6",
+          "Text": "Leuningwerk en schoprand naast etagehek"
+        },
+        "CheckGroup": {
+          "Id": "461514d7-f810-4b9c-92e1-dcb2ab0b9428"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "7ae9bdf7-d6dc-4f24-83c5-cd42f176c098",
+          "Text": "Losklep bedekt etagevloer tenminste groter of gelijk 0,1 m"
+        },
+        "CheckGroup": {
+          "Id": "461514d7-f810-4b9c-92e1-dcb2ab0b9428"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "82638e02-5449-4a7d-af4a-1422dd8b3b34",
+          "Text": "Aansluiting naastgelegen leuningwerk openingen kleiner gelijk 0,15 m"
+        },
+        "CheckGroup": {
+          "Id": "461514d7-f810-4b9c-92e1-dcb2ab0b9428"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bd2be929-fc93-4c4e-a4ad-d123deb60155",
+          "Text": "Overige opmerkingen aangaande dit hoofdstuk"
+        },
+        "CheckGroup": {
+          "Id": "461514d7-f810-4b9c-92e1-dcb2ab0b9428"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bf7e6ed7-9f65-42a6-8605-51edb1242b7a",
+          "Text": "Verankering conform instructie"
+        },
+        "CheckGroup": {
+          "Id": "461514d7-f810-4b9c-92e1-dcb2ab0b9428"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "c97617ad-653f-40ac-b822-126c90c85e02",
+          "Text": "Minimaal > 500 mm of steiger/ bouw voorzien van harde afscherming (geen bouwnetten)"
+        },
+        "CheckGroup": {
+          "Id": "461514d7-f810-4b9c-92e1-dcb2ab0b9428"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "f65ef9e4-20a8-49cf-8577-fc7ea3d96110",
+          "Text": "Vrije ruimte/ afscherming vallende voorwerpen"
+        },
+        "CheckGroup": {
+          "Id": "461514d7-f810-4b9c-92e1-dcb2ab0b9428"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "fe9a5a9d-abbd-4db0-bd92-d83156fccf6d",
+          "Text": "Verankering aan steiger"
+        },
+        "CheckGroup": {
+          "Id": "461514d7-f810-4b9c-92e1-dcb2ab0b9428"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "3139a03e-2b95-4b7a-80c5-a168f22bb537",
+          "Text": "Bij verankering aan bouwsteiger: berekening aanwezig"
+        },
+        "CheckGroup": {
+          "Id": "555b81e0-4f85-4550-a449-776f463e0817"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "36d8ae70-5466-4157-a585-af9d4b07d810",
+          "Text": "Typegoedkeuring NoBo aanwezig (machines voor 1-1-2010)"
+        },
+        "CheckGroup": {
+          "Id": "555b81e0-4f85-4550-a449-776f463e0817"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "49978999-38f0-44b9-850b-c595b31c0b7a",
+          "Text": "Opstellingslocatie binnen het toepassingsgebied dat de fabrikant heeft voorzien"
+        },
+        "CheckGroup": {
+          "Id": "555b81e0-4f85-4550-a449-776f463e0817"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "612e8161-38bb-4f95-9ba6-8fa1cc3ab66a",
+          "Text": "Laatste keuringsrapport aanwezig"
+        },
+        "CheckGroup": {
+          "Id": "555b81e0-4f85-4550-a449-776f463e0817"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "61d3eb28-83a4-4b9b-a8c5-4389774d514d",
+          "Text": "Certificaten (staalkabels, vanginrichting)"
+        },
+        "CheckGroup": {
+          "Id": "555b81e0-4f85-4550-a449-776f463e0817"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "8ca8f1c0-a233-4fd2-a694-650b2df05597",
+          "Text": "Elektrisch / hydraulisch schema aanwezig"
+        },
+        "CheckGroup": {
+          "Id": "555b81e0-4f85-4550-a449-776f463e0817"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "8e0e8d70-46f3-462b-abf5-fa72fb23a7f7",
+          "Text": "Keuring na ingrijpende wijzigingen/herstellingen cfm eisen fabrikant uitgevoerd"
+        },
+        "CheckGroup": {
+          "Id": "555b81e0-4f85-4550-a449-776f463e0817"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bd2be929-fc93-4c4e-a4ad-d123deb60155",
+          "Text": "Overige opmerkingen aangaande dit hoofdstuk"
+        },
+        "CheckGroup": {
+          "Id": "555b81e0-4f85-4550-a449-776f463e0817"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "c0555b36-ed6d-4077-aa41-1d0ff4b97297",
+          "Text": "Instructie- / opbouwboeken aanwezig en compleet"
+        },
+        "CheckGroup": {
+          "Id": "555b81e0-4f85-4550-a449-776f463e0817"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "c72d4fcb-f9b8-40d8-8cac-2ee9a1d46623",
+          "Text": "Liftboek / berekeningsdocumenten aanwezig"
+        },
+        "CheckGroup": {
+          "Id": "555b81e0-4f85-4550-a449-776f463e0817"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "d427b58a-3881-4abe-ada3-d2efa62d7a84",
+          "Text": "EG-verklaring van overeenstemming aanwezig (machines na 1-1-2010)"
+        },
+        "CheckGroup": {
+          "Id": "555b81e0-4f85-4550-a449-776f463e0817"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "6ff812c7-e3f1-4fba-affe-27341c185830",
+          "Text": "Handregel hoogte = 1,1 m"
+        },
+        "CheckGroup": {
+          "Id": "5988ec6b-9dff-4b77-8b1a-6c8ccad8ed68"
+        },
+        "ResultValues": [],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "NA",
+          "Text": "NVT"
+        },
+        "CheckGroup": {
+          "Id": "5988ec6b-9dff-4b77-8b1a-6c8ccad8ed68"
+        },
+        "ResultValues": [
+          {
+            "Value": "NOTAPPLICABLE_NA",
+            "DisplayText": "N.V.T."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "04ba1e12-e0cc-479e-ab7e-225a4f4b4354",
+          "Text": "Verdiepingsafslagen"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "2b3f2ac9-89ba-4ca7-b9e5-d56563e4d228",
+          "Text": "Slapkabelcontact"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "33c2a36d-14dc-4ec5-9373-ade3a479ca04",
+          "Text": "Noodstopvoorziening opbouwbediening / inspectiebediening"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "5271abee-5a8e-49bd-8f1a-4dc0a50192bf",
+          "Text": "Akoestisch signaal (dalen)"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "5488d6d4-c229-457b-a122-88c798990769",
+          "Text": "Vangschakelaar(s)"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "577e1b7f-6e8f-4c02-b78f-f579f7f9db93",
+          "Text": "(Vergrendeling) Schakelaar(s) dakluik"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "58924fd1-325b-45d9-90ef-2b4ccec41607",
+          "Text": "Etageafsluiting op bouwsteiger / verdieping"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "7f434302-7d93-4d77-934e-95aca9e189cf",
+          "Text": "Noodeindschakelaar onder"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "85c4f554-bd7a-444a-8f50-68e9d6b7f689",
+          "Text": "Vergrendeling etageschuifhek"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "8d9286e9-bd1e-4b43-ab96-8693959d2301",
+          "Text": "Vergendelingsschakelaar etageschuifhek"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "95bd82cd-9bb3-4648-92db-04e923f954ff",
+          "Text": "Vergendelingsschakelaar(s) toegangsdeur liftkooi"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "aaed2067-3bce-4236-87a5-0909c55fa3b8",
+          "Text": "Noodeindschakelaar boven"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "b612d63e-42de-4bc4-aeaa-b9e92d1eaa5d",
+          "Text": "Grendel toegangsdeur liftkooi"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bb7fb7e5-b4d3-4e67-83a3-bedd81c57e79",
+          "Text": "Eindschakelaar boven"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bd2be929-fc93-4c4e-a4ad-d123deb60155",
+          "Text": "Overige opmerkingen aangaande dit hoofdstuk"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bea4621d-958f-457c-b49e-b289a6678993",
+          "Text": "Montageschakelaar (davit)/ beveiligingsschakelaar wand(en)"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "c45920d9-1c96-47d6-a455-a220efe98d12",
+          "Text": "Eindschakelaar onder"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "d21e4807-994d-44c9-a36a-1f858958060b",
+          "Text": "Vergrendelingsschakelaar(s) toegangsdeur basisstation"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "d9f5c84f-641e-4184-8b68-26b889288119",
+          "Text": "Mastdetectie (t.b.v. opbouwwerkzaamheden)"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "ec60f376-b381-40a9-ae71-f34d830139cc",
+          "Text": "Grendel toegangsdeur basisstation"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "f366d19b-cadf-4985-8899-1700a8ea7518",
+          "Text": "Vergrendelingsschakelaar(s) toegang etage (deur of klep)"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "f64ceb8e-34fe-45fe-bd16-6e4e870d5aa6",
+          "Text": "Grendel toegang tot etage (deur of klep)"
+        },
+        "CheckGroup": {
+          "Id": "6569f4a2-931a-4391-bfd6-b61f68f86373"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "0cb97656-f4c3-4a8e-b74e-b669ddf32fb4",
+          "Text": "Aanvullende eisen bewoonde situatie: Ontgrendeling alleen met speciale sleutel."
+        },
+        "CheckGroup": {
+          "Id": "6fe3d350-c91b-4790-8c40-f60126b6031e"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "24af4da1-0779-417a-92a9-fdaf73a3cadf",
+          "Text": "Bouwplaats afgeschermd zodat de lift niet bereikbaar is voor onbevoegden"
+        },
+        "CheckGroup": {
+          "Id": "6fe3d350-c91b-4790-8c40-f60126b6031e"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "7749894a-a358-48cf-8fa2-38403a51b439",
+          "Text": "Aanvullende eisen bewoonde situatie: Etagehek vergrendeld / niet eenvoudig te openen"
+        },
+        "CheckGroup": {
+          "Id": "6fe3d350-c91b-4790-8c40-f60126b6031e"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "1b5ee8a0-7029-452a-a99b-ff5795728d01",
+          "Text": "Afscherming contraballast"
+        },
+        "CheckGroup": {
+          "Id": "7aaeb796-e61f-481c-9636-5e59c4b872d7"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "34a4dc07-c0d1-4544-b340-926cc846f2e5",
+          "Text": "Constructie basisstation (grondkooi)"
+        },
+        "CheckGroup": {
+          "Id": "7aaeb796-e61f-481c-9636-5e59c4b872d7"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "364acd6d-8b5a-4432-8faa-839fd5c5fdd1",
+          "Text": "Toestand buffers en bevestigingen"
+        },
+        "CheckGroup": {
+          "Id": "7aaeb796-e61f-481c-9636-5e59c4b872d7"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "59c86a59-2132-4fdf-9af5-fcf3101d3b08",
+          "Text": "Bout- / penverbinding / borging"
+        },
+        "CheckGroup": {
+          "Id": "7aaeb796-e61f-481c-9636-5e59c4b872d7"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "63027685-66e9-4741-86aa-6a9ca098c19d",
+          "Text": "Uitloop kooi tot buffer(s)"
+        },
+        "CheckGroup": {
+          "Id": "7aaeb796-e61f-481c-9636-5e59c4b872d7"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "69e0b1e9-9b1f-4a16-9768-31e249372973",
+          "Text": "Toegangsdeur basisstation"
+        },
+        "CheckGroup": {
+          "Id": "7aaeb796-e61f-481c-9636-5e59c4b872d7"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "6b27ecf7-2565-4125-add6-6e66140bd00e",
+          "Text": "Veiligheidsstuit (aan te brengen zonder onder de kooi te komen)"
+        },
+        "CheckGroup": {
+          "Id": "7aaeb796-e61f-481c-9636-5e59c4b872d7"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "6eb03380-2813-4791-9f3c-206eab673572",
+          "Text": "Uitloop kooi bij volledige invering buffer(s)"
+        },
+        "CheckGroup": {
+          "Id": "7aaeb796-e61f-481c-9636-5e59c4b872d7"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "7ad255ee-6172-4cba-822a-9c51913bd19a",
+          "Text": "Buffers"
+        },
+        "CheckGroup": {
+          "Id": "7aaeb796-e61f-481c-9636-5e59c4b872d7"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bd2be929-fc93-4c4e-a4ad-d123deb60155",
+          "Text": "Overige opmerkingen aangaande dit hoofdstuk"
+        },
+        "CheckGroup": {
+          "Id": "7aaeb796-e61f-481c-9636-5e59c4b872d7"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "d5c28f90-9228-4a58-a237-e19d1d83728a",
+          "Text": "Buffers aanwezig voor kooi en contragewicht"
+        },
+        "CheckGroup": {
+          "Id": "7aaeb796-e61f-481c-9636-5e59c4b872d7"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "e1c05c4f-2c33-40a0-8525-bd89cfdfb02a",
+          "Text": "Oprit (antislip)"
+        },
+        "CheckGroup": {
+          "Id": "7aaeb796-e61f-481c-9636-5e59c4b872d7"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "fc4bd949-1313-4534-90ca-8ad433b1b066",
+          "Text": "Afscherming basisstation"
+        },
+        "CheckGroup": {
+          "Id": "7aaeb796-e61f-481c-9636-5e59c4b872d7"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "0d67d975-7d84-418c-8cab-1a98e90b9b73",
+          "Text": "Nooddaalvoorziening / opschrift bij nooddaalvoorziening"
+        },
+        "CheckGroup": {
+          "Id": "89287b4f-d19f-48c5-88e2-315b2faa2a48"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "28186ee6-462f-4efd-bf06-5cb77022f709",
+          "Text": "Akoestisch signaal (alarm)"
+        },
+        "CheckGroup": {
+          "Id": "89287b4f-d19f-48c5-88e2-315b2faa2a48"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "381a81ba-41f7-491f-a376-bb21e120b37b",
+          "Text": "Noodstopvoorziening (werking en opschrift / kleuren)"
+        },
+        "CheckGroup": {
+          "Id": "89287b4f-d19f-48c5-88e2-315b2faa2a48"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "42cad28a-01e9-4919-a122-7a57d9811717",
+          "Text": "Werkschakelaar t.b.v. aandrijving"
+        },
+        "CheckGroup": {
+          "Id": "89287b4f-d19f-48c5-88e2-315b2faa2a48"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "47203d7b-7b3f-4ca6-8b85-815f3cf0145c",
+          "Text": "Beknopt bedieningsvoorschrift"
+        },
+        "CheckGroup": {
+          "Id": "89287b4f-d19f-48c5-88e2-315b2faa2a48"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "77edab6b-faec-4548-92b4-b5086abccf78",
+          "Text": "Aanduidingen bij bedieningsplaats"
+        },
+        "CheckGroup": {
+          "Id": "89287b4f-d19f-48c5-88e2-315b2faa2a48"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "93522f2e-c7ac-481f-97fa-3d8c0b133fe9",
+          "Text": "Bedieningsorganen (knoppen / hendels / sleutelschakelaar(s))"
+        },
+        "CheckGroup": {
+          "Id": "89287b4f-d19f-48c5-88e2-315b2faa2a48"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "b9a8c767-baa6-487f-95a3-17ae8d5bc088",
+          "Text": "Kooiverlichting / noodverlichting"
+        },
+        "CheckGroup": {
+          "Id": "89287b4f-d19f-48c5-88e2-315b2faa2a48"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bd2be929-fc93-4c4e-a4ad-d123deb60155",
+          "Text": "Overige opmerkingen aangaande dit hoofdstuk"
+        },
+        "CheckGroup": {
+          "Id": "89287b4f-d19f-48c5-88e2-315b2faa2a48"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "cec2350a-8c05-4538-ae35-477db38572cd",
+          "Text": "Signalering / aanduidingen bij signaleringen"
+        },
+        "CheckGroup": {
+          "Id": "89287b4f-d19f-48c5-88e2-315b2faa2a48"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "6557fd2e-62c1-47ba-a724-0fca69fbbc39",
+          "Text": "Bevestiging tandheugel aan de mast"
+        },
+        "CheckGroup": {
+          "Id": "9244ee66-bc62-4a17-9a32-51d9ca07c58d"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "73fdae37-5821-4f52-a815-e8d75344f301",
+          "Text": "Controle Ingrijping tandheugel"
+        },
+        "CheckGroup": {
+          "Id": "9244ee66-bc62-4a17-9a32-51d9ca07c58d"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "9b1d369c-e383-4035-82fa-01a0d24a6b22",
+          "Text": "Borging rondsel"
+        },
+        "CheckGroup": {
+          "Id": "9244ee66-bc62-4a17-9a32-51d9ca07c58d"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [
+          {
+            "ActionPrefix": "1002 #1",
+            "ActionText": ""
+          }
+        ],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bd2be929-fc93-4c4e-a4ad-d123deb60155",
+          "Text": "Overige opmerkingen aangaande dit hoofdstuk"
+        },
+        "CheckGroup": {
+          "Id": "9244ee66-bc62-4a17-9a32-51d9ca07c58d"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "fc0df681-cc52-44cb-afb6-bb5f106459cb",
+          "Text": "Invalbeveiliging vuil tussen rondsel en tandheugel"
+        },
+        "CheckGroup": {
+          "Id": "9244ee66-bc62-4a17-9a32-51d9ca07c58d"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "NA",
+          "Text": "NVT"
+        },
+        "CheckGroup": {
+          "Id": "99580639-3875-4bf2-a7f2-315cf5a71bcf"
+        },
+        "ResultValues": [
+          {
+            "Value": "NOTAPPLICABLE_NA",
+            "DisplayText": "N.V.T."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "d2ead254-b200-4e5b-867f-b1ea0f7356d4",
+          "Text": "Bevestiging en borging hydraulische cilinder"
+        },
+        "CheckGroup": {
+          "Id": "a5564175-7b39-4b88-b061-c7e7e2b533f2"
+        },
+        "ResultValues": [],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "NA",
+          "Text": "NVT"
+        },
+        "CheckGroup": {
+          "Id": "a5564175-7b39-4b88-b061-c7e7e2b533f2"
+        },
+        "ResultValues": [
+          {
+            "Value": "NOTAPPLICABLE_NA",
+            "DisplayText": "N.V.T."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "0425bc18-75be-436e-89e3-61da6cd52b43",
+          "Text": "Nooddaalinrichting"
+        },
+        "CheckGroup": {
+          "Id": "ae904950-6bd0-4079-8750-68d92bbc919f"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "0a7d0440-80a1-4922-86df-56ad06e5ff1b",
+          "Text": "Overlastbegrenzer"
+        },
+        "CheckGroup": {
+          "Id": "ae904950-6bd0-4079-8750-68d92bbc919f"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "40caed2d-4738-4e16-909e-8e57a30018ae",
+          "Text": "Vanginrichting"
+        },
+        "CheckGroup": {
+          "Id": "ae904950-6bd0-4079-8750-68d92bbc919f"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "72be86a1-9d14-43e5-ab1e-0bca354cc712",
+          "Text": "Vanginrichting TLBG (tijdelijke lift bij gebouw)"
+        },
+        "CheckGroup": {
+          "Id": "ae904950-6bd0-4079-8750-68d92bbc919f"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bd2be929-fc93-4c4e-a4ad-d123deb60155",
+          "Text": "Overige opmerkingen aangaande dit hoofdstuk"
+        },
+        "CheckGroup": {
+          "Id": "ae904950-6bd0-4079-8750-68d92bbc919f"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "ee02bfc2-b43f-442a-a5b6-704a2b95bd80",
+          "Text": "Bedrijfsrem"
+        },
+        "CheckGroup": {
+          "Id": "ae904950-6bd0-4079-8750-68d92bbc919f"
+        },
+        "ResultValues": [
+          {
+            "Value": "12fbd692-a642-4dca-90f2-e17579d46d5d",
+            "DisplayText": "In orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "04b2890b-dd62-4b31-b149-a2cf1fe39ed3",
+          "Text": "Dakluik en ladder"
+        },
+        "CheckGroup": {
+          "Id": "b2887514-e6f8-44d5-bacc-07e4f77c7b83"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "1b9f45ef-af7e-4f48-bb1e-671d93eb5113",
+          "Text": "Afscherming indien enig ander bewegend deel < 0,3 m passeert."
+        },
+        "CheckGroup": {
+          "Id": "b2887514-e6f8-44d5-bacc-07e4f77c7b83"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "288b9ea5-0f30-4b42-9980-3b231867b2fb",
+          "Text": "Wanden / gaas / kunststof"
+        },
+        "CheckGroup": {
+          "Id": "b2887514-e6f8-44d5-bacc-07e4f77c7b83"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "53c7c4c9-6cb9-40c0-82d8-37b20e681d7d",
+          "Text": "Kooidak aanwezig (m.i.v. 2010 nieuwe machines)"
+        },
+        "CheckGroup": {
+          "Id": "b2887514-e6f8-44d5-bacc-07e4f77c7b83"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "552c9d8f-6443-4e52-85d4-f2e42179a6ac",
+          "Text": "Bevestiging en borging kooi"
+        },
+        "CheckGroup": {
+          "Id": "b2887514-e6f8-44d5-bacc-07e4f77c7b83"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "713a85c9-9578-4b51-a26e-1328b3f9389c",
+          "Text": "Rollen afgeschermd tegen vuil tussen rollen en geleiding"
+        },
+        "CheckGroup": {
+          "Id": "b2887514-e6f8-44d5-bacc-07e4f77c7b83"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "78310064-248b-4987-b310-ceaffabaf080",
+          "Text": "Kooidak en leuningwerk"
+        },
+        "CheckGroup": {
+          "Id": "b2887514-e6f8-44d5-bacc-07e4f77c7b83"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "80391575-ac02-40ce-af62-6f92faf8cd6b",
+          "Text": "Loop-/ geleide wielen/ dwangrollen"
+        },
+        "CheckGroup": {
+          "Id": "b2887514-e6f8-44d5-bacc-07e4f77c7b83"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "ac4e22f9-34bf-403a-8b2a-00b64928a2ba",
+          "Text": "Davit/ (hand)lier en voetplaat"
+        },
+        "CheckGroup": {
+          "Id": "b2887514-e6f8-44d5-bacc-07e4f77c7b83"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "c0fd6f02-fdf8-43b7-ae2d-8a645770eb3b",
+          "Text": "Constructie liftkooi PGBL"
+        },
+        "CheckGroup": {
+          "Id": "b2887514-e6f8-44d5-bacc-07e4f77c7b83"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "c306876a-87ad-4d44-bcde-f6ab24f31daa",
+          "Text": "Toegangsdeuren liftkooi"
+        },
+        "CheckGroup": {
+          "Id": "b2887514-e6f8-44d5-bacc-07e4f77c7b83"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "ef2e6916-55b4-42bf-965d-439422aa3164",
+          "Text": "Kooivloer / antislip / afwatering"
+        },
+        "CheckGroup": {
+          "Id": "b2887514-e6f8-44d5-bacc-07e4f77c7b83"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "f0f32707-8161-44cc-a690-6da6d4c417fa",
+          "Text": "Wielbreuksteunen / vanghaken"
+        },
+        "CheckGroup": {
+          "Id": "b2887514-e6f8-44d5-bacc-07e4f77c7b83"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "ff388985-67e3-45e4-9d5c-f8de80f96ade",
+          "Text": "Kooidak: inspectiebesturing + noodstopvoorziening"
+        },
+        "CheckGroup": {
+          "Id": "b2887514-e6f8-44d5-bacc-07e4f77c7b83"
+        },
+        "ResultValues": [
+          {
+            "Value": "6b93e31a-3d01-499c-9b97-86b8b8818ef4",
+            "DisplayText": "N.v.t."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "3402ff30-fd01-49ba-bd43-5e7b05209b92",
+          "Text": "Kabelton"
+        },
+        "CheckGroup": {
+          "Id": "d288ab05-577c-40d0-b994-4eb7d6d9193c"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "59c86a59-2132-4fdf-9af5-fcf3101d3b08",
+          "Text": "Bout- / penverbinding / borging"
+        },
+        "CheckGroup": {
+          "Id": "d288ab05-577c-40d0-b994-4eb7d6d9193c"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "692d9a2d-9877-4fe2-ba6d-4f6ed2cfe9b6",
+          "Text": "Eindmast aanwezig (eventueel)"
+        },
+        "CheckGroup": {
+          "Id": "d288ab05-577c-40d0-b994-4eb7d6d9193c"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "6c5112a7-c9ce-4112-80cf-b5cd49ff687c",
+          "Text": "Constructie mast PGBL"
+        },
+        "CheckGroup": {
+          "Id": "d288ab05-577c-40d0-b994-4eb7d6d9193c"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "bd2be929-fc93-4c4e-a4ad-d123deb60155",
+          "Text": "Overige opmerkingen aangaande dit hoofdstuk"
+        },
+        "CheckGroup": {
+          "Id": "d288ab05-577c-40d0-b994-4eb7d6d9193c"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "e6a56df6-064a-4d28-80de-c061fe877ddf",
+          "Text": "Geleiding en mastdelen"
+        },
+        "CheckGroup": {
+          "Id": "d288ab05-577c-40d0-b994-4eb7d6d9193c"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "f8783fc4-012c-44fd-bb19-0681c4fdd55e",
+          "Text": "Kabelvangers"
+        },
+        "CheckGroup": {
+          "Id": "d288ab05-577c-40d0-b994-4eb7d6d9193c"
+        },
+        "ResultValues": [
+          {
+            "Value": "23762c68-28ef-44f5-9788-ed7b600b6f4a",
+            "DisplayText": "Niet in orde"
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "NA",
+          "Text": "NVT"
+        },
+        "CheckGroup": {
+          "Id": "dcad1680-51cd-475e-8921-24751e5847f5"
+        },
+        "ResultValues": [
+          {
+            "Value": "NOTAPPLICABLE_NA",
+            "DisplayText": "N.V.T."
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "57e13bbc-002c-43a1-8f14-83fa95f18a0c",
+          "Text": "Fabrikant"
+        },
+        "CheckGroup": {
+          "Id": "ea99e2fc-3672-4e47-8963-8e2e94336940"
+        },
+        "ResultValues": [
+          {
+            "Value": "Test",
+            "DisplayText": null
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      },
+      {
+        "Check": {
+          "Id": "7a7b7802-ed8f-415e-9085-8f869b463760",
+          "Text": "Omschrijving van de opstelling PGBL"
+        },
+        "CheckGroup": {
+          "Id": "ea99e2fc-3672-4e47-8963-8e2e94336940"
+        },
+        "ResultValues": [
+          {
+            "Value": "99e6f414-441c-4732-8cab-a90627da4248",
+            "DisplayText": "op grond / vloer"
+          }
+        ],
+        "Actions": [
+          {
+            "ActionPrefix": " #1",
+            "ActionText": ""
+          }
+        ],
+        "Photos": [
+          {
+            "Caption": "",
+            "FileName": "1753784947278_sample-bird.jpeg"
+          }
+        ]
+      },
+      {
+        "Check": {
+          "Id": "b6f4483d-a3e0-4ff3-9039-5c3d38ac433e",
+          "Text": "Bouwjaar"
+        },
+        "CheckGroup": {
+          "Id": "ea99e2fc-3672-4e47-8963-8e2e94336940"
+        },
+        "ResultValues": [
+          {
+            "Value": "2025",
+            "DisplayText": null
+          }
+        ],
+        "Actions": [],
+        "Photos": []
+      }
+    ]
+  }
+]
