@@ -7,6 +7,6 @@ This mongodb instance will be automatically populated with some initial data to 
 Then run `npm install` to install all dependencies required for this project.
 Run `npm run dev` to boot up the development server.
 
-## Deploy on Vercel
+## Deploying
 
 In this repository, there are two branches. The main branch, which is continuously deployed on https://reports.dannybunschoten.com/, and the dev branch, which can be used for development.
