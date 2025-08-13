@@ -3,7 +3,7 @@ module.exports = {
     {
       name: "online-documenting",
       script: "npm",
-      args: "run start -- -p 3003",
+      args: "run start",
     },
   ],
 };
