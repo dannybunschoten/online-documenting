@@ -13,36 +13,8 @@ export default function Footer() {
           alt="Aboma logo"
           className="brightness-0 invert h-14"
         />
-
-        <ul className="flex flex-wrap justify-center gap-8">
-          <li>
-            <Link
-              href="/"
-              className="font-medium hover:text-aboma-yellow transition-colors"
-            >
-              Reports
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/about"
-              className="font-medium hover:text-aboma-yellow transition-colors"
-            >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/contact"
-              className="font-medium hover:text-aboma-yellow transition-colors"
-            >
-              Contact
-            </Link>
-          </li>
-        </ul>
-
         <p className="text-center text-sm">
-          © Copyright {currentYear} - All Rights Reserved by{" "}
+          © Copyright {currentYear} - All Rights Reserved by -{" "}
           <Link
             href="https://aboma.nl/"
             target="_blank"
@@ -51,7 +23,7 @@ export default function Footer() {
           >
             Aboma
           </Link>{" "}
-          Distributed By{" "}
+          Powered By{" "}
           <Link
             href="https://www.smartflowapps.com/"
             target="_blank"
