@@ -14,7 +14,12 @@ export default async function Home() {
           const link = `/reports/${checklist}`;
           return (
             <li key={checklist}>
-              <Link href={link}>{checklist}</Link>
+              <Link
+                className="hover:text-aboma-yellow transition-colors text-aboma-blue"
+                href={link}
+              >
+                {checklist}
+              </Link>
             </li>
           );
         })}
