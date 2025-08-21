@@ -128,22 +128,20 @@ export default function ResultTable({
                 )}
               >
                 <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-                    <Badge
-                      variant="default"
-                      className="bg-aboma-blue hover:bg-aboma-blue/90 text-white min-w-[3rem] justify-center font-medium shadow-sm transition-colors duration-200 self-start sm:self-auto text-xs"
-                    >
-                      {check.Check.Prefix}
-                    </Badge>
-                    <span className="text-xs sm:text-sm font-medium text-gray-900 leading-relaxed break-words">
-                      {check.Check.Text}
-                    </span>
-                  </div>
+                  <Badge
+                    variant="default"
+                    className="bg-aboma-blue hover:bg-aboma-blue/90 text-white min-w-[3rem] justify-center font-medium shadow-sm transition-colors duration-200 self-start sm:self-auto text-xs mr-2"
+                  >
+                    {check.Check.Prefix}
+                  </Badge>
+                  <span className="text-xs sm:text-sm font-medium text-gray-900 leading-relaxed break-words">
+                    {check.Check.Text}
+                  </span>
                 </TableCell>
-                <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
+                <TableCell className="py-3 px-3 sm:px-6">
                   <div
                     className={cn(
-                      "flex mx-auto w-fit items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-2 rounded-lg border transition-all duration-200",
+                      "flex mx-auto w-fit items-center gap-1 md:gap-2 px-2 md:px-3 py-1 md:py-2 rounded-lg border transition-all duration-200",
                       statusConfig?.bgColor,
                       statusConfig?.borderColor,
                     )}
@@ -151,7 +149,7 @@ export default function ResultTable({
                     {statusConfig?.icon}
                     <span
                       className={cn(
-                        "text-xs sm:text-sm font-medium hidden sm:inline",
+                        "text-xs md:text-sm font-medium hidden md:inline",
                         statusConfig?.textColor,
                       )}
                     >

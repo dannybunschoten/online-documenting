@@ -1,5 +1,13 @@
-import { getCheckList } from "@/actions";
+import { getCheckList, getChecklists } from "@/actions";
 import { Overview } from "@/app/components/Overview";
+
+export async function generateStaticParams() {
+  const checklistIds = await getChecklists();
+
+  return checklistIds.map((id) => ({
+    slug: id,
+  }));
+}
 
 export default async function Report({
   params,
