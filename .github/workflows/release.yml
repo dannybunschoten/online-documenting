@@ -1,0 +1,22 @@
+name: Release Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build app
+        run: docker compose build
+
+      - name: Start services
+        run: docker compose up -d
+
+      - name: Test app is running
+        run: curl http://localhost:3000
+        
