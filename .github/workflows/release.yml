@@ -11,12 +11,34 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build app
-        run: docker compose build
+      - name: Fix apt sources
+        run: |
+          sed -i 's|deb.debian.org/debian|archive.debian.org/debian|g' /etc/apt/sources.list
+          sed -i 's|security.debian.org|archive.debian.org/|g' /etc/apt/sources.list
+          apt-get update
+          apt-get install -y curl
+
+      - name: Install Docker Compose v2
+        run: |
+          curl -SL https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-linux-$(uname -m) -o /usr/local/bin/docker-compose
+          chmod +x /usr/local/bin/docker-compose
+          docker-compose version
 
       - name: Start services
-        run: docker compose up -d
+        run: docker-compose up -d
+
+      - name: Wait for app to be up
+        run: |
+          for i in {1..30}; do
+            if curl -s http://localhost:3000 > /dev/null; then
+              echo "App is up!"
+              exit 0
+            fi
+            echo "Waiting for app..."
+            sleep 2
+          done
+          echo "App failed to start in time" >&2
+          exit 1
 
       - name: Test app is running
-        run: curl http://localhost:3000
-        
+        run: curl -f http://localhost:3000
