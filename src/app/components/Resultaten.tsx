@@ -11,7 +11,7 @@ export default function Resultaten({ data }: { data: CheckList }) {
             Resultaten
           </h2>
           <p className="text-muted-foreground mt-1 text-sm">
-            Technische specificaties en kenmerken
+            Inspectieresultaten en bevindingen
           </p>
         </div>
       </div>

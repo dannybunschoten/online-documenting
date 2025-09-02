@@ -30,8 +30,8 @@ export async function Overview({ data }: { data: CheckList }) {
         <div>
           <div className="mb-3 flex items-center gap-3">
             <div className="bg-aboma-yellow h-8 w-3 rounded-full"></div>
-            <span className="text-sm font-medium tracking-wider text-slate-500 uppercase">
-              Aboma Inspectie Rapport
+            <span className="text-sm font-medium tracking-wider text-slate-600 uppercase">
+              Inspectie rapport
             </span>
           </div>
           <h1 className="text-aboma-blue text-2xl leading-tight font-bold md:text-4xl">

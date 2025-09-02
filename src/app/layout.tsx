@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aboma Online Reporting",
-  description: "Online reporting platform for Aboma powered by Smartflow",
+  title: "Aboma online reporting",
+  description: "Professionele inspectierapporten en certificering door Aboma",
 };
 
 export default function RootLayout({

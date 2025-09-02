@@ -122,7 +122,7 @@ export default function ConfiguratieAandrijving({ data }: { data: CheckList }) {
             Configuratie Aandrijving
           </h2>
           <p className="text-muted-foreground mt-1 text-sm">
-            Technische specificaties en kenmerken
+            Aandrijfconfiguratie en technische details
           </p>
         </div>
       </div>

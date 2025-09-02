@@ -64,7 +64,7 @@ export default async function AdditionalResults({ data }: { data: CheckList }) {
                     <CardDescription className="mt-1 font-medium text-white/80">
                       {isCheckListSkipped
                         ? "Deze checklist is niet van toepassing"
-                        : "Algemene resultaten van de inspectie"}
+                        : "Gedetailleerde inspectieresultaten"}
                     </CardDescription>
                   </div>
                 </div>

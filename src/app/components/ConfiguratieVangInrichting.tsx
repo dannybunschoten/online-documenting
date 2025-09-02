@@ -102,7 +102,7 @@ export default function ConfiguratieVangInrichting({
             Configuratie Vang Inrichting
           </h2>
           <p className="text-muted-foreground mt-1 text-sm">
-            Technische specificaties en kenmerken
+            Vanginrichting specificaties en details
           </p>
         </div>
       </div>

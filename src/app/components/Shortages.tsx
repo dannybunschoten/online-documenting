@@ -40,7 +40,7 @@ export function Shortages({
           </div>
           <div>
             <div className="mb-1 text-sm font-medium tracking-wider text-emerald-100 uppercase">
-              Inspectie conclusie
+              Eindoordeel
             </div>
             <div className="text-xl font-bold text-white">
               {shortages ? "T" : "Geen t"}ekortkomingen geconstateerd
@@ -50,7 +50,7 @@ export function Shortages({
         {!shortages && stickerNumber && (
           <div className="text-right">
             <div className="mb-1 text-sm font-medium text-emerald-100">
-              Certifaat Nummer
+              Certificaatnummer
             </div>
             <div className="rounded-lg bg-white/20 px-4 py-2 text-2xl font-bold text-white">
               {stickerNumber}

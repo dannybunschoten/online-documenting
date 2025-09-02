@@ -80,8 +80,8 @@ export default function TableOfContents({ data }: { data: CheckList }) {
               Inhoudsopgave
             </h2>
           </div>
-          <p className="mt-1 ml-9 text-sm text-white/70">
-            Navigeer door het inspectierapport
+          <p className="mt-1 ml-9 text-sm text-white/80">
+            Klik op een sectie om er naartoe te gaan
           </p>
         </div>
 

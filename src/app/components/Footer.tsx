@@ -19,16 +19,16 @@ export default function Footer() {
             href="https://aboma.nl/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:underline"
+            className="font-medium hover:underline"
           >
             Aboma
           </Link>{" "}
-          Powered By{" "}
+          - powered by{" "}
           <Link
             href="https://www.smartflowapps.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:underline"
+            className="font-medium hover:underline"
           >
             Smartflow
           </Link>

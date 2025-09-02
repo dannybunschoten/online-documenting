@@ -30,6 +30,11 @@ export default function Conclusie({ data }: { data: CheckList }) {
       label: "Inspecteur",
       value: data.employeeName || notAvailableString,
     },
+    {
+      icon: PenTool,
+      label: "Handtekening",
+      value: null, // Special case for signature image
+    },
   ];
 
   return (
@@ -44,7 +49,7 @@ export default function Conclusie({ data }: { data: CheckList }) {
             Conclusie
           </h2>
           <p className="text-muted-foreground mt-1 text-sm">
-            Concluderende gegevens
+            Samenvatting en eindconclusie
           </p>
         </div>
       </div>
@@ -71,37 +76,20 @@ export default function Conclusie({ data }: { data: CheckList }) {
               </div>
             </div>
             <div className="text-right">
-              <span className="text-aboma-blue block text-xl font-bold tracking-tight">
-                {detail.value}
-              </span>
+              {detail.label === "Handtekening" ? (
+                <Image
+                  src={signature}
+                  alt="Inspecteur handtekening"
+                  className="max-h-20 w-auto"
+                />
+              ) : (
+                <span className="text-aboma-blue block text-xl font-bold tracking-tight">
+                  {detail.value}
+                </span>
+              )}
             </div>
           </div>
         ))}
-
-        <Separator className="border-slate-200/80" />
-
-        <div className="flex items-center justify-between overflow-hidden rounded-xl px-6 py-6 transition-all duration-300 hover:bg-slate-50">
-          <div className="flex items-center gap-5">
-            <div className="flex size-12 items-center justify-center rounded-2xl bg-emerald-100">
-              <PenTool className="size-6 text-emerald-600" />
-            </div>
-            <div className="space-y-1">
-              <span className="block text-lg font-semibold text-slate-700">
-                Handtekening
-              </span>
-              <div className="h-0.5 w-12 rounded-full bg-emerald-600 opacity-60" />
-            </div>
-          </div>
-          <div className="rounded-2xl border-2 border-slate-200/60 bg-gradient-to-br from-slate-50 to-white p-6 shadow-lg">
-            <div className="relative">
-              <Image
-                src={signature}
-                alt="Inspecteur handtekening"
-                className="max-h-20 w-auto"
-              />
-            </div>
-          </div>
-        </div>
       </div>
     </article>
   );

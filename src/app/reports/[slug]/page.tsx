@@ -21,7 +21,7 @@ export default async function Report({
     return (
       <div className="container mx-auto max-w-[1400px] px-4 py-8">
         <div className="text-muted-foreground text-center">
-          No inspection data available
+          Geen inspectiegegevens beschikbaar
         </div>
       </div>
     );
