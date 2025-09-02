@@ -29,7 +29,7 @@ export default async function AdditionalResults({ data }: { data: CheckList }) {
           checkgroup.checks[0].Check.Id === "NA";
         return (
           <section
-            className="mx-auto mb-12 max-w-[900px] px-4"
+            className="mx-auto mb-12 max-w-[900px] lg:px-4"
             id={titleToId(checkgroup.title)}
             key={checkgroup.title}
           >

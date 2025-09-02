@@ -3,7 +3,7 @@ import AdditionalResults from "./AdditionalResults";
 
 export default function Resultaten({ data }: { data: CheckList }) {
   return (
-    <article className="mx-auto max-w-[900px] py-8 md:px-4">
+    <article className="mx-auto max-w-[900px] py-8 lg:px-4">
       <div className="mb-8 flex items-center gap-4">
         <div className="bg-aboma-yellow h-10 w-1.5 rounded-full shadow-sm" />
         <div>

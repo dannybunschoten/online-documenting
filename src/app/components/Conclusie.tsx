@@ -35,7 +35,7 @@ export default function Conclusie({ data }: { data: CheckList }) {
   return (
     <article
       id={titleToId("Conclusie")}
-      className="mx-auto max-w-4xl space-y-8 px-4 pb-12"
+      className="mx-auto max-w-4xl space-y-8 pb-12 lg:px-4"
     >
       <div className="mb-8 flex items-center gap-4">
         <div className="bg-aboma-yellow h-10 w-1.5 rounded-full shadow-sm" />
@@ -49,7 +49,7 @@ export default function Conclusie({ data }: { data: CheckList }) {
         </div>
       </div>
 
-      <div className="mx-4 space-y-2">
+      <div className="space-y-2 lg:mx-4">
         <Shortages conclusionData={conclusionData} />
 
         <Separator className="mt-4 border-slate-200/80" />
