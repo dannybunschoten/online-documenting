@@ -19,16 +19,16 @@ export default async function Report({
 
   if (!data) {
     return (
-      <div className="container mx-auto px-4 max-w-[1400px] py-8">
-        <div className="text-center text-muted-foreground">
-          No inspection data available
+      <div className="container mx-auto max-w-[1400px] px-4 py-8">
+        <div className="text-muted-foreground text-center">
+          Geen inspectiegegevens beschikbaar
         </div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto lg:px-6 max-w-[1400px] lg:py-8">
+    <div className="container mx-auto max-w-[1400px] lg:px-6 lg:py-8">
       <Overview data={data} />
     </div>
   );

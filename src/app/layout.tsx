@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aboma Online Reporting",
-  description: "Online reporting platform for Aboma powered by Smartflow",
+  title: "Aboma online reporting",
+  description: "Professionele inspectierapporten en certificering door Aboma",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-dvh bg-gray-50 font-sans`}
+        className={`${geistSans.variable} ${geistMono.variable} flex min-h-dvh flex-col bg-gray-50 font-sans antialiased`}
       >
         <Header />
         {children}

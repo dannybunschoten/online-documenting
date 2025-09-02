@@ -54,11 +54,11 @@ export default function ResultTable({
   return (
     <div className={cn("overflow-hidden", className)}>
       <Table className="w-full">
-        <TableCaption className="text-sm text-gray-600 mb-3">
+        <TableCaption className="mb-3 text-sm text-gray-600">
           {showControleCount && (
             <div className="flex flex-wrap items-center justify-center gap-6 px-4">
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 bg-green-500 rounded-full shadow-sm"></div>
+                <div className="h-4 w-4 rounded-full bg-green-500 shadow-sm"></div>
                 <span className="font-medium">
                   {
                     tableData.filter(
@@ -69,7 +69,7 @@ export default function ResultTable({
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 bg-gray-400 rounded-full shadow-sm"></div>
+                <div className="h-4 w-4 rounded-full bg-gray-400 shadow-sm"></div>
                 <span className="font-medium">
                   {
                     tableData.filter(
@@ -80,7 +80,7 @@ export default function ResultTable({
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <AlertTriangle className="w-5 h-5 text-amber-500" />
+                <AlertTriangle className="h-5 w-5 text-amber-500" />
                 <span className="font-medium">
                   {tableData.reduce(
                     (sum, check) => sum + check.Actions.length,
@@ -90,7 +90,7 @@ export default function ResultTable({
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Camera className="w-5 h-5 text-blue-500" />
+                <Camera className="h-5 w-5 text-blue-500" />
                 <span className="font-medium">
                   {tableData.reduce((sum, item) => sum + item.Photos.length, 0)}{" "}
                   foto&apos;s
@@ -99,18 +99,18 @@ export default function ResultTable({
             </div>
           )}
         </TableCaption>
-        <TableHeader className="bg-gradient-to-r from-aboma-blue to-aboma-blue/90 text-white py-6">
+        <TableHeader className="from-aboma-blue to-aboma-blue/90 bg-gradient-to-r py-6 text-white">
           <TableRow className="border-none hover:bg-transparent">
-            <TableHead className="font-semibold text-white py-4 px-6 text-sm w-[50%]">
+            <TableHead className="w-[50%] px-6 py-4 text-sm font-semibold text-white">
               Specificatie
             </TableHead>
-            <TableHead className="font-semibold text-white py-4 px-6 text-sm text-center w-[20%]">
+            <TableHead className="w-[20%] px-6 py-4 text-center text-sm font-semibold text-white">
               Status
             </TableHead>
-            <TableHead className="font-semibold text-white py-4 px-6 text-sm text-center w-[15%]">
+            <TableHead className="w-[15%] px-6 py-4 text-center text-sm font-semibold text-white">
               Bevindingen
             </TableHead>
-            <TableHead className="font-semibold text-white py-4 px-6 text-sm text-center w-[15%]">
+            <TableHead className="w-[15%] px-6 py-4 text-center text-sm font-semibold text-white">
               Foto&apos;s
             </TableHead>
           </TableRow>
@@ -123,25 +123,25 @@ export default function ResultTable({
               <TableRow
                 key={`${check.Check.Prefix}-${check.Check.Text}`}
                 className={cn(
-                  "border-b border-gray-100 hover:bg-gray-50/50 transition-colors duration-200",
+                  "border-b border-gray-100 transition-colors duration-200 hover:bg-gray-50/50",
                   index === tableData.length - 1 && "border-b-0",
                 )}
               >
-                <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
+                <TableCell className="px-3 py-3 whitespace-normal sm:px-6">
                   <Badge
                     variant="default"
-                    className="bg-aboma-blue hover:bg-aboma-blue/90 text-white min-w-[3rem] justify-center font-medium shadow-sm transition-colors duration-200 self-start sm:self-auto text-xs mr-2"
+                    className="bg-aboma-blue hover:bg-aboma-blue/90 mr-2 min-w-[3rem] justify-center self-start text-xs font-medium text-white shadow-sm transition-colors duration-200 sm:self-auto"
                   >
                     {check.Check.Prefix}
                   </Badge>
-                  <span className="text-xs sm:text-sm font-medium text-gray-900 leading-relaxed break-words">
+                  <span className="text-xs leading-relaxed font-medium break-words text-gray-900 sm:text-sm">
                     {check.Check.Text}
                   </span>
                 </TableCell>
-                <TableCell className="py-3 px-3 sm:px-6">
+                <TableCell className="px-3 py-3 sm:px-6">
                   <div
                     className={cn(
-                      "flex mx-auto w-fit items-center gap-1 md:gap-2 px-2 md:px-3 py-1 md:py-2 rounded-lg border transition-all duration-200",
+                      "mx-auto flex w-fit items-center gap-1 rounded-lg border px-2 py-1 transition-all duration-200 md:gap-2 md:px-3 md:py-2",
                       statusConfig?.bgColor,
                       statusConfig?.borderColor,
                     )}
@@ -149,7 +149,7 @@ export default function ResultTable({
                     {statusConfig?.icon}
                     <span
                       className={cn(
-                        "text-xs md:text-sm font-medium hidden md:inline",
+                        "hidden text-xs font-medium md:inline md:text-sm",
                         statusConfig?.textColor,
                       )}
                     >
@@ -157,21 +157,21 @@ export default function ResultTable({
                     </span>
                   </div>
                 </TableCell>
-                <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
+                <TableCell className="px-3 py-3 whitespace-normal sm:px-6">
                   <div
                     className={cn(
-                      "flex size-8 sm:w-fit mx-auto items-center justify-center gap-1 sm:gap-2 sm:px-3 py-1 sm:py-2 rounded-lg border",
+                      "mx-auto flex size-8 items-center justify-center gap-1 rounded-lg border py-1 sm:w-fit sm:gap-2 sm:px-3 sm:py-2",
                       check.Actions.length > 0
-                        ? "bg-amber-50 border-amber-200"
-                        : "bg-gray-50 justify-center size-8 border-gray-200",
+                        ? "border-amber-200 bg-amber-50"
+                        : "size-8 justify-center border-gray-200 bg-gray-50",
                     )}
                   >
                     {check.Actions.length > 0 && (
-                      <AlertTriangle className="size-4 text-amber-500 hidden sm:inline" />
+                      <AlertTriangle className="hidden size-4 text-amber-500 sm:inline" />
                     )}
                     <span
                       className={cn(
-                        "text-xs sm:text-sm font-medium",
+                        "text-xs font-medium sm:text-sm",
                         check.Actions.length > 0
                           ? "text-amber-700"
                           : "text-gray-600",
@@ -181,21 +181,21 @@ export default function ResultTable({
                     </span>
                   </div>
                 </TableCell>
-                <TableCell className="py-3 px-3 sm:px-6 whitespace-normal">
+                <TableCell className="px-3 py-3 whitespace-normal sm:px-6">
                   <div
                     className={cn(
-                      "flex size-8 sm:w-fit mx-auto items-center justify-center gap-1 sm:gap-2 sm:px-3 py-1 sm:py-2 rounded-lg border",
+                      "mx-auto flex size-8 items-center justify-center gap-1 rounded-lg border py-1 sm:w-fit sm:gap-2 sm:px-3 sm:py-2",
                       check.Photos.length > 0
-                        ? "bg-blue-50 border-blue-200"
-                        : "size-8 justify-center bg-gray-50 border-gray-200",
+                        ? "border-blue-200 bg-blue-50"
+                        : "size-8 justify-center border-gray-200 bg-gray-50",
                     )}
                   >
                     {check.Photos.length > 0 && (
-                      <Camera className="size-4 text-blue-500 hidden sm:inline" />
+                      <Camera className="hidden size-4 text-blue-500 sm:inline" />
                     )}
                     <span
                       className={cn(
-                        "text-xs sm:text-sm font-medium",
+                        "text-xs font-medium sm:text-sm",
                         check.Photos.length > 0
                           ? "text-blue-700"
                           : "text-gray-600",

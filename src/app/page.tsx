@@ -5,17 +5,17 @@ export default async function Home() {
   const checkLists = await getChecklists();
 
   return (
-    <section className="max-w-[1400px] bg-white rounded-2xl mx-auto p-8 mt-4 text-center shadow-xl border-gray-100 border">
-      <h1 className="text-aboma-blue font-semibold text-2xl mb-2">
-        Click one of the reports:
+    <section className="mx-auto mt-6 max-w-[1200px] rounded-2xl border border-gray-100 bg-white p-10 text-center shadow-xl">
+      <h1 className="text-aboma-blue mb-6 text-3xl font-bold">
+        Selecteer een inspectierapport
       </h1>
-      <ul className="space-y-1">
+      <ul className="space-y-3">
         {checkLists.map((checklist) => {
           const link = `/reports/${checklist}`;
           return (
             <li key={checklist}>
               <Link
-                className="hover:text-aboma-yellow transition-colors text-aboma-blue"
+                className="hover:text-aboma-yellow text-aboma-blue block rounded-lg px-4 py-3 text-lg font-medium transition-all hover:bg-slate-50"
                 href={link}
               >
                 {checklist}

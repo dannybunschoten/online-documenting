@@ -14,14 +14,14 @@ export default function ConfiguratieAandrijving({
   tableData: Map<string, string | null | undefined>;
 }) {
   return (
-    <div className="mx-4 bg-gradient-to-br from-white to-slate-50/30 rounded-2xl shadow-xl border border-slate-200/50 overflow-hidden backdrop-blur-sm">
+    <div className="overflow-hidden rounded-2xl border border-slate-200/50 bg-gradient-to-br from-white to-slate-50/30 shadow-xl backdrop-blur-sm lg:mx-4">
       <Table>
         <TableHeader>
-          <TableRow className="bg-aboma-blue border-none hover:bg-aboma-blue">
+          <TableRow className="bg-aboma-blue hover:bg-aboma-blue border-none">
             {["Specificatie", "Details"].map((heading) => (
               <TableHead
                 key={heading}
-                className="font-semibold text-white/95 py-5 px-8 text-sm uppercase tracking-wider"
+                className="px-8 py-5 text-sm font-semibold tracking-wider text-white/95 uppercase"
               >
                 {heading}
               </TableHead>
@@ -32,26 +32,17 @@ export default function ConfiguratieAandrijving({
           {[...tableData].map(([key, value], idx) => (
             <TableRow
               key={key}
-              className={`
-                    ${idx % 2 === 0 ? "bg-white/80" : "bg-slate-50/50"}
-                    transition-all duration-300 ease-out
-                    hover:bg-aboma-yellow/5 hover:shadow-sm
-                    border-b border-slate-100/50 last:border-0
-                    group
-                  `}
+              className={` ${idx % 2 === 0 ? "bg-white/80" : "bg-slate-50/50"} hover:bg-aboma-yellow/5 group border-b border-slate-100/50 transition-all duration-300 ease-out last:border-0 hover:shadow-sm`}
             >
-              <TableCell className="py-5 px-8 font-medium text-slate-600 group-hover:text-slate-800 transition-colors">
+              <TableCell className="px-8 py-5 font-medium text-slate-600 transition-colors group-hover:text-slate-800">
                 <span className="inline-flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-aboma-yellow/60 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className="bg-aboma-yellow/60 h-1.5 w-1.5 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   {key}
                 </span>
               </TableCell>
-              <TableCell className="py-5 px-8">
+              <TableCell className="px-8 py-5">
                 <span
-                  className={`
-                      font-semibold text-aboma-blue transition-all duration-300
-                      ${value == null ? "opacity-50 italic" : "group-hover:text-aboma-blue/90"}
-                    `}
+                  className={`text-aboma-blue font-semibold transition-all duration-300 ${value == null ? "italic opacity-50" : "group-hover:text-aboma-blue/90"} `}
                 >
                   {value || notAvailableString}
                 </span>

@@ -71,21 +71,21 @@ export default function TableOfContents({ data }: { data: CheckList }) {
   };
 
   return (
-    <nav className="max-w-[900px] mx-auto">
-      <div className="bg-white rounded-2xl shadow-xl border border-slate-200/50 overflow-hidden">
-        <div className="bg-gradient-to-r from-aboma-blue to-aboma-blue/95 px-8 py-6">
+    <nav className="mx-auto max-w-[900px]">
+      <div className="overflow-hidden rounded-2xl border border-slate-200/50 bg-white shadow-xl">
+        <div className="from-aboma-blue to-aboma-blue/95 bg-gradient-to-r px-8 py-6">
           <div className="flex items-center gap-3">
             <Layers className="size-6 text-white/90" />
-            <h2 className="text-2xl text-white font-bold tracking-tight">
+            <h2 className="text-2xl font-bold tracking-tight text-white">
               Inhoudsopgave
             </h2>
           </div>
-          <p className="text-white/70 text-sm mt-1 ml-9">
-            Navigeer door het inspectierapport
+          <p className="mt-1 ml-9 text-sm text-white/80">
+            Klik op een sectie om er naartoe te gaan
           </p>
         </div>
 
-        <div className="p-6 bg-gradient-to-br from-white via-white to-slate-50/30">
+        <div className="bg-gradient-to-br from-white via-white to-slate-50/30 p-6">
           <ul className="space-y-2">
             {dynamicNavigationEntries.map((entry, index) => (
               <li key={entry.title}>
@@ -93,9 +93,9 @@ export default function TableOfContents({ data }: { data: CheckList }) {
                   onClick={() =>
                     handleNavigation(entry.title, entry.children.length > 0)
                   }
-                  className="w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ease-out flex items-center gap-3 group cursor-pointer hover:bg-slate-50 hover:shadow-sm border border-transparent"
+                  className="group flex w-full cursor-pointer items-center gap-3 rounded-lg border border-transparent px-4 py-3 text-left transition-all duration-300 ease-out hover:bg-slate-50 hover:shadow-sm"
                 >
-                  <div className="flex items-center justify-center size-8 rounded-lg transition-all duration-300 bg-slate-100 text-slate-600 group-hover:bg-aboma-blue/10 group-hover:text-aboma-blue">
+                  <div className="group-hover:bg-aboma-blue/10 group-hover:text-aboma-blue flex size-8 items-center justify-center rounded-lg bg-slate-100 text-slate-600 transition-all duration-300">
                     {entry.children.length > 0 ? (
                       <Layers className="size-4" />
                     ) : (
@@ -103,7 +103,7 @@ export default function TableOfContents({ data }: { data: CheckList }) {
                     )}
                   </div>
 
-                  <span className="flex-1 font-medium transition-colors duration-300 text-slate-700 group-hover:text-aboma-blue">
+                  <span className="group-hover:text-aboma-blue flex-1 font-medium text-slate-700 transition-colors duration-300">
                     {entry.title}
                   </span>
 
@@ -117,7 +117,7 @@ export default function TableOfContents({ data }: { data: CheckList }) {
                     />
                   )}
 
-                  <span className="size-6 flex items-center justify-center text-xs rounded-full transition-all duration-300 bg-slate-100 text-slate-600 group-hover:bg-aboma-blue/10 group-hover:text-aboma-blue">
+                  <span className="group-hover:bg-aboma-blue/10 group-hover:text-aboma-blue flex size-6 items-center justify-center rounded-full bg-slate-100 text-xs text-slate-600 transition-all duration-300">
                     {index + 1}
                   </span>
                 </button>
@@ -141,11 +141,11 @@ export default function TableOfContents({ data }: { data: CheckList }) {
                           onClick={() =>
                             handleNavigation(childEntry.title, false)
                           }
-                          className="w-full text-left px-4 py-2.5 rounded-lg transition-all duration-300 ease-out flex items-center gap-3 group cursor-pointer hover:bg-slate-50 hover:pl-6"
+                          className="group flex w-full cursor-pointer items-center gap-3 rounded-lg px-4 py-2.5 text-left transition-all duration-300 ease-out hover:bg-slate-50 hover:pl-6"
                         >
-                          <div className="size-1.5 bg-aboma-yellow/60 rounded-full group-hover:bg-aboma-yellow transition-colors duration-300" />
+                          <div className="bg-aboma-yellow/60 group-hover:bg-aboma-yellow size-1.5 rounded-full transition-colors duration-300" />
 
-                          <span className="text-sm text-slate-600 group-hover:text-aboma-blue transition-colors duration-300">
+                          <span className="group-hover:text-aboma-blue text-sm text-slate-600 transition-colors duration-300">
                             {childEntry.title}
                           </span>
                         </button>
