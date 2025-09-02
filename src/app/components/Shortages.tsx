@@ -22,7 +22,7 @@ export function Shortages({
   return (
     <div
       className={cn(
-        "rounded-2xl shadow-lg p-6 bg-gradient-to-br",
+        "rounded-2xl bg-gradient-to-br p-6 shadow-lg",
         shortages
           ? "from-rose-600 to-red-600"
           : "from-emerald-600 to-green-600",
@@ -31,7 +31,7 @@ export function Shortages({
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <div className="size-16 bg-white/20 rounded-full items-center justify-center hidden md:flex">
+          <div className="hidden size-16 items-center justify-center rounded-full bg-white/20 md:flex">
             {shortages ? (
               <X className="size-12 text-white" />
             ) : (
@@ -39,20 +39,20 @@ export function Shortages({
             )}
           </div>
           <div>
-            <div className="text-emerald-100 text-sm font-medium uppercase tracking-wider mb-1">
+            <div className="mb-1 text-sm font-medium tracking-wider text-emerald-100 uppercase">
               Inspectie conclusie
             </div>
-            <div className="text-white text-xl font-bold">
+            <div className="text-xl font-bold text-white">
               {shortages ? "T" : "Geen t"}ekortkomingen geconstateerd
             </div>
           </div>
         </div>
         {!shortages && stickerNumber && (
           <div className="text-right">
-            <div className="text-emerald-100 text-sm font-medium mb-1">
+            <div className="mb-1 text-sm font-medium text-emerald-100">
               Certifaat Nummer
             </div>
-            <div className="text-white text-2xl font-bold bg-white/20 px-4 py-2 rounded-lg">
+            <div className="rounded-lg bg-white/20 px-4 py-2 text-2xl font-bold text-white">
               {stickerNumber}
             </div>
           </div>

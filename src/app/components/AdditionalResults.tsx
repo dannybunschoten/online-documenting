@@ -29,23 +29,23 @@ export default async function AdditionalResults({ data }: { data: CheckList }) {
           checkgroup.checks[0].Check.Id === "NA";
         return (
           <section
-            className="max-w-[900px] mx-auto px-4 mb-12"
+            className="mx-auto mb-12 max-w-[900px] px-4"
             id={titleToId(checkgroup.title)}
             key={checkgroup.title}
           >
-            <Card className="shadow-lg border-0 bg-gradient-to-br from-white to-gray-50/50 overflow-hidden py-0 gap-0">
+            <Card className="gap-0 overflow-hidden border-0 bg-gradient-to-br from-white to-gray-50/50 py-0 shadow-lg">
               <CardHeader
                 className={cn(
-                  "bg-gradient-to-r text-white pt-6",
+                  "bg-gradient-to-r pt-6 text-white",
                   isCheckListSkipped
-                    ? "pb-6 from-gray-400 to-gray-500"
+                    ? "from-gray-400 to-gray-500 pb-6"
                     : "from-aboma-blue to-aboma-blue/90",
                 )}
               >
                 <div className="flex items-center gap-3">
                   <div
                     className={cn(
-                      "flex items-center justify-center size-10 shrink-0 rounded-lg backdrop-blur-sm",
+                      "flex size-10 shrink-0 items-center justify-center rounded-lg backdrop-blur-sm",
                       isCheckListSkipped ? "bg-white/30" : "bg-white/20",
                     )}
                   >
@@ -56,12 +56,12 @@ export default async function AdditionalResults({ data }: { data: CheckList }) {
                       {checkgroup.prefix ? checkgroup.prefix + " - " : ""}
                       {checkgroup.title || notAvailableString}
                       {isCheckListSkipped && (
-                        <Badge className="ml-2 px-2 py-1 text-sm bg-white/20 rounded-md font-normal inline align-middle">
+                        <Badge className="ml-2 inline rounded-md bg-white/20 px-2 py-1 align-middle text-sm font-normal">
                           N.v.t.
                         </Badge>
                       )}
                     </CardTitle>
-                    <CardDescription className="text-white/80 mt-1 font-medium">
+                    <CardDescription className="mt-1 font-medium text-white/80">
                       {isCheckListSkipped
                         ? "Deze checklist is niet van toepassing"
                         : "Algemene resultaten van de inspectie"}
@@ -72,10 +72,10 @@ export default async function AdditionalResults({ data }: { data: CheckList }) {
               <CardContent className="p-0">
                 {isCheckListSkipped ? (
                   <div className="p-8 text-center text-gray-500">
-                    <div className="inline-flex items-center justify-center size-16 bg-gray-100 rounded-full mb-4">
+                    <div className="mb-4 inline-flex size-16 items-center justify-center rounded-full bg-gray-100">
                       <FileText className="size-8 text-gray-400" />
                     </div>
-                    <p className="text-lg font-medium text-gray-600 mb-2">
+                    <p className="mb-2 text-lg font-medium text-gray-600">
                       Niet van toepassing
                     </p>
                     <p className="text-sm text-gray-500">
@@ -86,7 +86,7 @@ export default async function AdditionalResults({ data }: { data: CheckList }) {
                 ) : (
                   <ResultTable
                     tableData={checkgroup.checks}
-                    className="border-0 shadow-none min-w-full"
+                    className="min-w-full border-0 shadow-none"
                     showControleCount={true}
                   />
                 )}

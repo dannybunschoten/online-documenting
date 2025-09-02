@@ -5,8 +5,8 @@ export default async function Home() {
   const checkLists = await getChecklists();
 
   return (
-    <section className="max-w-[1400px] bg-white rounded-2xl mx-auto p-8 mt-4 text-center shadow-xl border-gray-100 border">
-      <h1 className="text-aboma-blue font-semibold text-2xl mb-2">
+    <section className="mx-auto mt-4 max-w-[1400px] rounded-2xl border border-gray-100 bg-white p-8 text-center shadow-xl">
+      <h1 className="text-aboma-blue mb-2 text-2xl font-semibold">
         Click one of the reports:
       </h1>
       <ul className="space-y-1">
@@ -15,7 +15,7 @@ export default async function Home() {
           return (
             <li key={checklist}>
               <Link
-                className="hover:text-aboma-yellow transition-colors text-aboma-blue"
+                className="hover:text-aboma-yellow text-aboma-blue transition-colors"
                 href={link}
               >
                 {checklist}

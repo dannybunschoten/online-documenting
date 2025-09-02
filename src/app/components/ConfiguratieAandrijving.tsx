@@ -113,12 +113,12 @@ export default function ConfiguratieAandrijving({ data }: { data: CheckList }) {
   return (
     <article
       id={titleToId("Configuratie Aandrijving")}
-      className="max-w-[900px] mx-auto py-8 md:px-4"
+      className="mx-auto max-w-[900px] py-8 lg:px-4"
     >
-      <div className="flex items-center gap-4 mb-8">
-        <div className="w-1.5 bg-aboma-yellow rounded-full h-10 shadow-sm" />
+      <div className="mb-8 flex items-center gap-4">
+        <div className="bg-aboma-yellow h-10 w-1.5 rounded-full shadow-sm" />
         <div>
-          <h2 className="text-3xl text-aboma-blue font-bold tracking-tight">
+          <h2 className="text-aboma-blue text-3xl font-bold tracking-tight">
             Configuratie Aandrijving
           </h2>
           <p className="text-muted-foreground mt-1 text-sm">
