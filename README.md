@@ -9,4 +9,8 @@ Run `npm run dev` to boot up the development server.
 
 ## Deploying
 
-In this repository, there are two branches. The main branch, which is continuously deployed on https://reports.dannybunschoten.com/, and the dev branch, which can be used for development.
+Pull the repo
+Then run `npm install` to install all dependencies required for this project.
+Run `npm run build` to build sources.
+Ensure that `MONGODB_URI` env variable it set to connect to the mondo db server
+Run `npm run start` to boot up the production server.
