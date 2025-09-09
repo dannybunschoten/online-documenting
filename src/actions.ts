@@ -52,11 +52,13 @@ export async function getCheckList(formId: string): Promise<CheckList | null> {
 
   const extendedCheckGroups = dataModel.CHECK_GROUPS.map((group) => {
     const groupChecks = group.Checks.map((modelCheck) => {
-      const snapshotCheck = dataSnapshot.checks.find(
-        (x) =>
-          x.Check.Id === modelCheck.CheckId &&
-          x.CheckGroup.Id === group.CheckGroupId,
-      );
+      const snapshotCheck = dataSnapshot.checks
+        .filter((x) => x && x.Check && x.CheckGroup)
+        .find(
+          (x) =>
+            x.Check.Id === modelCheck.CheckId &&
+            x.CheckGroup.Id === group.CheckGroupId,
+        );
 
       if (!snapshotCheck) {
         return null;

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Table,
   TableBody,
@@ -11,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { Check, Minus, X, Camera, AlertTriangle } from "lucide-react";
 import { CheckDataOrdered } from "../types";
+import { ImageViewer } from "./ImageViewer";
 
 const statusToConfig = new Map([
   [
@@ -182,27 +185,16 @@ export default function ResultTable({
                   </div>
                 </TableCell>
                 <TableCell className="px-3 py-3 whitespace-normal sm:px-6">
-                  <div
-                    className={cn(
-                      "mx-auto flex size-8 items-center justify-center gap-1 rounded-lg border py-1 sm:w-fit sm:gap-2 sm:px-3 sm:py-2",
-                      check.Photos.length > 0
-                        ? "border-blue-200 bg-blue-50"
-                        : "size-8 justify-center border-gray-200 bg-gray-50",
+                  <div className="flex items-center justify-center">
+                    {check.Photos.length > 0 ? (
+                      <ImageViewer images={check.Photos} />
+                    ) : (
+                      <div className="flex size-8 items-center justify-center rounded-lg border border-gray-200 bg-gray-50">
+                        <span className="text-xs font-medium text-gray-600 sm:text-sm">
+                          0
+                        </span>
+                      </div>
                     )}
-                  >
-                    {check.Photos.length > 0 && (
-                      <Camera className="hidden size-4 text-blue-500 sm:inline" />
-                    )}
-                    <span
-                      className={cn(
-                        "text-xs font-medium sm:text-sm",
-                        check.Photos.length > 0
-                          ? "text-blue-700"
-                          : "text-gray-600",
-                      )}
-                    >
-                      {check.Photos.length}
-                    </span>
                   </div>
                 </TableCell>
               </TableRow>
