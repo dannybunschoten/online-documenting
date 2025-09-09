@@ -1,10 +1,9 @@
 import { notAvailableString, titleToId } from "@/lib/utils";
 import { Shortages } from "./Shortages";
-import signature from "@/../public/signature.png";
-import Image from "next/image";
 import { Calendar, Hash, PenTool, User } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { CheckList } from "../types";
+import Image from "next/image";
 
 export default function Conclusie({ data }: { data: CheckList }) {
   const conclusionData = data.checks.find(
@@ -13,6 +12,9 @@ export default function Conclusie({ data }: { data: CheckList }) {
   const stickerNumber = conclusionData?.checks.find(
     (check) => check.Check.Id === "a17140b6-761c-4504-8836-0bd5a1c756c5",
   )?.ResultValues[0].Value;
+  const signature = conclusionData?.checks.find((check) =>
+    check.ResultValues[0].Value.endsWith("FORMSIGNATURE.png"),
+  )?.Photos[0].FileId;
 
   const inspectionDetails = [
     {
@@ -77,11 +79,19 @@ export default function Conclusie({ data }: { data: CheckList }) {
             </div>
             <div className="text-right">
               {detail.label === "Handtekening" ? (
-                <Image
-                  src={signature}
-                  alt="Inspecteur handtekening"
-                  className="max-h-20 w-auto"
-                />
+                signature ? (
+                  <Image
+                    src={`/aboma-sbx/webreports/api/get-image?url=${signature}`}
+                    alt="Inspecteur handtekening"
+                    width={120}
+                    height={80}
+                    className="max-h-20 w-auto object-contain"
+                  />
+                ) : (
+                  <span className="text-sm text-gray-400">
+                    Geen handtekening beschikbaar
+                  </span>
+                )
               ) : (
                 <span className="text-aboma-blue block text-xl font-bold tracking-tight">
                   {detail.value}

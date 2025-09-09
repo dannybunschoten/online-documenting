@@ -23,7 +23,7 @@ export const CheckData = z.object({
   Photos: z.array(
     z.object({
       Caption: z.string(),
-      FileName: z.string(),
+      FileId: z.string(),
     }),
   ),
 });
