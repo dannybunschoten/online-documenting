@@ -1,13 +1,17 @@
 {
   "DataSources": [
     {
-      "Name": "<DataSourceName>",
-      "Source": "<URL>"
+      "Name": "checks",
+      "Source": "https://api.smartflowcloud.com/aboma-preprod/PackageService/Packages/Checks/GetCheckResults"
+    },
+    {
+      "Name": "tasks",
+      "Source": "https://api.smartflowcloud.com/aboma-preprod/PackageService/Packages/Checks/GetTasks"
     }
   ],
   "Models": [
     {
-      "Name": "<ModelName>"
+      "Name": "data-model"
     }
   ]
 }
