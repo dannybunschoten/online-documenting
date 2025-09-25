@@ -8,16 +8,5 @@ services:
     volumes:
       - mongo-data:/data/db
       - ./mongo-init:/docker-entrypoint-initdb.d:ro
-
-  # app:
-  #   build: .
-  #   command: npm run start
-  #   environment:
-  #     - MONGODB_URI=mongodb://mongo:27017
-  #   ports:
-  #     - "3000:3000"
-  #   depends_on:
-  #     - mongo
-
 volumes:
   mongo-data:
