@@ -10,12 +10,20 @@ import clientPromise from "@/lib/mongodb";
 import { notAvailableString } from "./lib/utils";
 import { ObjectId } from "mongodb";
 
+function required(key: string) {
+  const value = process.env[key];
+  if (value === undefined) {
+    throw new Error(`Missing required environment variable: ${key}`);
+  }
+  return value;
+}
+
 async function getDataSnapshot(id: string): Promise<DataSnapshot | null> {
   try {
     const client = await clientPromise;
-    const db = client.db("online-documenting");
+    const db = client.db(required("MONGODB_DATABASE"));
     const dataSnapshot = await db
-      .collection("data-snapshot")
+      .collection(required("MONGODB_COLLECTION_DATA_SNAPSHOT"))
       .findOne<DataSnapshot>({
         _id: new ObjectId(id),
       });
@@ -30,9 +38,9 @@ async function getDataSnapshot(id: string): Promise<DataSnapshot | null> {
 async function getDataModel(version: number): Promise<DataModel | null> {
   try {
     const client = await clientPromise;
-    const db = client.db("online-documenting");
+    const db = client.db(required("MONGODB_DATABASE"));
     const dataModel = await db
-      .collection("data-models")
+      .collection(required("MONGODB_COLLECTION_DATA_MODEL"))
       .findOne<DataModel>({ VERSION: version });
 
     return dataModel;
@@ -138,9 +146,9 @@ function findTitle(
 export async function getChecklists(): Promise<string[]> {
   try {
     const client = await clientPromise;
-    const db = client.db("online-documenting");
+    const db = client.db(required("MONGODB_DATABASE"));
     const cursor = db
-      .collection("data-snapshot")
+      .collection(required("MONGODB_COLLECTION_DATA_SNAPSHOT"))
       .find<{ _id: string }>({}, { projection: { _id: 1 } });
 
     const ids = await cursor.toArray();
