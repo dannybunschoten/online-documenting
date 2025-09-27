@@ -32,9 +32,9 @@ Follow these steps carefully:
    npm install
    ```
 
-3. (Optional) Change the port:
-   - Open the `package.json` file.
-   - In the `scripts.dev` entry, update the `-p` flag to the port you want.
+3. (Optional) Configure environment variables:
+   - Copy the `.env.example` file to `.env`
+   - Configure the variables to your preferences
 
 4. Start the development server:
    ```bash
@@ -59,9 +59,7 @@ The app should now be running locally.
    npm run build
    ```
 5. Configure the application:
-   - Set the basepath in `./next.config.ts`. This basepath is the path under which the whole application is served.
-   - Copy the `.env.example` file to `.env`, and ensure that every variable is filled in.
-   - Optionally change the port in the `package.json` file by replacing the `-p` flag in the `scripts.start` entry with the port of your choice.
+   - Copy the `.env.example` file to `.env`, and ensure that every desired variable is filled in.
 
 6. Start the production server:
    ```bash
