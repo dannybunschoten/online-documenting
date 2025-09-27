@@ -7,7 +7,7 @@ export type DataModel = z.infer<typeof schemas.DataModel>;
 
 export type DataSnapshot = TaskInformation & {
   checks: CheckData[];
-};
+} & { _id: string };
 
 export type CheckDataOrdered = Omit<CheckData, "Check"> & {
   Check: CheckData["Check"] & {

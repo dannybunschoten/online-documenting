@@ -8,7 +8,6 @@ import {
 } from "./app/types";
 import clientPromise from "@/lib/mongodb";
 import { notAvailableString } from "./lib/utils";
-import { ObjectId } from "mongodb";
 
 function required(key: string) {
   const value = process.env[key];
@@ -23,9 +22,9 @@ async function getDataSnapshot(id: string): Promise<DataSnapshot | null> {
     const client = await clientPromise;
     const db = client.db(required("MONGODB_DATABASE"));
     const dataSnapshot = await db
-      .collection(required("MONGODB_COLLECTION_DATA_SNAPSHOT"))
-      .findOne<DataSnapshot>({
-        _id: new ObjectId(id),
+      .collection<DataSnapshot>(required("MONGODB_COLLECTION_DATA_SNAPSHOT"))
+      .findOne({
+        _id: id,
       });
 
     return dataSnapshot;
@@ -40,8 +39,8 @@ async function getDataModel(version: number): Promise<DataModel | null> {
     const client = await clientPromise;
     const db = client.db(required("MONGODB_DATABASE"));
     const dataModel = await db
-      .collection(required("MONGODB_COLLECTION_DATA_MODEL"))
-      .findOne<DataModel>({ VERSION: version });
+      .collection<DataModel>(required("MONGODB_COLLECTION_DATA_MODEL"))
+      .findOne({ VERSION: version });
 
     return dataModel;
   } catch (error) {
@@ -148,11 +147,11 @@ export async function getChecklists(): Promise<string[]> {
     const client = await clientPromise;
     const db = client.db(required("MONGODB_DATABASE"));
     const cursor = db
-      .collection(required("MONGODB_COLLECTION_DATA_SNAPSHOT"))
-      .find<{ _id: string }>({}, { projection: { _id: 1 } });
+      .collection<DataSnapshot>(required("MONGODB_COLLECTION_DATA_SNAPSHOT"))
+      .find({}, { projection: { _id: 1 } });
 
     const ids = await cursor.toArray();
-    return ids.map((id) => id._id.toString());
+    return ids.map((id) => id._id);
   } catch (error) {
     console.error(error);
     return [];
