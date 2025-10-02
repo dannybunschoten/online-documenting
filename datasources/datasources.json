@@ -2,11 +2,11 @@
   "DataSources": [
     {
       "Name": "checks",
-      "Source": "https://api.smartflowcloud.com/aboma-preprod/PackageService/Packages/Checks/GetCheckResults"
+      "Source": "https://api.smartflowcloud.com/aboma-preprod/PackageService/Packages/Checks/GetCheckResults?TaskId={{TaskId}}&Include=ResultValues,Photos,Actions"
     },
     {
       "Name": "tasks",
-      "Source": "https://api.smartflowcloud.com/aboma-preprod/PackageService/Packages/Checks/GetTasks"
+      "Source": "https://api.smartflowcloud.com/aboma-preprod/PackageService/Packages/Checks/GetTasks?TaskId={{TaskId}}"
     }
   ],
   "Models": [
