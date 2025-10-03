@@ -8,6 +8,10 @@ import {
 } from "./app/types";
 import clientPromise from "@/lib/mongodb";
 import { notAvailableString } from "./lib/utils";
+import {
+  DataSnapshotSchema,
+  DataModel as DataModelSchema,
+} from "./lib/schemas";
 
 function required(key: string) {
   const value = process.env[key];
@@ -21,37 +25,94 @@ async function getDataSnapshot(id: string): Promise<DataSnapshot | null> {
   try {
     const client = await clientPromise;
     const db = client.db(required("MONGODB_DATABASE"));
-    const dataSnapshot = await db
-      .collection<DataSnapshot>(required("MONGODB_COLLECTION_DATA_SNAPSHOT"))
+    const rawData = await db
+      .collection<{ _id: string }>(required("MONGODB_COLLECTION_DATA_SNAPSHOT"))
       .findOne({
         _id: id,
       });
 
-    return dataSnapshot;
+    if (!rawData) {
+      console.log(`[getDataSnapshot] No data found for id: ${id}`);
+      return null;
+    }
+
+    const validation = DataSnapshotSchema.safeParse(rawData);
+    if (!validation.success) {
+      console.error(`[getDataSnapshot] Validation failed for id: ${id}`);
+      console.error(
+        `[getDataSnapshot] Validation errors:`,
+        JSON.stringify(validation.error.issues, null, 2),
+      );
+      return null;
+    }
+
+    return validation.data;
   } catch (error) {
-    console.error(error);
+    console.error(`[getDataSnapshot] Database operation failed for id: ${id}`);
+    console.error(
+      `[getDataSnapshot] Error:`,
+      error instanceof Error ? error.message : String(error),
+    );
+    console.error(
+      `[getDataSnapshot] Stack trace:`,
+      error instanceof Error ? error.stack : "No stack trace available",
+    );
     return null;
   }
 }
 
-async function getDataModel(version: number): Promise<DataModel | null> {
+async function getDataModel(
+  dataSnapshot: DataSnapshot | null,
+): Promise<DataModel | null> {
+  if (dataSnapshot == null) {
+    console.log(`[getDataModel] No data snapshot provided`);
+    return null;
+  }
   try {
     const client = await clientPromise;
     const db = client.db(required("MONGODB_DATABASE"));
-    const dataModel = await db
-      .collection<DataModel>(required("MONGODB_COLLECTION_DATA_MODEL"))
-      .findOne({ VERSION: version });
+    const modelId = dataSnapshot.Models[0]._id.toString();
+    const rawData = await db
+      .collection<{ _id: string }>(required("MONGODB_COLLECTION_DATA_MODEL"))
+      .findOne({ _id: modelId });
 
-    return dataModel;
+    if (!rawData) {
+      console.log(`[getDataModel] No data model found for id: ${modelId}`);
+      return null;
+    }
+
+    const validation = DataModelSchema.safeParse(rawData);
+    if (!validation.success) {
+      console.error(
+        `[getDataModel] Validation failed for model id: ${modelId}`,
+      );
+      console.error(
+        `[getDataModel] Validation errors:`,
+        JSON.stringify(validation.error.issues, null, 2),
+      );
+      return null;
+    }
+
+    return validation.data;
   } catch (error) {
-    console.error(error);
+    console.error(
+      `[getDataModel] Database operation failed for snapshot id: ${dataSnapshot._id}`,
+    );
+    console.error(
+      `[getDataModel] Error:`,
+      error instanceof Error ? error.message : String(error),
+    );
+    console.error(
+      `[getDataModel] Stack trace:`,
+      error instanceof Error ? error.stack : "No stack trace available",
+    );
     return null;
   }
 }
 
 export async function getCheckList(formId: string): Promise<CheckList | null> {
   const dataSnapshot = await getDataSnapshot(formId);
-  const dataModel = await getDataModel(1);
+  const dataModel = await getDataModel(dataSnapshot);
 
   if (dataSnapshot == null || dataModel == null) {
     return null;
@@ -59,7 +120,7 @@ export async function getCheckList(formId: string): Promise<CheckList | null> {
 
   const extendedCheckGroups = dataModel.CHECK_GROUPS.map((group) => {
     const groupChecks = group.Checks.map((modelCheck) => {
-      const snapshotCheck = dataSnapshot.checks
+      const snapshotCheck = dataSnapshot.Data.checks
         .filter((x) => x && x.Check && x.CheckGroup)
         .find(
           (x) =>
@@ -103,7 +164,7 @@ export async function getCheckList(formId: string): Promise<CheckList | null> {
   return {
     title: findTitle(
       dataModel,
-      dataSnapshot.ChecklistId,
+      dataSnapshot.Data.tasks[0].ChecklistId,
       findProperty(dataSnapshot, "SfTaskTypeCode"),
     ),
     checkCode: findProperty(dataSnapshot, "ACTIVITYCODE"),
@@ -121,7 +182,7 @@ export async function getCheckList(formId: string): Promise<CheckList | null> {
 }
 
 function findProperty(dataSnapshot: DataSnapshot, propertyId: string): string {
-  const result = dataSnapshot.Properties.find(
+  const result = dataSnapshot.Data.tasks[0].Properties.find(
     (data) => data.PropertyId === propertyId,
   )?.Value;
   return result || notAvailableString;
@@ -153,7 +214,15 @@ export async function getChecklists(): Promise<string[]> {
     const ids = await cursor.toArray();
     return ids.map((id) => id._id);
   } catch (error) {
-    console.error(error);
+    console.error(`[getChecklists] Database operation failed`);
+    console.error(
+      `[getChecklists] Error:`,
+      error instanceof Error ? error.message : String(error),
+    );
+    console.error(
+      `[getChecklists] Stack trace:`,
+      error instanceof Error ? error.stack : "No stack trace available",
+    );
     return [];
   }
 }

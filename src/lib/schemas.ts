@@ -42,6 +42,7 @@ export const TaskInformation = z.object({
 });
 
 export const DataModel = z.object({
+  _id: z.string(),
   VERSION: z.number(),
   CHECK_GROUPS: z.array(
     z.object({
@@ -75,4 +76,17 @@ export const RequestSchema = z.object({
   checkResults: z.array(CheckData),
   taskInformation: z.tuple([TaskInformation]),
   dataModel: DataModel,
+});
+
+export const DataSnapshotSchema = z.object({
+  _id: z.string(),
+  Data: z.object({
+    checks: z.array(CheckData),
+    tasks: z.tuple([TaskInformation]),
+  }),
+  Models: z.tuple([
+    z.object({
+      _id: z.any(), // ObjectId type
+    }),
+  ]),
 });

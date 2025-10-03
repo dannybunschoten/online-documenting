@@ -1,13 +1,9 @@
 import * as z from "zod";
 import * as schemas from "../lib/schemas";
 
-type TaskInformation = z.infer<typeof schemas.TaskInformation>;
 type CheckData = z.infer<typeof schemas.CheckData>;
 export type DataModel = z.infer<typeof schemas.DataModel>;
-
-export type DataSnapshot = TaskInformation & {
-  checks: CheckData[];
-} & { _id: string };
+export type DataSnapshot = z.infer<typeof schemas.DataSnapshotSchema>;
 
 export type CheckDataOrdered = Omit<CheckData, "Check"> & {
   Check: CheckData["Check"] & {
