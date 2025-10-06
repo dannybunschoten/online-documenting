@@ -1,11 +1,13 @@
 import { getChecklists } from "@/actions";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const checkLists = await getChecklists();
 
   return (
-    <section className="mx-auto mt-6 max-w-[1200px] rounded-2xl border border-gray-100 bg-white p-10 text-center shadow-xl">
+    <section className="mx-auto my-6 max-w-[1200px] rounded-2xl border border-gray-100 bg-white p-10 text-center shadow-xl">
       <h1 className="text-aboma-blue mb-6 text-3xl font-bold">
         Selecteer een inspectierapport
       </h1>

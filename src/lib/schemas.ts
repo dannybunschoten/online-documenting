@@ -36,7 +36,7 @@ export const TaskInformation = z.object({
       Id: z.string(),
       PropertyId: z.string(),
       Name: z.string(),
-      Value: z.string(),
+      Value: z.string().optional(),
     }),
   ),
 });

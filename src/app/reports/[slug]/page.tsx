@@ -1,6 +1,8 @@
 import { getCheckList, getChecklists } from "@/actions";
 import { Overview } from "@/app/components/Overview";
 
+export const dynamic = "force-static";
+
 export async function generateStaticParams() {
   const checklistIds = await getChecklists();
 
