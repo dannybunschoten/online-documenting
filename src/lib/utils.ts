@@ -54,3 +54,11 @@ export function titleToId(title: string) {
     .replace(/[^\w\-]/g, "")
     .toLowerCase();
 }
+
+export function requiredEnv(key: string): string {
+  const value = process.env[key];
+  if (value === undefined) {
+    throw new Error(`Missing required environment variable: ${key}`);
+  }
+  return value;
+}

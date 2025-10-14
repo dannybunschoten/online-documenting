@@ -1,4 +1,5 @@
 import { getApiKey } from "@/lib/auth";
+import { requiredEnv } from "@/lib/utils";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
@@ -14,7 +15,7 @@ export async function GET(request: Request) {
     const authKey = await getApiKey();
     console.log("authkey", authKey);
     const imageResponse = await fetch(
-      `https://api.smartflowcloud.com/aboma-preprod/Forms(1ce25066-5a96-4dcb-80e7-bac7e75612ba)/Files(${imageUrl})/File`,
+      `https://api.smartflowcloud.com/${requiredEnv("DOMAIN")}/Forms(1ce25066-5a96-4dcb-80e7-bac7e75612ba)/Files(${imageUrl})/File`,
       {
         method: "GET",
         headers: {

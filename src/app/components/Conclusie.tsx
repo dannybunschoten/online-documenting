@@ -1,4 +1,4 @@
-import { notAvailableString, titleToId } from "@/lib/utils";
+import { notAvailableString, requiredEnv, titleToId } from "@/lib/utils";
 import { Shortages } from "./Shortages";
 import { Calendar, Hash, PenTool, User } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -81,7 +81,7 @@ export default function Conclusie({ data }: { data: CheckList }) {
               {detail.label === "Handtekening" ? (
                 signature ? (
                   <Image
-                    src={`/aboma-sbx/webreports/api/get-image?url=${signature}`}
+                    src={`${requiredEnv("NEXT_PUBLIC_BASE_PATH")}${process.env.APPLICATION_NAME ?? ""}/api/get-image?url=${signature}`}
                     alt="Inspecteur handtekening"
                     width={120}
                     height={80}

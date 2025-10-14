@@ -7,26 +7,20 @@ import {
   CheckList,
 } from "./app/types";
 import clientPromise from "@/lib/mongodb";
-import { notAvailableString } from "./lib/utils";
+import { notAvailableString, requiredEnv } from "./lib/utils";
 import {
   DataSnapshotSchema,
   DataModel as DataModelSchema,
 } from "./lib/schemas";
 
-function required(key: string) {
-  const value = process.env[key];
-  if (value === undefined) {
-    throw new Error(`Missing required environment variable: ${key}`);
-  }
-  return value;
-}
-
 async function getDataSnapshot(id: string): Promise<DataSnapshot | null> {
   try {
     const client = await clientPromise;
-    const db = client.db(required("MONGODB_DATABASE"));
+    const db = client.db(requiredEnv("MONGODB_DATABASE"));
     const rawData = await db
-      .collection<{ _id: string }>(required("MONGODB_COLLECTION_DATA_SNAPSHOT"))
+      .collection<{
+        _id: string;
+      }>(requiredEnv("MONGODB_COLLECTION_DATA_SNAPSHOT"))
       .findOne({
         _id: id,
       });
@@ -70,10 +64,10 @@ async function getDataModel(
   }
   try {
     const client = await clientPromise;
-    const db = client.db(required("MONGODB_DATABASE"));
+    const db = client.db(requiredEnv("MONGODB_DATABASE"));
     const modelId = dataSnapshot.Models[0]._id.toString();
     const rawData = await db
-      .collection<{ _id: string }>(required("MONGODB_COLLECTION_DATA_MODEL"))
+      .collection<{ _id: string }>(requiredEnv("MONGODB_COLLECTION_DATA_MODEL"))
       .findOne({ _id: modelId });
 
     if (!rawData) {
@@ -206,9 +200,9 @@ function findTitle(
 export async function getChecklists(): Promise<string[]> {
   try {
     const client = await clientPromise;
-    const db = client.db(required("MONGODB_DATABASE"));
+    const db = client.db(requiredEnv("MONGODB_DATABASE"));
     const cursor = db
-      .collection<DataSnapshot>(required("MONGODB_COLLECTION_DATA_SNAPSHOT"))
+      .collection<DataSnapshot>(requiredEnv("MONGODB_COLLECTION_DATA_SNAPSHOT"))
       .find({}, { projection: { _id: 1 } });
 
     const ids = await cursor.toArray();

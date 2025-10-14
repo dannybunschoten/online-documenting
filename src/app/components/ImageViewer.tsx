@@ -25,7 +25,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, requiredEnv } from "@/lib/utils";
 
 interface ImageViewerProps {
   images: Array<{
@@ -102,7 +102,7 @@ export function ImageViewer({ images, className }: ImageViewerProps) {
               <CarouselItem key={image.FileId}>
                 <div className="relative h-[95vh] w-full">
                   <Image
-                    src={`/aboma-sbx/webreports/api/get-image?url=${image.FileId}`}
+                    src={`${requiredEnv("NEXT_PUBLIC_BASE_PATH")}${process.env.APPLICATION_NAME ?? ""}/api/get-image?url=${image.FileId}`}
                     alt={image.FileName || `foto ${index + 1}`}
                     fill
                     className="object-contain"

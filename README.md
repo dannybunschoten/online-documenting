@@ -8,7 +8,7 @@ A modern, fast, and responsive web app for viewing historical inspection data. B
 2. Smartflow sends the inspection payload to this app's ingestion endpoint, which:
    - Validates the payload against the expected model.
    - Writes/updates documents in MongoDB (shared model across many inspections is supported).
-3. The user is redirected to `{BASE_PATH}/{GUID}`, which fetches and renders the inspection by its GUID.
+3. The user is redirected to `{BASE_PATH}/{APPLICATION_NAME}/{GUID}`, which fetches and renders the inspection by its GUID.
 
 ## Prerequisites
 
