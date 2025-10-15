@@ -43,7 +43,6 @@ export const TaskInformation = z.object({
 
 export const DataModel = z.object({
   _id: z.string(),
-  VERSION: z.number(),
   CHECK_GROUPS: z.array(
     z.object({
       CheckGroupId: z.string(),
