@@ -55,6 +55,22 @@ export function titleToId(title: string) {
     .toLowerCase();
 }
 
+export function getAppBasePath() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const applicationName = process.env.APPLICATION_NAME ?? "";
+
+  const segments = [basePath, applicationName]
+    .map((segment) => segment?.trim() ?? "")
+    .filter((segment) => segment && segment !== "/")
+    .map((segment) => segment.replace(/^\/+|\/+$/g, ""));
+
+  if (segments.length === 0) {
+    return "";
+  }
+
+  return `/${segments.join("/")}`;
+}
+
 export function requiredEnv(key: string): string {
   const value = process.env[key];
   if (value === undefined) {

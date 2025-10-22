@@ -1,4 +1,4 @@
-import { notAvailableString, requiredEnv, titleToId } from "@/lib/utils";
+import { getAppBasePath, notAvailableString, titleToId } from "@/lib/utils";
 import { Shortages } from "./Shortages";
 import { Calendar, Hash, PenTool, User } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -38,6 +38,8 @@ export default function Conclusie({ data }: { data: CheckList }) {
       value: null, // Special case for signature image
     },
   ];
+
+  const appBasePath = getAppBasePath();
 
   return (
     <article
@@ -81,7 +83,7 @@ export default function Conclusie({ data }: { data: CheckList }) {
               {detail.label === "Handtekening" ? (
                 signature ? (
                   <Image
-                    src={`${requiredEnv("NEXT_PUBLIC_BASE_PATH")}${process.env.APPLICATION_NAME ?? ""}/api/get-image?url=${signature}`}
+                    src={`${appBasePath}/api/get-image?url=${signature}`}
                     alt="Inspecteur handtekening"
                     width={120}
                     height={80}
