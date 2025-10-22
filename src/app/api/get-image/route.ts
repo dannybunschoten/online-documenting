@@ -26,7 +26,7 @@ export async function GET(request: Request) {
 
     const imageBuffer = await readFile(imagePath);
 
-    return new Response(imageBuffer, {
+    return new Response(imageBuffer.buffer, {
       status: 200,
       headers: {
         "Content-Type": "image/jpeg",
