@@ -6,7 +6,7 @@ import {
   CheckDataOrdered,
   CheckList,
 } from "./app/types";
-import clientPromise from "@/lib/mongodb";
+import getMongoClient from "@/lib/mongodb";
 import { notAvailableString, requiredEnv } from "./lib/utils";
 import {
   DataSnapshotSchema,
@@ -15,7 +15,13 @@ import {
 
 async function getDataSnapshot(id: string): Promise<DataSnapshot | null> {
   try {
-    const client = await clientPromise;
+    const client = await getMongoClient();
+    if (!client) {
+      console.warn(
+        `[getDataSnapshot] MongoDB client unavailable, returning null`,
+      );
+      return null;
+    }
     const db = client.db(requiredEnv("MONGODB_DATABASE"));
     const rawData = await db
       .collection<{
@@ -63,7 +69,11 @@ async function getDataModel(
     return null;
   }
   try {
-    const client = await clientPromise;
+    const client = await getMongoClient();
+    if (!client) {
+      console.warn(`[getDataModel] MongoDB client unavailable, returning null`);
+      return null;
+    }
     const db = client.db(requiredEnv("MONGODB_DATABASE"));
     const modelId = dataSnapshot.Models[0]._id.toString();
     const rawData = await db
@@ -199,7 +209,13 @@ function findTitle(
 
 export async function getChecklists(): Promise<string[]> {
   try {
-    const client = await clientPromise;
+    const client = await getMongoClient();
+    if (!client) {
+      console.warn(
+        `[getChecklists] MongoDB client unavailable, returning empty list`,
+      );
+      return [];
+    }
     const db = client.db(requiredEnv("MONGODB_DATABASE"));
     const cursor = db
       .collection<DataSnapshot>(requiredEnv("MONGODB_COLLECTION_DATA_SNAPSHOT"))

@@ -4,6 +4,12 @@ import { Overview } from "@/app/components/Overview";
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
+  if (!process.env.MONGODB_DATABASE) {
+    console.warn(
+      "WARNING: MONGODB_DATABASE environment variable not set, could not generate static params",
+    );
+    return [];
+  }
   const checklistIds = await getChecklists();
 
   return checklistIds.map((id) => ({

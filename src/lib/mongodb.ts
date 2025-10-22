@@ -4,25 +4,30 @@ declare global {
   var _mongoClientPromise: Promise<MongoClient> | undefined;
 }
 
-const uri = process.env.MONGODB_URI as string;
 const options = {};
 
-let client;
-let clientPromise: Promise<MongoClient>;
+let clientPromise: Promise<MongoClient> | null = null;
 
-if (!process.env.MONGODB_URI) {
-  throw new Error("MONGODB_URI not defined");
-}
-
-if (process.env.NODE_ENV === "development") {
-  if (!global._mongoClientPromise) {
-    client = new MongoClient(uri, options);
-    global._mongoClientPromise = client.connect();
+async function getMongoClient(): Promise<MongoClient | null> {
+  const uri = process.env.MONGODB_URI;
+  if (!uri) {
+    return null;
   }
-  clientPromise = global._mongoClientPromise;
-} else {
-  client = new MongoClient(uri, options);
-  clientPromise = client.connect();
+
+  if (process.env.NODE_ENV === "development") {
+    if (!global._mongoClientPromise) {
+      const client = new MongoClient(uri, options);
+      global._mongoClientPromise = client.connect();
+    }
+    return await global._mongoClientPromise;
+  }
+
+  if (!clientPromise) {
+    const client = new MongoClient(uri, options);
+    clientPromise = client.connect();
+  }
+
+  return await clientPromise;
 }
 
-export default clientPromise;
+export default getMongoClient;
