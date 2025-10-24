@@ -1,3 +1,5 @@
+import { requiredEnv } from "./utils";
+
 let apiKey: string | null = null;
 let fetchPromise: Promise<void> | null = null;
 
@@ -18,11 +20,11 @@ export async function getApiKey(): Promise<string | null> {
 
 async function fetchApiKey() {
   const response = await fetch(
-    "https://api.smartflowcloud.com/aboma-preprod/Login",
+    `https://api.smartflowcloud.com/${requiredEnv("DOMAIN")}/Login`,
     {
       method: "POST",
       headers: {
-        "x-domainname": "aboma-preprod",
+        "x-domainname": requiredEnv("DOMAIN"),
         "content-type": "application/json",
       },
       body: JSON.stringify({

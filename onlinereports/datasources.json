@@ -1,0 +1,18 @@
+{
+  "DataSources": [
+    {
+      "Name": "checks",
+      "Source": "https://api.smartflowcloud.com/aboma-sbx/PackageService/Packages/Checks/GetCheckResults?TaskId={{TaskId}}&Include=ResultValues,Photos,Actions"
+    },
+    {
+      "Name": "tasks",
+      "Source": "https://api.smartflowcloud.com/aboma-sbx/PackageService/Packages/Checks/GetTasks?TaskId={{TaskId}}"
+    }
+  ],
+  "Models": [
+    {
+      "Name": "Checks_DataModel.json",
+      "Id": "68e706d1-03fb-426d-a1d3-bbfe7d57a6f8"
+    }
+  ]
+}

@@ -125,7 +125,11 @@ export async function getCheckList(formId: string): Promise<CheckList | null> {
   const extendedCheckGroups = dataModel.CHECK_GROUPS.map((group) => {
     const groupChecks = group.Checks.map((modelCheck) => {
       const snapshotCheck = dataSnapshot.Data.checks
-        .filter((x) => x && x.Check && x.CheckGroup)
+        .filter((x) => x !== null)
+        .filter(
+          (x): x is typeof x & { Check: NonNullable<typeof x.Check> } =>
+            x.Check !== null,
+        )
         .find(
           (x) =>
             x.Check.Id === modelCheck.CheckId &&

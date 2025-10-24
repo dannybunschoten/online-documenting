@@ -1,10 +1,12 @@
 import * as z from "zod";
 
 export const CheckData = z.object({
-  Check: z.object({
-    Id: z.string(),
-    Text: z.string(),
-  }),
+  Check: z
+    .object({
+      Id: z.string(),
+      Text: z.string(),
+    })
+    .nullable(),
   CheckGroup: z.object({
     Id: z.string(),
   }),
